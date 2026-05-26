@@ -156,8 +156,18 @@ export default async function VerbPage({ params }: PageProps) {
       {/* Quiz */}
       <QuizWidget tenses={tenses} infinitive={verb.infinitive} />
 
+      {/* Related verbs */}
+      <div className="mt-8">
+        <RelatedVerbs verbs={related} lang={lang} title={`Otros verbos en -${verb.conjugation_group}`} />
+      </div>
+
+      {/* AD #4 visible — Rectangle before SEO text (slot-rectangle-2) */}
+      <div className="flex justify-center my-8">
+        <AdUnit slot="slot-rectangle-2" format="rectangle" className="ad-rectangle" />
+      </div>
+
       {/* SEO text content */}
-      <section className="mt-8 prose prose-sm dark:prose-invert max-w-none">
+      <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
         <h2>Sobre el verbo {verb.infinitive}</h2>
         <p>
           <strong>{verb.infinitive}</strong> es un verbo {verb.type === "irregular" ? "irregular" : "regular"} de la primera conjugación (verbos en -{verb.conjugation_group}) en español.
@@ -182,17 +192,12 @@ export default async function VerbPage({ params }: PageProps) {
         </p>
       </section>
 
-      {/* Related verbs */}
-      <div className="mt-8">
-        <RelatedVerbs verbs={related} lang={lang} title={`Otros verbos en -${verb.conjugation_group}`} />
-      </div>
-
       {/* AD #3 — Large leaderboard above footer */}
       <div className="flex justify-center mt-10">
         <AdUnit slot="1122334455" format="large-leaderboard" className="ad-large-leaderboard" />
       </div>
 
-      {/* AD #4 — Anchor mobile (sticky bottom) */}
+      {/* Anchor mobile sticky (no compta com a visible) */}
       <AdUnit slot="5544332211" format="anchor" />
 
       {/* Bottom padding for anchor ad on mobile */}
