@@ -1,0 +1,98 @@
+{
+  "ser": {
+    "presente": { "yo": "soy", "tú": "eres", "él": "es", "nosotros": "somos", "vosotros": "sois", "ellos": "son" },
+    "preterito_indefinido": { "yo": "fui", "tú": "fuiste", "él": "fue", "nosotros": "fuimos", "vosotros": "fuisteis", "ellos": "fueron" },
+    "preterito_imperfecto": { "yo": "era", "tú": "eras", "él": "era", "nosotros": "éramos", "vosotros": "erais", "ellos": "eran" },
+    "futuro_simple": { "yo": "seré", "tú": "serás", "él": "será", "nosotros": "seremos", "vosotros": "seréis", "ellos": "serán" },
+    "condicional_simple": { "yo": "sería", "tú": "serías", "él": "sería", "nosotros": "seríamos", "vosotros": "seríais", "ellos": "serían" },
+    "subjuntivo_presente": { "yo": "sea", "tú": "seas", "él": "sea", "nosotros": "seamos", "vosotros": "seáis", "ellos": "sean" },
+    "imperativo_afirmativo": { "tú": "sé", "él": "sea", "nosotros": "seamos", "vosotros": "sed", "ellos": "sean" },
+    "gerundio": "siendo",
+    "participio": "sido"
+  },
+  "estar": {
+    "presente": { "yo": "estoy", "tú": "estás", "él": "está", "nosotros": "estamos", "vosotros": "estáis", "ellos": "están" },
+    "preterito_indefinido": { "yo": "estuve", "tú": "estuviste", "él": "estuvo", "nosotros": "estuvimos", "vosotros": "estuvisteis", "ellos": "estuvieron" },
+    "subjuntivo_presente": { "yo": "esté", "tú": "estés", "él": "esté", "nosotros": "estemos", "vosotros": "estéis", "ellos": "estén" },
+    "gerundio": "estando",
+    "participio": "estado"
+  },
+  "tener": {
+    "presente": { "yo": "tengo", "tú": "tienes", "él": "tiene", "nosotros": "tenemos", "vosotros": "tenéis", "ellos": "tienen" },
+    "preterito_indefinido": { "yo": "tuve", "tú": "tuviste", "él": "tuvo", "nosotros": "tuvimos", "vosotros": "tuvisteis", "ellos": "tuvieron" },
+    "futuro_simple": { "yo": "tendré", "tú": "tendrás", "él": "tendrá", "nosotros": "tendremos", "vosotros": "tendréis", "ellos": "tendrán" },
+    "condicional_simple": { "yo": "tendría", "tú": "tendrías", "él": "tendría", "nosotros": "tendríamos", "vosotros": "tendríais", "ellos": "tendrían" },
+    "gerundio": "teniendo",
+    "participio": "tenido"
+  },
+  "hacer": {
+    "presente": { "yo": "hago", "tú": "haces", "él": "hace", "nosotros": "hacemos", "vosotros": "hacéis", "ellos": "hacen" },
+    "preterito_indefinido": { "yo": "hice", "tú": "hiciste", "él": "hizo", "nosotros": "hicimos", "vosotros": "hicisteis", "ellos": "hicieron" },
+    "futuro_simple": { "yo": "haré", "tú": "harás", "él": "hará", "nosotros": "haremos", "vosotros": "haréis", "ellos": "harán" },
+    "condicional_simple": { "yo": "haría", "tú": "harías", "él": "haría", "nosotros": "haríamos", "vosotros": "haríais", "ellos": "harían" },
+    "subjuntivo_presente": { "yo": "haga", "tú": "hagas", "él": "haga", "nosotros": "hagamos", "vosotros": "hagáis", "ellos": "hagan" },
+    "gerundio": "haciendo",
+    "participio": "hecho"
+  },
+  "ir": {
+    "presente": { "yo": "voy", "tú": "vas", "él": "va", "nosotros": "vamos", "vosotros": "vais", "ellos": "van" },
+    "preterito_indefinido": { "yo": "fui", "tú": "fuiste", "él": "fue", "nosotros": "fuimos", "vosotros": "fuisteis", "ellos": "fueron" },
+    "preterito_imperfecto": { "yo": "iba", "tú": "ibas", "él": "iba", "nosotros": "íbamos", "vosotros": "ibais", "ellos": "iban" },
+    "subjuntivo_presente": { "yo": "vaya", "tú": "vayas", "él": "vaya", "nosotros": "vayamos", "vosotros": "vayáis", "ellos": "vayan" },
+    "imperativo_afirmativo": { "tú": "ve", "él": "vaya", "nosotros": "vayamos", "vosotros": "id", "ellos": "vayan" },
+    "gerundio": "yendo",
+    "participio": "ido"
+  },
+  "dar": {
+    "presente": { "yo": "doy", "tú": "das", "él": "da", "nosotros": "damos", "vosotros": "dais", "ellos": "dan" },
+    "preterito_indefinido": { "yo": "di", "tú": "diste", "él": "dio", "nosotros": "dimos", "vosotros": "disteis", "ellos": "dieron" },
+    "subjuntivo_presente": { "yo": "dé", "tú": "des", "él": "dé", "nosotros": "demos", "vosotros": "deis", "ellos": "den" },
+    "gerundio": "dando",
+    "participio": "dado"
+  },
+  "decir": {
+    "presente": { "yo": "digo", "tú": "dices", "él": "dice", "nosotros": "decimos", "vosotros": "decís", "ellos": "dicen" },
+    "preterito_indefinido": { "yo": "dije", "tú": "dijiste", "él": "dijo", "nosotros": "dijimos", "vosotros": "dijisteis", "ellos": "dijeron" },
+    "futuro_simple": { "yo": "diré", "tú": "dirás", "él": "dirá", "nosotros": "diremos", "vosotros": "diréis", "ellos": "dirán" },
+    "condicional_simple": { "yo": "diría", "tú": "dirías", "él": "diría", "nosotros": "diríamos", "vosotros": "diríais", "ellos": "dirían" },
+    "gerundio": "diciendo",
+    "participio": "dicho"
+  },
+  "saber": {
+    "presente": { "yo": "sé", "tú": "sabes", "él": "sabe", "nosotros": "sabemos", "vosotros": "sabéis", "ellos": "saben" },
+    "preterito_indefinido": { "yo": "supe", "tú": "supiste", "él": "supo", "nosotros": "supimos", "vosotros": "supisteis", "ellos": "supieron" },
+    "futuro_simple": { "yo": "sabré", "tú": "sabrás", "él": "sabrá", "nosotros": "sabremos", "vosotros": "sabréis", "ellos": "sabrán" },
+    "gerundio": "sabiendo",
+    "participio": "sabido"
+  },
+  "poner": {
+    "presente": { "yo": "pongo", "tú": "pones", "él": "pone", "nosotros": "ponemos", "vosotros": "ponéis", "ellos": "ponen" },
+    "preterito_indefinido": { "yo": "puse", "tú": "pusiste", "él": "puso", "nosotros": "pusimos", "vosotros": "pusisteis", "ellos": "pusieron" },
+    "futuro_simple": { "yo": "pondré", "tú": "pondrás", "él": "pondrá", "nosotros": "pondremos", "vosotros": "pondréis", "ellos": "pondrán" },
+    "condicional_simple": { "yo": "pondría", "tú": "pondrías", "él": "pondría", "nosotros": "pondríamos", "vosotros": "pondríais", "ellos": "pondrían" },
+    "gerundio": "poniendo",
+    "participio": "puesto"
+  },
+  "venir": {
+    "presente": { "yo": "vengo", "tú": "vienes", "él": "viene", "nosotros": "venimos", "vosotros": "venís", "ellos": "vienen" },
+    "preterito_indefinido": { "yo": "vine", "tú": "viniste", "él": "vino", "nosotros": "vinimos", "vosotros": "vinisteis", "ellos": "vinieron" },
+    "futuro_simple": { "yo": "vendré", "tú": "vendrás", "él": "vendrá", "nosotros": "vendremos", "vosotros": "vendréis", "ellos": "vendrán" },
+    "condicional_simple": { "yo": "vendría", "tú": "vendrías", "él": "vendría", "nosotros": "vendríamos", "vosotros": "vendríais", "ellos": "vendrían" },
+    "gerundio": "viniendo",
+    "participio": "venido"
+  },
+  "ver": {
+    "presente": { "yo": "veo", "tú": "ves", "él": "ve", "nosotros": "vemos", "vosotros": "veis", "ellos": "ven" },
+    "preterito_indefinido": { "yo": "vi", "tú": "viste", "él": "vio", "nosotros": "vimos", "vosotros": "visteis", "ellos": "vieron" },
+    "preterito_imperfecto": { "yo": "veía", "tú": "veías", "él": "veía", "nosotros": "veíamos", "vosotros": "veíais", "ellos": "veían" },
+    "gerundio": "viendo",
+    "participio": "visto"
+  },
+  "salir": {
+    "presente": { "yo": "salgo", "tú": "sales", "él": "sale", "nosotros": "salimos", "vosotros": "salís", "ellos": "salen" },
+    "futuro_simple": { "yo": "saldré", "tú": "saldrás", "él": "saldrá", "nosotros": "saldremos", "vosotros": "saldréis", "ellos": "saldrán" },
+    "condicional_simple": { "yo": "saldría", "tú": "saldrías", "él": "saldría", "nosotros": "saldríamos", "vosotros": "saldríais", "ellos": "saldrían" },
+    "gerundio": "saliendo",
+    "participio": "salido"
+  }
+}
