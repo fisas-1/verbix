@@ -6,8 +6,8 @@ const LANGS = ["es"];
 const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
 const GROUPS = ["ar", "er", "ir"];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const slugs = getAllVerbSlugs("es");
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const slugs = await getAllVerbSlugs("es");
 
   const verbUrls: MetadataRoute.Sitemap = slugs.flatMap(({ slug }) =>
     LANGS.map((lang) => ({

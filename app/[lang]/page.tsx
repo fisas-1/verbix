@@ -25,8 +25,10 @@ const POPULAR_VERBS = [
 
 export default async function HomePage({ params }: PageProps) {
   const { lang } = await params;
-  const verbs = getAllVerbsForSearch(lang);
-  const total = getTotalVerbCount(lang);
+  const [verbs, total] = await Promise.all([
+    getAllVerbsForSearch(lang),
+    getTotalVerbCount(lang),
+  ]);
   const schema = generateWebSiteSchema();
 
   return (

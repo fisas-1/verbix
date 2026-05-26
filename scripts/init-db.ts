@@ -1,8 +1,8 @@
-import Database from "better-sqlite3";
+import { createClient } from "@libsql/client";
 import path from "path";
 import fs from "fs";
 
-const DB_PATH = path.join(process.cwd(), "data", "verbs.db");
+const DB_PATH = path.join(process.cwd(), "data", "verbs.db").replace(/\\/g, "/");
 
 interface VerbSeed {
   infinitive: string;
@@ -46,105 +46,132 @@ const EXAMPLE_SENTENCES: Record<string, Array<{ tense: string; person: string; s
   ],
 };
 
-export function initDb() {
+async function initDb() {
   if (!fs.existsSync(path.join(process.cwd(), "data"))) {
     fs.mkdirSync(path.join(process.cwd(), "data"), { recursive: true });
   }
 
-  const db = new Database(DB_PATH);
-  db.pragma("journal_mode = WAL");
-  db.pragma("foreign_keys = ON");
+  const url = process.env.DATABASE_URL ?? `file:${DB_PATH}`;
+  const client = createClient({
+    url,
+    authToken: process.env.DATABASE_AUTH_TOKEN,
+  });
 
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS verbs (
-      id                INTEGER PRIMARY KEY,
-      infinitive        TEXT NOT NULL,
-      slug              TEXT NOT NULL,
-      lang              TEXT NOT NULL DEFAULT 'es',
-      type              TEXT,
-      conjugation_group TEXT,
-      has_stem_change   BOOLEAN DEFAULT 0,
-      stem_change       TEXT,
-      translation_en    TEXT,
-      translation_ca    TEXT,
-      frequency_rank    INTEGER,
-      created_at        DATETIME DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE(slug, lang)
-    );
-
-    CREATE TABLE IF NOT EXISTS conjugations (
-      id           INTEGER PRIMARY KEY,
-      verb_id      INTEGER REFERENCES verbs(id) ON DELETE CASCADE,
-      mood         TEXT NOT NULL,
-      tense        TEXT NOT NULL,
-      person       TEXT NOT NULL,
-      form         TEXT NOT NULL,
-      is_irregular BOOLEAN DEFAULT 0
-    );
-
-    CREATE TABLE IF NOT EXISTS examples (
-      id             INTEGER PRIMARY KEY,
-      verb_id        INTEGER REFERENCES verbs(id) ON DELETE CASCADE,
-      tense          TEXT,
-      person         TEXT,
-      sentence       TEXT NOT NULL,
-      translation_en TEXT
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_verbs_slug ON verbs(slug);
-    CREATE INDEX IF NOT EXISTS idx_conjugations_verb_tense ON conjugations(verb_id, tense);
-    CREATE INDEX IF NOT EXISTS idx_verbs_frequency ON verbs(frequency_rank);
-    CREATE INDEX IF NOT EXISTS idx_verbs_lang ON verbs(lang);
-  `);
+  await client.batch(
+    [
+      {
+        sql: `CREATE TABLE IF NOT EXISTS verbs (
+          id                INTEGER PRIMARY KEY,
+          infinitive        TEXT NOT NULL,
+          slug              TEXT NOT NULL,
+          lang              TEXT NOT NULL DEFAULT 'es',
+          type              TEXT,
+          conjugation_group TEXT,
+          has_stem_change   BOOLEAN DEFAULT 0,
+          stem_change       TEXT,
+          translation_en    TEXT,
+          translation_ca    TEXT,
+          frequency_rank    INTEGER,
+          created_at        DATETIME DEFAULT CURRENT_TIMESTAMP,
+          UNIQUE(slug, lang)
+        )`,
+        args: [],
+      },
+      {
+        sql: `CREATE TABLE IF NOT EXISTS conjugations (
+          id           INTEGER PRIMARY KEY,
+          verb_id      INTEGER REFERENCES verbs(id) ON DELETE CASCADE,
+          mood         TEXT NOT NULL,
+          tense        TEXT NOT NULL,
+          person       TEXT NOT NULL,
+          form         TEXT NOT NULL,
+          is_irregular BOOLEAN DEFAULT 0
+        )`,
+        args: [],
+      },
+      {
+        sql: `CREATE TABLE IF NOT EXISTS examples (
+          id             INTEGER PRIMARY KEY,
+          verb_id        INTEGER REFERENCES verbs(id) ON DELETE CASCADE,
+          tense          TEXT,
+          person         TEXT,
+          sentence       TEXT NOT NULL,
+          translation_en TEXT
+        )`,
+        args: [],
+      },
+      { sql: "CREATE INDEX IF NOT EXISTS idx_verbs_slug ON verbs(slug)", args: [] },
+      { sql: "CREATE INDEX IF NOT EXISTS idx_conjugations_verb_tense ON conjugations(verb_id, tense)", args: [] },
+      { sql: "CREATE INDEX IF NOT EXISTS idx_verbs_frequency ON verbs(frequency_rank)", args: [] },
+      { sql: "CREATE INDEX IF NOT EXISTS idx_verbs_lang ON verbs(lang)", args: [] },
+    ],
+    "deferred"
+  );
 
   const seedPath = path.join(process.cwd(), "data", "seed", "verbs-es.json");
   const verbs: VerbSeed[] = JSON.parse(fs.readFileSync(seedPath, "utf-8"));
 
-  const insertVerb = db.prepare(`
-    INSERT OR IGNORE INTO verbs (infinitive, slug, lang, type, conjugation_group, has_stem_change, stem_change, translation_en, translation_ca, frequency_rank)
-    VALUES (@infinitive, @slug, 'es', @type, @conjugation_group, @has_stem_change, @stem_change, @translation_en, @translation_ca, @frequency_rank)
-  `);
-
-  const insertExample = db.prepare(`
-    INSERT INTO examples (verb_id, tense, person, sentence, translation_en)
-    VALUES (?, ?, ?, ?, ?)
-  `);
-
   const seen = new Set<string>();
-  const insertMany = db.transaction(() => {
-    for (const verb of verbs) {
-      if (seen.has(verb.slug)) continue;
-      seen.add(verb.slug);
-      insertVerb.run({
-        infinitive: verb.infinitive,
-        slug: verb.slug,
-        type: verb.type ?? "regular",
-        conjugation_group: verb.conjugation_group,
-        has_stem_change: verb.has_stem_change ? 1 : 0,
-        stem_change: verb.stem_change ?? null,
-        translation_en: verb.translation_en ?? null,
-        translation_ca: verb.translation_ca ?? null,
-        frequency_rank: verb.frequency_rank ?? null,
-      });
-    }
-  });
+  const insertStmts: { sql: string; args: (string | number | null)[] }[] = [];
 
-  insertMany();
-
-  // Add example sentences for key verbs
-  for (const [slug, examples] of Object.entries(EXAMPLE_SENTENCES)) {
-    const verbRow = db.prepare("SELECT id FROM verbs WHERE slug = ? AND lang = 'es'").get(slug) as { id: number } | undefined;
-    if (!verbRow) continue;
-    const existing = db.prepare("SELECT COUNT(*) as c FROM examples WHERE verb_id = ?").get(verbRow.id) as { c: number };
-    if (existing.c > 0) continue;
-    for (const ex of examples) {
-      insertExample.run(verbRow.id, ex.tense, ex.person, ex.sentence, ex.translation_en);
-    }
+  for (const verb of verbs) {
+    if (seen.has(verb.slug)) continue;
+    seen.add(verb.slug);
+    insertStmts.push({
+      sql: `INSERT OR IGNORE INTO verbs
+            (infinitive, slug, lang, type, conjugation_group, has_stem_change, stem_change, translation_en, translation_ca, frequency_rank)
+            VALUES (?, ?, 'es', ?, ?, ?, ?, ?, ?, ?)`,
+      args: [
+        verb.infinitive,
+        verb.slug,
+        verb.type ?? "regular",
+        verb.conjugation_group,
+        verb.has_stem_change ? 1 : 0,
+        verb.stem_change ?? null,
+        verb.translation_en ?? null,
+        verb.translation_ca ?? null,
+        verb.frequency_rank ?? null,
+      ],
+    });
   }
 
-  console.log(`Database initialized at ${DB_PATH}`);
-  console.log(`Verbs inserted: ${(db.prepare("SELECT COUNT(*) as c FROM verbs").get() as { c: number }).c}`);
-  db.close();
+  // batch in chunks of 50 to stay within limits
+  for (let i = 0; i < insertStmts.length; i += 50) {
+    await client.batch(insertStmts.slice(i, i + 50), "write");
+  }
+
+  for (const [slug, examples] of Object.entries(EXAMPLE_SENTENCES)) {
+    const verbResult = await client.execute({
+      sql: "SELECT id FROM verbs WHERE slug = ? AND lang = 'es'",
+      args: [slug],
+    });
+    if (!verbResult.rows[0]) continue;
+    const verbId = verbResult.rows[0].id as number;
+
+    const countResult = await client.execute({
+      sql: "SELECT COUNT(*) as c FROM examples WHERE verb_id = ?",
+      args: [verbId],
+    });
+    if ((countResult.rows[0].c as number) > 0) continue;
+
+    await client.batch(
+      examples.map((ex) => ({
+        sql: "INSERT INTO examples (verb_id, tense, person, sentence, translation_en) VALUES (?, ?, ?, ?, ?)",
+        args: [verbId, ex.tense, ex.person, ex.sentence, ex.translation_en],
+      })),
+      "write"
+    );
+  }
+
+  const countResult = await client.execute("SELECT COUNT(*) as c FROM verbs");
+  const url_used = url.startsWith("file:") ? url : url.replace(/\/\/.*@/, "//***@");
+  console.log(`Database initialized: ${url_used}`);
+  console.log(`Verbs inserted: ${countResult.rows[0].c}`);
+
+  client.close();
 }
 
-initDb();
+initDb().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function LetraPage({ params }: PageProps) {
   const { lang, letter } = await params;
-  const verbs = getVerbsByLetter(letter, lang);
+  const verbs = await getVerbsByLetter(letter, lang);
 
   return (
     <>

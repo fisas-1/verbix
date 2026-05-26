@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function RegularesPage({ params }: PageProps) {
   const { lang } = await params;
-  const verbs = getVerbsByType("regular", lang);
+  const verbs = await getVerbsByType("regular", lang);
 
   return (
     <>

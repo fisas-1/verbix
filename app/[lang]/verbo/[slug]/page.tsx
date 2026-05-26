@@ -18,7 +18,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const slugs = getAllVerbSlugs("es");
+  const slugs = await getAllVerbSlugs("es");
   return slugs.map((s) => ({ lang: "es", slug: s.slug }));
 }
 
@@ -26,7 +26,7 @@ export const revalidate = 86400;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params;
-  const verb = getVerb(slug, lang);
+  const verb = await getVerb(slug, lang);
   if (!verb) return {};
   return {
     title: verbTitle(verb),
@@ -45,13 +45,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function VerbPage({ params }: PageProps) {
   const { lang, slug } = await params;
-  const verb = getVerb(slug, lang);
+  const verb = await getVerb(slug, lang);
   if (!verb) notFound();
 
   const tenses = conjugateVerb(verb.infinitive, verb.conjugation_group, verb.type, verb.stem_change ?? undefined);
   const nonPersonal = getNonPersonalForms(verb.infinitive, verb.conjugation_group);
-  const related = getRelatedVerbs(verb, 8);
-  const examples = getVerbExamples(verb.id);
+  const [related, examples] = await Promise.all([
+    getRelatedVerbs(verb, 8),
+    getVerbExamples(verb.id),
+  ]);
   const presenteForms = tenses
     .find((t) => t.tense === "presente")
     ?.forms.map((f) => `${f.person}: ${f.form}`)

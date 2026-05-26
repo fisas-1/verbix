@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function IrregularesPage({ params }: PageProps) {
   const { lang } = await params;
-  const verbs = getVerbsByType("irregular", lang);
+  const verbs = await getVerbsByType("irregular", lang);
 
   return (
     <>

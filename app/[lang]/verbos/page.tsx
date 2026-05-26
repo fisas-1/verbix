@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllVerbSlugs } from "@/lib/verbs";
 import { getDb } from "@/lib/db";
 import type { Verb } from "@/lib/verbs";
 import { SITE_NAME } from "@/lib/seo";
@@ -23,9 +22,11 @@ const ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
 export default async function VerbosPage({ params }: PageProps) {
   const { lang } = await params;
   const db = getDb();
-  const verbs = db.prepare(
-    "SELECT * FROM verbs WHERE lang = ? ORDER BY infinitive ASC"
-  ).all(lang) as Verb[];
+  const result = await db.execute({
+    sql: "SELECT * FROM verbs WHERE lang = ? ORDER BY infinitive ASC",
+    args: [lang],
+  });
+  const verbs = result.rows as unknown as Verb[];
 
   const grouped: Record<string, Verb[]> = {};
   for (const verb of verbs) {

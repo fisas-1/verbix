@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function GrupoPage({ params }: PageProps) {
   const { lang, group } = await params;
-  const verbs = getVerbsByGroup(group, lang);
+  const verbs = await getVerbsByGroup(group, lang);
 
   return (
     <>
