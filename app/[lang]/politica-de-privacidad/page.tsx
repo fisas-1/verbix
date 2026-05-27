@@ -67,7 +67,7 @@ export default async function PrivacyPage({ params }: PageProps) {
         <h2>1. Responsable del tractament</h2>
         <p>
           El responsable del tractament de les dades és l&apos;operador de <strong>{SITE_NAME}</strong> ({SITE_URL}).
-          Podeu contactar-nos a <a href="mailto:marcalfisas@gmail.com">marcalfisas@gmail.com</a>.
+          Podeu contactar-nos a <a href="mailto:m.fisas.v@gmail.com">m.fisas.v@gmail.com</a>.
         </p>
 
         <h2>2. Dades que recollim</h2>
@@ -123,7 +123,7 @@ export default async function PrivacyPage({ params }: PageProps) {
         </ul>
         <p>
           Per exercir qualsevol d&apos;aquests drets, poseu-vos en contacte amb nosaltres a{" "}
-          <a href="mailto:marcalfisas@gmail.com">marcalfisas@gmail.com</a>.
+          <a href="mailto:m.fisas.v@gmail.com">m.fisas.v@gmail.com</a>.
         </p>
 
         <h2>7. Canvis a aquesta política</h2>
@@ -149,7 +149,7 @@ export default async function PrivacyPage({ params }: PageProps) {
         <h2>1. Data Controller</h2>
         <p>
           The data controller is the operator of <strong>{SITE_NAME}</strong> ({SITE_URL}).
-          You can contact us at <a href="mailto:marcalfisas@gmail.com">marcalfisas@gmail.com</a>.
+          You can contact us at <a href="mailto:m.fisas.v@gmail.com">m.fisas.v@gmail.com</a>.
         </p>
 
         <h2>2. Data We Collect</h2>
@@ -202,7 +202,7 @@ export default async function PrivacyPage({ params }: PageProps) {
         </ul>
         <p>
           To exercise any of these rights, contact us at{" "}
-          <a href="mailto:marcalfisas@gmail.com">marcalfisas@gmail.com</a>.
+          <a href="mailto:m.fisas.v@gmail.com">m.fisas.v@gmail.com</a>.
         </p>
 
         <h2>7. Changes to This Policy</h2>
@@ -227,7 +227,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       <h2>1. Responsable del tratamiento</h2>
       <p>
         El responsable del tratamiento de los datos es el operador de <strong>{SITE_NAME}</strong> ({SITE_URL}).
-        Puedes contactarnos en <a href="mailto:marcalfisas@gmail.com">marcalfisas@gmail.com</a>.
+        Puedes contactarnos en <a href="mailto:m.fisas.v@gmail.com">m.fisas.v@gmail.com</a>.
       </p>
 
       <h2>2. Datos que recogemos</h2>
@@ -283,7 +283,7 @@ export default async function PrivacyPage({ params }: PageProps) {
       </ul>
       <p>
         Para ejercer cualquiera de estos derechos, contacta con nosotros en{" "}
-        <a href="mailto:marcalfisas@gmail.com">marcalfisas@gmail.com</a>.
+        <a href="mailto:m.fisas.v@gmail.com">m.fisas.v@gmail.com</a>.
       </p>
 
       <h2>7. Cambios en esta política</h2>

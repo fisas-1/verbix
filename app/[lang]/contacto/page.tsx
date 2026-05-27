@@ -17,21 +17,21 @@ const CONTENT: Record<string, { title: string; desc: string; heading: string; in
     desc: `Contacta con el equipo de ${SITE_NAME} para dudas, sugerencias o informar de errores.`,
     heading: "Contacto",
     intro: `Para cualquier consulta, sugerencia o para reportar un error de conjugación, puedes escribirnos a:`,
-    email: "marcalfisas@gmail.com",
+    email: "m.fisas.v@gmail.com",
   },
   ca: {
     title: `Contacte | ${SITE_NAME}`,
     desc: `Contacta amb l'equip de ${SITE_NAME} per a dubtes, suggeriments o per reportar errors.`,
     heading: "Contacte",
     intro: `Per a qualsevol consulta, suggeriment o per reportar un error de conjugació, pots escriure'ns a:`,
-    email: "marcalfisas@gmail.com",
+    email: "m.fisas.v@gmail.com",
   },
   en: {
     title: `Contact | ${SITE_NAME}`,
     desc: `Contact the ${SITE_NAME} team for questions, suggestions, or to report conjugation errors.`,
     heading: "Contact",
     intro: `For any questions, suggestions, or to report a conjugation error, you can reach us at:`,
-    email: "marcalfisas@gmail.com",
+    email: "m.fisas.v@gmail.com",
   },
 };
 
