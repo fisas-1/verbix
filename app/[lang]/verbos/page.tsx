@@ -3,6 +3,13 @@ import Link from "next/link";
 import { getDb } from "@/lib/db";
 import type { Verb } from "@/lib/verbs";
 import { SITE_NAME } from "@/lib/seo";
+import { t, verbSlugPath, dbLang } from "@/lib/i18n";
+
+export async function generateStaticParams() {
+  return [{ lang: "es" }, { lang: "ca" }, { lang: "en" }];
+}
+
+export const revalidate = 86400;
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -10,9 +17,17 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params;
+  const tr = t(lang);
+  const dl = dbLang(lang);
+  const db = getDb();
+  const countResult = await db.execute({
+    sql: "SELECT COUNT(*) as count FROM verbs WHERE lang = ?",
+    args: [dl],
+  });
+  const count = (countResult.rows[0] as unknown as { count: number }).count;
   return {
-    title: `Todos los verbos en español A-Z | ${SITE_NAME}`,
-    description: "Lista completa de verbos en español ordenados alfabéticamente. Haz clic en cualquier verbo para ver su conjugación completa.",
+    title: `${tr.verbosPageTitle} | ${SITE_NAME}`,
+    description: tr.verbosPageDesc(count),
     alternates: { canonical: `/${lang}/verbos` },
   };
 }
@@ -21,10 +36,12 @@ const ALPHABET = "abcdefghijklmnopqrstuvwxyz".split("");
 
 export default async function VerbosPage({ params }: PageProps) {
   const { lang } = await params;
+  const tr = t(lang);
+  const dl = dbLang(lang);
   const db = getDb();
   const result = await db.execute({
     sql: "SELECT * FROM verbs WHERE lang = ? ORDER BY infinitive ASC",
-    args: [lang],
+    args: [dl],
   });
   const verbs = result.rows as unknown as Verb[];
 
@@ -39,15 +56,15 @@ export default async function VerbosPage({ params }: PageProps) {
     <>
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
-          Verbos en español de la A a la Z
+          {tr.verbosPageTitle}
         </h1>
         <p className="text-gray-500 dark:text-gray-400 text-sm">
-          {verbs.length} verbos disponibles. Haz clic en cualquier verbo para ver su conjugación completa.
+          {tr.verbosPageDesc(verbs.length)}
         </p>
       </div>
 
       {/* Alphabet nav */}
-      <nav className="flex flex-wrap gap-1 mb-8" aria-label="Índice alfabético">
+      <nav className="flex flex-wrap gap-1 mb-8" aria-label={tr.alphabetNavLabel}>
         {ALPHABET.map((letter) => (
           <a
             key={letter}
@@ -76,7 +93,7 @@ export default async function VerbosPage({ params }: PageProps) {
               {grouped[letter].map((verb) => (
                 <Link
                   key={verb.slug}
-                  href={`/${lang}/verbo/${verb.slug}`}
+                  href={verbSlugPath(lang, verb.slug)}
                   className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-colors"
                 >
                   {verb.infinitive}

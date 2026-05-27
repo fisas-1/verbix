@@ -1,5 +1,5 @@
 import type { Verb } from "./verbs";
-import { SITE_URL } from "./seo";
+import { SITE_URL, SITE_NAME } from "./seo";
 
 export function generateVerbSchema(verb: Verb) {
   return {
@@ -74,7 +74,7 @@ export function generateWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "ConjugaWeb",
+    name: SITE_NAME,
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",

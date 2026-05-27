@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/seo";
 import { t } from "@/lib/i18n";
 import LanguageSelector from "@/components/LanguageSelector";
+import CookieBanner from "@/components/CookieBanner";
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -42,7 +43,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
           <p className="mb-2">
             <strong className="text-gray-700 dark:text-gray-300">{SITE_NAME}</strong> — {tr.siteTagline}
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3 mb-3">
             <Link href={`/${lang}/verbos`} className="hover:text-blue-600 dark:hover:text-blue-400">{tr.allVerbs}</Link>
             <Link href={`/${lang}/verbos/irregulares`} className="hover:text-blue-600 dark:hover:text-blue-400">{tr.irregular}</Link>
             <Link href={`/${lang}/verbos/regulares`} className="hover:text-blue-600 dark:hover:text-blue-400">{tr.regular}</Link>
@@ -50,8 +51,20 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
             <Link href={`/${lang}/verbos/grupo/er`} className="hover:text-blue-600 dark:hover:text-blue-400">{tr.groupDesc("er")}</Link>
             <Link href={`/${lang}/verbos/grupo/ir`} className="hover:text-blue-600 dark:hover:text-blue-400">{tr.groupDesc("ir")}</Link>
           </div>
+          <div className="flex flex-wrap justify-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+            <Link href={`/${lang}/sobre-nosotros`} className="hover:text-blue-600 dark:hover:text-blue-400">
+              {lang === "ca" ? "Sobre nosaltres" : lang === "en" ? "About" : "Sobre nosotros"}
+            </Link>
+            <Link href={`/${lang}/politica-de-privacidad`} className="hover:text-blue-600 dark:hover:text-blue-400">
+              {lang === "ca" ? "Privadesa" : lang === "en" ? "Privacy" : "Privacidad"}
+            </Link>
+            <Link href={`/${lang}/contacto`} className="hover:text-blue-600 dark:hover:text-blue-400">
+              {lang === "ca" ? "Contacte" : lang === "en" ? "Contact" : "Contacto"}
+            </Link>
+          </div>
         </div>
       </footer>
+      <CookieBanner lang={lang} />
     </div>
   );
 }

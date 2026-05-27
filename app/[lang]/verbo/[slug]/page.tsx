@@ -84,16 +84,16 @@ export default async function VerbPage({ params }: PageProps) {
 
       <BreadcrumbNav
         crumbs={[
-          { label: "Inicio", href: `/${lang}` },
-          { label: "Verbos en español", href: `/${lang}/verbos` },
-          { label: `Conjugar ${verb.infinitive}` },
+          { label: tr.home, href: `/${lang}` },
+          { label: tr.verbsNav, href: `/${lang}/verbos` },
+          { label: `${tr.conjugate} ${verb.infinitive}` },
         ]}
       />
 
       {/* H1 + verb info */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-3">
-          Conjugar {verb.infinitive}
+          {tr.conjugate} {verb.infinitive}
         </h1>
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${typeColor}`}>

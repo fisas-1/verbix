@@ -7,7 +7,8 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  serverExternalPackages: ["@libsql/client"],
+  // Prevent webpack/turbopack from trying to bundle native or WASM modules
+  serverExternalPackages: ["@libsql/client", "better-sqlite3"],
   turbopack: {},
 };
 

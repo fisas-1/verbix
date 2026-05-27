@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
+import { verbSlugPath } from "@/lib/i18n";
 
 interface VerbItem {
   infinitive: string;
@@ -13,15 +14,20 @@ interface VerbItem {
 interface VerbSearchProps {
   lang?: string;
   placeholder?: string;
+  ariaLabel?: string;
   initialVerbs?: VerbItem[];
 }
 
-export default function VerbSearch({ lang = "es", placeholder = "Busca un verbo...", initialVerbs = [] }: VerbSearchProps) {
+export default function VerbSearch({
+  lang = "es",
+  placeholder = "Busca un verbo...",
+  ariaLabel = "Buscar verbo",
+  initialVerbs = [],
+}: VerbSearchProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<VerbItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  const [verbs, setVerbs] = useState<VerbItem[]>(initialVerbs);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const fuseRef = useRef<Fuse<VerbItem> | null>(null);
@@ -33,7 +39,6 @@ export default function VerbSearch({ lang = "es", placeholder = "Busca un verbo.
         threshold: 0.3,
         distance: 100,
       });
-      setVerbs(initialVerbs);
     }
   }, [initialVerbs]);
 
@@ -52,7 +57,7 @@ export default function VerbSearch({ lang = "es", placeholder = "Busca un verbo.
   function navigate(slug: string) {
     setQuery("");
     setIsOpen(false);
-    router.push(`/${lang}/verbo/${slug}`);
+    router.push(verbSlugPath(lang, slug));
   }
 
   function handleKeyDown(e: React.KeyboardEvent) {
@@ -88,7 +93,7 @@ export default function VerbSearch({ lang = "es", placeholder = "Busca un verbo.
           onBlur={() => setTimeout(() => setIsOpen(false), 150)}
           placeholder={placeholder}
           className="w-full px-4 py-3 pl-12 text-base rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors shadow-sm"
-          aria-label="Buscar verbo"
+          aria-label={ariaLabel}
           autoComplete="off"
         />
         <svg

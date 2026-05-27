@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getVerb, getAllVerbSlugs, getRelatedVerbs, getVerbExamples } from "@/lib/verbs";
 import { conjugateVerb, getNonPersonalForms } from "@/lib/conjugate";
-import { verbTitle, verbDescription, verbCanonical, verbHreflangs, SITE_URL } from "@/lib/seo";
+import { verbTitle, verbDescription, verbCanonical, verbHreflangs } from "@/lib/seo";
 import { t } from "@/lib/i18n";
 import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import ConjugationTable from "@/components/ConjugationTable";
@@ -98,8 +98,8 @@ export default async function VerbPage({ params }: PageProps) {
 
       <BreadcrumbNav
         crumbs={[
-          { label: lang === "ca" ? "Inici" : "Home", href: `/${lang}` },
-          { label: lang === "ca" ? "Verbs en espanyol" : "Spanish verbs", href: `/${lang}/verbos` },
+          { label: tr.home, href: `/${lang}` },
+          { label: tr.verbsNav, href: `/${lang}/verbos` },
           { label: `${tr.conjugate} ${verb.infinitive}` },
         ]}
       />
@@ -196,12 +196,6 @@ export default async function VerbPage({ params }: PageProps) {
         )}
         <p>{tr.seoPresent(verb.infinitive, yo, tu, el)}</p>
       </section>
-
-      {/* Hreflang links for SEO — also point to the ES /verbo/ URL */}
-      <link rel="alternate" hrefLang="es" href={`${SITE_URL}/es/verbo/${slug}`} />
-      <link rel="alternate" hrefLang="ca" href={`${SITE_URL}/ca/verb/${slug}`} />
-      <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/verb/${slug}`} />
-      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/es/verbo/${slug}`} />
 
       {/* AD #3 — Large leaderboard above footer */}
       <div className="flex justify-center mt-10">

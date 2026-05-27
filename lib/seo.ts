@@ -2,7 +2,7 @@ import type { Verb } from "./verbs";
 import { t } from "./i18n";
 
 export const SITE_URL = "https://conjugaweb.com";
-export const SITE_NAME = "ConjugaWeb";
+export const SITE_NAME = "Verbix";
 
 export function verbTitle(verb: Verb, lang = "es"): string {
   return t(lang).verbTitleTemplate(verb.infinitive);
