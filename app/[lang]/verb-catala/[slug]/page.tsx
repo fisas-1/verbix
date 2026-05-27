@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getVerb, getAllVerbSlugs } from "@/lib/verbs";
 import { conjugateCaVerb, getCaNonPersonalForms } from "@/lib/conjugate-ca";
-import { caVerbTitle, caVerbDescription, caVerbCanonical, caVerbHreflangs } from "@/lib/seo";
+import { caVerbTitle, caVerbDescription, caVerbCanonical, caVerbHreflangs, langToOgLocale, alternateOgLocales, SITE_NAME } from "@/lib/seo";
 import { t, caVerbMeta } from "@/lib/i18n";
+import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/schema";
 import ConjugationTable from "@/components/ConjugationTable";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import QuizWidget from "@/components/QuizWidget";
@@ -29,18 +30,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!SUPPORTED_LANGS.includes(lang)) return {};
   const verb = await getVerb(slug, "ca");
   if (!verb) return {};
+  const canonical = caVerbCanonical(slug, lang);
   const hreflangs = caVerbHreflangs(slug);
   return {
     title: caVerbTitle(verb, lang),
     description: caVerbDescription(verb, lang),
     alternates: {
-      canonical: caVerbCanonical(slug, lang),
+      canonical,
       languages: hreflangs,
     },
     openGraph: {
       title: caVerbTitle(verb, lang),
       description: caVerbDescription(verb, lang),
       type: "website",
+      url: canonical,
+      siteName: SITE_NAME,
+      locale: langToOgLocale(lang),
+      alternateLocale: alternateOgLocales(lang),
+    },
+    twitter: {
+      card: "summary",
+      title: caVerbTitle(verb, lang),
+      description: caVerbDescription(verb, lang),
     },
   };
 }
@@ -61,8 +72,24 @@ export default async function CaVerbPage({ params }: PageProps) {
     ? "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300"
     : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300";
 
+  const presenteForms = tenses
+    .find((t) => t.tense === "presente")
+    ?.forms.map((f) => `${f.person}: ${f.form}`)
+    .join(", ") ?? "";
+
+  const verbSchema = generateVerbSchema(verb, lang, "ca");
+  const faqSchema = generateFAQSchema(verb, lang, presenteForms, nonPersonal.participio, "ca");
+  const breadcrumbSchema = generateBreadcrumbSchema(verb, lang, "ca");
+  const howToSchema = generateHowToSchema(verb, lang, "ca");
+
   return (
     <>
+      {/* JSON-LD Schemas */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(verbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+
       <BreadcrumbNav
         crumbs={[
           { label: tr.home, href: `/${lang}` },
@@ -127,11 +154,11 @@ export default async function CaVerbPage({ params }: PageProps) {
 
       <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
         <h2>{tr.aboutVerb(verb.infinitive)}</h2>
-        <p>
-          {lang === "es"
-            ? `${verb.infinitive} es un verbo ${verb.type === "irregular" ? "irregular" : "regular"} en catalán.${verb.translation_es ? ` Su equivalente en español es "${verb.translation_es}".` : ""}${verb.translation_en ? ` En inglés significa "${verb.translation_en}".` : ""}`
-            : `${verb.infinitive} és un verb ${verb.type === "irregular" ? "irregular" : "regular"} en català.${verb.translation_es ? ` El seu equivalent en espanyol és "${verb.translation_es}".` : ""}${verb.translation_en ? ` En anglès significa "${verb.translation_en}".` : ""}`}
-        </p>
+        <p>{meta.seoMain(verb.infinitive, verb.type, verb.translation_es, verb.translation_en)}</p>
+        <h3>{meta.h3ConjRules}</h3>
+        <p>{meta.seoRules(verb.infinitive, verb.type)}</p>
+        <h3>{meta.h3Examples}</h3>
+        <p>{meta.seoExamples(verb.infinitive)}</p>
       </section>
 
       <div className="flex justify-center mt-10">

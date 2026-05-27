@@ -38,6 +38,13 @@ export interface LangStrings {
   seoIrregular: (infinitive: string, stemChange?: string | null) => string;
   seoRegular: (infinitive: string, group: string) => string;
   seoPresent: (infinitive: string, yo: string, tu: string, el: string) => string;
+  seoConjRules: (infinitive: string, type: string, group: string) => string;
+  seoExamples: (infinitive: string) => string;
+
+  // ── H3 labels ──────────────────────────────────────────────────────────────
+  h3Examples: string;
+  h3ConjRules: string;
+  h3Related: string;
 
   // ── Quiz ───────────────────────────────────────────────────────────────────
   quizTitle: string;
@@ -106,10 +113,10 @@ const es: LangStrings = {
   conjugate: "Conjugar",
   inSpanish: "en español",
   allTenses: "Todos los tiempos verbales",
-  verbTitleTemplate: (v) => `Conjugar ${v} | Todos los tiempos verbales`,
-  verbDescTemplate: (v, type, group) =>
-    `Conjugación completa de ${v} (verbo ${type === "irregular" ? "irregular" : "regular"} del grupo -${group}). Presente, pasado, futuro, subjuntivo e imperativo con ejemplos.`,
-  verbKeywords: (v) => [`conjugar ${v}`, `conjugación ${v}`, `${v} español`],
+  verbTitleTemplate: (v) => `Conjugar ${v} | ${v} conjugado en todos los tiempos`,
+  verbDescTemplate: (v) =>
+    `Conjugación completa de ${v} en español: presente, pretérito, futuro, subjuntivo e imperativo. Ejemplos reales y ejercicios interactivos. Gratis.`,
+  verbKeywords: (v) => [`conjugar ${v}`, `conjugación ${v}`, `${v} español`, `${v} conjugado`],
   nonPersonalForms: "Formas no personales",
   infinitivo: "Infinitivo",
   gerundio: "Gerundio",
@@ -154,6 +161,13 @@ const es: LangStrings = {
     `Al ser un verbo regular del grupo -${g}, sigue las terminaciones estándar para todos los tiempos verbales. Una vez que conoces las reglas de los verbos -${g}, puedes conjugar ${v} y todos los verbos regulares del mismo grupo.`,
   seoPresent: (v, yo, tu, el) =>
     `Para conjugar ${v} en presente de indicativo: yo ${yo}, tú ${tu}, él/ella ${el}.`,
+  seoConjRules: (v, type, group) =>
+    `Para conjugar ${v} correctamente, identifica primero el tiempo verbal y la persona gramatical. Los verbos -${group} como ${v} ${type === "irregular" ? "presentan formas irregulares que hay que memorizar" : "siguen las terminaciones estándar del grupo -" + group}. Dominar la conjugación de ${v} te permitirá aplicar los mismos patrones a otros verbos similares.`,
+  seoExamples: (v) =>
+    `Practicar la conjugación de ${v} con ejemplos reales es la mejor manera de aprenderla. Usa el quiz interactivo de Verbix para poner a prueba tus conocimientos de ${v} en todos los tiempos: presente, pretérito, futuro y subjuntivo. Conjugar ${v} correctamente te ayudará a comunicarte con más fluidez en español.`,
+  h3Examples: "Ejemplos de uso",
+  h3ConjRules: "Reglas de conjugación",
+  h3Related: "Verbos relacionados",
   quizTitle: "Ponte a prueba",
   quizQuestion: (c, t) => `Pregunta ${c}/${t}`,
   quizCorrect: (s) => `${s} correctas`,
@@ -211,9 +225,9 @@ const ca: LangStrings = {
   inSpanish: "en espanyol",
   allTenses: "Tots els temps verbals",
   verbTitleTemplate: (v) => `Conjugar ${v} en espanyol | Tots els temps verbals`,
-  verbDescTemplate: (v, type, group) =>
-    `Conjugació completa de ${v} en espanyol (verb ${type === "irregular" ? "irregular" : "regular"} del grup -${group}). Present, passat, futur, subjuntiu i imperatiu amb exemples.`,
-  verbKeywords: (v) => [`conjugar ${v}`, `conjugació ${v}`, `verb espanyol ${v}`],
+  verbDescTemplate: (v) =>
+    `Conjugació completa de ${v} en espanyol: present, passat, futur, subjuntiu i imperatiu. Exemples reals i exercicis interactius. Gratis.`,
+  verbKeywords: (v) => [`conjugar ${v}`, `conjugació ${v}`, `verb espanyol ${v}`, `${v} conjugat`],
   nonPersonalForms: "Formes no personals",
   infinitivo: "Infinitiu",
   gerundio: "Gerundi",
@@ -258,6 +272,13 @@ const ca: LangStrings = {
     `En ser un verb regular del grup -${g}, segueix les terminacions estàndard per a tots els temps verbals. Un cop coneixes les regles dels verbs -${g}, pots conjugar ${v} i tots els verbs regulars del mateix grup.`,
   seoPresent: (v, yo, tu, el) =>
     `Per conjugar ${v} en present d'indicatiu: yo ${yo}, tú ${tu}, él/ella ${el}.`,
+  seoConjRules: (v, type, group) =>
+    `Per conjugar ${v} correctament, identifica primer el temps verbal i la persona gramatical. Els verbs -${group} com ${v} ${type === "irregular" ? "presenten formes irregulars que cal memoritzar" : "segueixen les terminacions estàndard del grup -" + group}. Dominar la conjugació de ${v} et permetrà aplicar els mateixos patrons a altres verbs similars.`,
+  seoExamples: (v) =>
+    `Practicar la conjugació de ${v} amb exemples reals és la millor manera d'aprendre-la. Usa el quiz interactiu de Verbix per posar a prova els teus coneixements de ${v} en tots els temps: present, passat, futur i subjuntiu. Conjugar ${v} correctament t'ajudarà a comunicar-te amb més fluïdesa en espanyol.`,
+  h3Examples: "Exemples d'ús",
+  h3ConjRules: "Regles de conjugació",
+  h3Related: "Verbs relacionats",
   quizTitle: "Posa't a prova",
   quizQuestion: (c, t) => `Pregunta ${c}/${t}`,
   quizCorrect: (s) => `${s} correctes`,
@@ -314,10 +335,10 @@ const en: LangStrings = {
   conjugate: "Conjugate",
   inSpanish: "in Spanish",
   allTenses: "All tenses",
-  verbTitleTemplate: (v) => `Conjugate ${v} in Spanish | All tenses`,
-  verbDescTemplate: (v, type, group) =>
-    `Complete conjugation of ${v} in Spanish (${type} -${group} verb). Present, past, future, subjunctive and imperative. With examples and interactive exercises.`,
-  verbKeywords: (v) => [`conjugate ${v}`, `spanish verb ${v}`, `${v} conjugation`],
+  verbTitleTemplate: (v) => `Conjugate ${v} in Spanish | All tenses & examples`,
+  verbDescTemplate: (v) =>
+    `Complete conjugation of Spanish verb ${v}: present, past, future, subjunctive and imperative. Real examples and interactive exercises. Free.`,
+  verbKeywords: (v) => [`conjugate ${v}`, `spanish verb ${v}`, `${v} conjugation`, `how to conjugate ${v}`],
   nonPersonalForms: "Non-personal forms",
   infinitivo: "Infinitive",
   gerundio: "Gerund",
@@ -362,6 +383,13 @@ const en: LangStrings = {
     `As a regular -${g} verb, it follows the standard endings for all tenses. Once you learn the -${g} verb rules, you can conjugate ${v} and every other regular -${g} verb the same way.`,
   seoPresent: (v, yo, tu, el) =>
     `To conjugate ${v} in the present tense: yo ${yo}, tú ${tu}, él/ella ${el}.`,
+  seoConjRules: (v, type, group) =>
+    `To conjugate ${v} correctly, first identify the tense and the grammatical person. ${type === "irregular" ? `${v} is an irregular verb, so some forms must be memorized` : `As a regular -${group} verb, ${v} follows the standard Spanish endings`}. Mastering ${v} conjugation will help you recognize patterns in other similar verbs.`,
+  seoExamples: (v) =>
+    `Practising ${v} conjugation with real examples is the best way to learn. Use Verbix's interactive quiz to test your knowledge of ${v} across all tenses: present, past, future and subjunctive. Conjugating ${v} correctly will help you communicate more naturally in Spanish.`,
+  h3Examples: "Usage examples",
+  h3ConjRules: "Conjugation rules",
+  h3Related: "Related verbs",
   quizTitle: "Test yourself",
   quizQuestion: (c, t) => `Question ${c}/${t}`,
   quizCorrect: (s) => `${s} correct`,
@@ -443,64 +471,128 @@ export function dbLang(_lang: string): string {
   return "es";
 }
 
-/** i18n strings specific to Catalan verb pages (per UI language). */
-export const caVerbMeta: Record<string, {
+// ─────────────────────────────────────────────────────────────────────────────
+// Catalan verb meta (per UI language)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface VerbLangMeta {
   titleTpl: (v: string) => string;
   descTpl: (v: string) => string;
   heading: string;
   indexTitle: string;
   indexDesc: (n: number) => string;
-}> = {
+  h3Examples: string;
+  h3ConjRules: string;
+  h3Related: string;
+  seoMain: (v: string, type: string, translationEs: string | null, translationEn: string | null) => string;
+  seoRules: (v: string, type: string) => string;
+  seoExamples: (v: string) => string;
+}
+
+/** i18n strings specific to Catalan verb pages (per UI language). */
+export const caVerbMeta: Record<string, VerbLangMeta> = {
   es: {
-    titleTpl: (v) => `Conjugar ${v} en catalán | Todos los tiempos`,
-    descTpl: (v) => `Conjugación completa de ${v} en catalán. Presente, pasado, futuro, subjuntivo e imperativo con todos los tiempos verbales.`,
+    titleTpl: (v) => `Conjugar ${v} en catalán | Todos los tiempos verbales`,
+    descTpl: (v) => `Conjugación completa de ${v} en catalán: present, passat, futur, subjuntiu i imperatiu. Con ejemplos y ejercicios. Gratis.`,
     heading: "en catalán",
     indexTitle: "Verbos en catalán",
     indexDesc: (n) => `${n} verbos en catalán disponibles. Haz clic para ver la conjugación completa.`,
+    h3Examples: "Ejemplos de uso",
+    h3ConjRules: "Reglas de conjugación",
+    h3Related: "Verbos relacionados",
+    seoMain: (v, type, transEs, transEn) =>
+      `${v} es un verbo ${type === "irregular" ? "irregular" : "regular"} del catalán. Conjugar ${v} en catalán requiere conocer los patrones propios de esta lengua.${transEs ? ` Su equivalente en español es "${transEs}".` : ""}${transEn ? ` En inglés significa "${transEn}".` : ""}`,
+    seoRules: (v, type) =>
+      `Al conjugar ${v} en catalán, ${type === "irregular" ? "es necesario memorizar las formas irregulares ya que no siguen los patrones estándar" : "se aplican las terminaciones regulares del catalán"}. La práctica regular con ${v} ayuda a interiorizar todas las formas verbales.`,
+    seoExamples: (v) =>
+      `Para practicar la conjugación de ${v} en catalán, usa el verb en frases reales. Los ejercicios interactivos de Verbix te ayudarán a dominar ${v} y otros verbos del catalán de forma progresiva.`,
   },
   ca: {
-    titleTpl: (v) => `Conjugar ${v} en català | Tots els temps`,
-    descTpl: (v) => `Conjugació completa de ${v} en català. Present, passat, futur, subjuntiu i imperatiu amb tots els temps verbals.`,
+    titleTpl: (v) => `Conjugar ${v} en català | Tots els temps verbals`,
+    descTpl: (v) => `Conjugació completa de ${v} en català: present, passat, futur, subjuntiu i imperatiu. Exemples reals i exercicis interactius. Gratis.`,
     heading: "en català",
     indexTitle: "Verbs en català",
     indexDesc: (n) => `${n} verbs en català disponibles. Fes clic per veure la conjugació completa.`,
+    h3Examples: "Exemples d'ús",
+    h3ConjRules: "Regles de conjugació",
+    h3Related: "Verbs relacionats",
+    seoMain: (v, type, transEs, transEn) =>
+      `${v} és un verb ${type === "irregular" ? "irregular" : "regular"} del català. Conjugar ${v} requereix conèixer els patrons propis d'aquesta llengua.${transEs ? ` El seu equivalent en espanyol és "${transEs}".` : ""}${transEn ? ` En anglès significa "${transEn}".` : ""}`,
+    seoRules: (v, type) =>
+      `En conjugar ${v} en català, ${type === "irregular" ? "cal memoritzar les formes irregulars ja que no segueixen els patrons estàndard" : "s'apliquen les terminacions regulars del català"}. La pràctica regular amb ${v} ajuda a interioritzar totes les formes verbals.`,
+    seoExamples: (v) =>
+      `Per practicar la conjugació de ${v} en català, usa el verb en frases reals. Els exercicis interactius de Verbix t'ajudaran a dominar ${v} i altres verbs del català de forma progressiva.`,
   },
   en: {
-    titleTpl: (v) => `Conjugate ${v} in Catalan | All tenses`,
-    descTpl: (v) => `Complete conjugation of ${v} in Catalan. Present, past, future, subjunctive and imperative with all verb tenses.`,
+    titleTpl: (v) => `Conjugate ${v} in Catalan | All tenses & examples`,
+    descTpl: (v) => `Complete conjugation of Catalan verb ${v}: present, past, future, subjunctive and imperative. Free conjugation tool with examples.`,
     heading: "in Catalan",
     indexTitle: "Catalan verbs",
     indexDesc: (n) => `${n} Catalan verbs available. Click to see the full conjugation.`,
+    h3Examples: "Usage examples",
+    h3ConjRules: "Conjugation rules",
+    h3Related: "Related verbs",
+    seoMain: (v, type, transEs, transEn) =>
+      `${v} is a ${type === "irregular" ? "irregular" : "regular"} Catalan verb. Conjugating ${v} in Catalan requires understanding the language's verb patterns.${transEs ? ` Its Spanish equivalent is "${transEs}".` : ""}${transEn ? ` It means "${transEn}" in English.` : ""}`,
+    seoRules: (v, type) =>
+      `When conjugating ${v} in Catalan, ${type === "irregular" ? "pay close attention to the irregular forms as they do not follow standard patterns" : "the regular Catalan verb endings apply"}. Regular practice with ${v} helps you internalize all the conjugation forms.`,
+    seoExamples: (v) =>
+      `To practice conjugating ${v} in Catalan, use it in real sentences and interactive exercises. Verbix's quiz tool helps you master ${v} and other Catalan verbs progressively.`,
   },
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// English verb meta (per UI language)
+// ─────────────────────────────────────────────────────────────────────────────
+
 /** i18n strings specific to English verb pages (per UI language). */
-export const enVerbMeta: Record<string, {
-  titleTpl: (v: string) => string;
-  descTpl: (v: string) => string;
-  heading: string;
-  indexTitle: string;
-  indexDesc: (n: number) => string;
-}> = {
+export const enVerbMeta: Record<string, VerbLangMeta> = {
   es: {
-    titleTpl: (v) => `Conjugar ${v} en inglés | Todos los tiempos`,
-    descTpl: (v) => `Conjugación completa de ${v} en inglés. Present simple, past simple, perfect tenses, continuous forms y más.`,
+    titleTpl: (v) => `Conjugar ${v} en inglés | Todos los tiempos verbales`,
+    descTpl: (v) => `Conjugación completa de ${v} en inglés: present simple, past simple, future, present perfect y continuous. Con ejemplos. Gratis.`,
     heading: "en inglés",
     indexTitle: "Verbos en inglés",
     indexDesc: (n) => `${n} verbos en inglés disponibles. Haz clic para ver la conjugación completa.`,
+    h3Examples: "Ejemplos de uso",
+    h3ConjRules: "Reglas de conjugación",
+    h3Related: "Verbos relacionados",
+    seoMain: (v, type, transEs) =>
+      `${v} es un verbo ${type === "irregular" ? "irregular" : "regular"} en inglés. Conjugar ${v} correctamente es esencial para dominar el idioma.${transEs ? ` Su equivalente en español es "${transEs}".` : ""}`,
+    seoRules: (v, type) =>
+      `Al conjugar ${v} en inglés, ${type === "irregular" ? "las formas del pasado y el participio son irregulares y deben memorizarse" : "se aplican las reglas estándar del inglés"}. Dominar cómo conjugar ${v} te ayudará con otros verbos similares del inglés.`,
+    seoExamples: (v) =>
+      `Para practicar la conjugación de ${v} en inglés, usa el verbo en frases reales del idioma. Los ejercicios interactivos de Verbix te ayudarán a memorizar las formas de ${v} en todos los tiempos verbales.`,
   },
   ca: {
-    titleTpl: (v) => `Conjugar ${v} en anglès | Tots els temps`,
-    descTpl: (v) => `Conjugació completa de ${v} en anglès. Present simple, past simple, perfect tenses, formes contínues i més.`,
+    titleTpl: (v) => `Conjugar ${v} en anglès | Tots els temps verbals`,
+    descTpl: (v) => `Conjugació completa de ${v} en anglès: present simple, past simple, futur, present perfect. Exemples reals i exercicis. Gratis.`,
     heading: "en anglès",
     indexTitle: "Verbs en anglès",
     indexDesc: (n) => `${n} verbs en anglès disponibles. Fes clic per veure la conjugació completa.`,
+    h3Examples: "Exemples d'ús",
+    h3ConjRules: "Regles de conjugació",
+    h3Related: "Verbs relacionats",
+    seoMain: (v, type, transEs) =>
+      `${v} és un verb ${type === "irregular" ? "irregular" : "regular"} en anglès. Conjugar ${v} correctament és essencial per dominar l'idioma.${transEs ? ` El seu equivalent en espanyol és "${transEs}".` : ""}`,
+    seoRules: (v, type) =>
+      `En conjugar ${v} en anglès, ${type === "irregular" ? "les formes del passat i el participi són irregulars i s'han de memoritzar" : "s'apliquen les regles estàndard de l'anglès"}. Dominar com conjugar ${v} t'ajudarà amb altres verbs similars de l'anglès.`,
+    seoExamples: (v) =>
+      `Per practicar la conjugació de ${v} en anglès, usa el verb en frases reals de l'idioma. Els exercicis interactius de Verbix t'ajudaran a memoritzar les formes de ${v} en tots els temps verbals.`,
   },
   en: {
-    titleTpl: (v) => `Conjugate ${v} in English | All tenses`,
-    descTpl: (v) => `Complete conjugation of ${v} in English. Present simple, past simple, perfect tenses, continuous forms and more.`,
+    titleTpl: (v) => `Conjugate ${v} in English | All tenses & forms`,
+    descTpl: (v) => `Complete conjugation of ${v} in English: present simple, past simple, future, present perfect, continuous forms and conditionals. Free with examples.`,
     heading: "in English",
     indexTitle: "English verbs",
     indexDesc: (n) => `${n} English verbs available. Click to see the full conjugation.`,
+    h3Examples: "Usage examples",
+    h3ConjRules: "Conjugation rules",
+    h3Related: "Related verbs",
+    seoMain: (v, type, transEs) =>
+      `${v} is a ${type === "irregular" ? "irregular" : "regular"} English verb. Knowing how to conjugate ${v} correctly is essential for English fluency.${transEs ? ` Its Spanish equivalent is "${transEs}".` : ""}`,
+    seoRules: (v, type) =>
+      `When conjugating ${v} in English, ${type === "irregular" ? "the past tense and past participle forms are irregular and must be memorized" : "standard English verb rules apply"}. Mastering ${v} conjugation will help you understand patterns in other English verbs.`,
+    seoExamples: (v) =>
+      `Practice conjugating ${v} with real-world sentences and interactive exercises. Verbix's quiz helps you master ${v} across all English tenses: present simple, past simple, present perfect, and continuous forms.`,
   },
 };

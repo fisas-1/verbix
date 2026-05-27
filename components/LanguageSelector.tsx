@@ -16,7 +16,7 @@ function getAlternatePath(pathname: string, targetLang: string): string {
 
   const rest = match[2] ?? "";
 
-  // /xx/verbo/slug → switch verbo↔verb
+  // Spanish verbs: /xx/verbo/slug ↔ /xx/verb/slug
   if (rest.startsWith("/verbo/")) {
     const slug = rest.slice("/verbo/".length);
     if (targetLang === "es") return `/es/verbo/${slug}`;
@@ -26,6 +26,38 @@ function getAlternatePath(pathname: string, targetLang: string): string {
     const slug = rest.slice("/verb/".length);
     if (targetLang === "es") return `/es/verbo/${slug}`;
     return `/${targetLang}/verb/${slug}`;
+  }
+
+  // Catalan verbs: /es/verb-catala/slug, /ca/verb-catala/slug, /en/catalan-verb/slug
+  if (rest.startsWith("/verb-catala/")) {
+    const slug = rest.slice("/verb-catala/".length);
+    if (targetLang === "en") return `/en/catalan-verb/${slug}`;
+    return `/${targetLang}/verb-catala/${slug}`;
+  }
+  if (rest.startsWith("/catalan-verb/")) {
+    const slug = rest.slice("/catalan-verb/".length);
+    if (targetLang === "en") return `/en/catalan-verb/${slug}`;
+    return `/${targetLang}/verb-catala/${slug}`;
+  }
+
+  // English verbs: /es/verb-ingles/slug, /ca/verb-angles/slug, /en/english-verb/slug
+  if (rest.startsWith("/verb-ingles/")) {
+    const slug = rest.slice("/verb-ingles/".length);
+    if (targetLang === "es") return `/es/verb-ingles/${slug}`;
+    if (targetLang === "ca") return `/ca/verb-angles/${slug}`;
+    return `/en/english-verb/${slug}`;
+  }
+  if (rest.startsWith("/verb-angles/")) {
+    const slug = rest.slice("/verb-angles/".length);
+    if (targetLang === "es") return `/es/verb-ingles/${slug}`;
+    if (targetLang === "ca") return `/ca/verb-angles/${slug}`;
+    return `/en/english-verb/${slug}`;
+  }
+  if (rest.startsWith("/english-verb/")) {
+    const slug = rest.slice("/english-verb/".length);
+    if (targetLang === "es") return `/es/verb-ingles/${slug}`;
+    if (targetLang === "ca") return `/ca/verb-angles/${slug}`;
+    return `/en/english-verb/${slug}`;
   }
 
   return `/${targetLang}${rest}`;

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getVerb, getAllVerbSlugs, getRelatedVerbs, getVerbExamples } from "@/lib/verbs";
 import { conjugateVerb, getNonPersonalForms } from "@/lib/conjugate";
-import { verbTitle, verbDescription, verbCanonical, verbHreflangs } from "@/lib/seo";
+import { verbTitle, verbDescription, verbCanonical, verbHreflangs, langToOgLocale, alternateOgLocales, SITE_NAME } from "@/lib/seo";
 import { t } from "@/lib/i18n";
-import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/schema";
 import ConjugationTable from "@/components/ConjugationTable";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import RelatedVerbs from "@/components/RelatedVerbs";
@@ -32,20 +32,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!SUPPORTED_LANGS.includes(lang)) return {};
   const verb = await getVerb(slug, "es");
   if (!verb) return {};
+  const canonical = verbCanonical(slug, lang);
   const hreflangs = verbHreflangs(slug);
   return {
     title: verbTitle(verb, lang),
     description: verbDescription(verb, lang),
     keywords: t(lang).verbKeywords(verb.infinitive),
     alternates: {
-      canonical: verbCanonical(slug, lang),
+      canonical,
       languages: hreflangs,
     },
     openGraph: {
       title: verbTitle(verb, lang),
       description: verbDescription(verb, lang),
       type: "website",
-      url: verbCanonical(slug, lang),
+      url: canonical,
+      siteName: SITE_NAME,
+      locale: langToOgLocale(lang),
+      alternateLocale: alternateOgLocales(lang),
+    },
+    twitter: {
+      card: "summary",
+      title: verbTitle(verb, lang),
+      description: verbDescription(verb, lang),
     },
   };
 }
@@ -69,9 +78,10 @@ export default async function VerbPage({ params }: PageProps) {
     ?.forms.map((f) => `${f.person}: ${f.form}`)
     .join(", ") ?? "";
 
-  const verbSchema = generateVerbSchema(verb);
-  const faqSchema = generateFAQSchema(verb, presenteForms);
-  const breadcrumbSchema = generateBreadcrumbSchema(verb);
+  const verbSchema = generateVerbSchema(verb, lang, "es");
+  const faqSchema = generateFAQSchema(verb, lang, presenteForms, nonPersonal.participio, "es");
+  const breadcrumbSchema = generateBreadcrumbSchema(verb, lang, "es");
+  const howToSchema = generateHowToSchema(verb, lang, "es");
 
   const typeLabel =
     verb.type === "irregular"
@@ -95,6 +105,7 @@ export default async function VerbPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(verbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       <BreadcrumbNav
         crumbs={[
@@ -195,6 +206,10 @@ export default async function VerbPage({ params }: PageProps) {
           <p>{tr.seoRegular(verb.infinitive, verb.conjugation_group)}</p>
         )}
         <p>{tr.seoPresent(verb.infinitive, yo, tu, el)}</p>
+        <h3>{tr.h3ConjRules}</h3>
+        <p>{tr.seoConjRules(verb.infinitive, verb.type, verb.conjugation_group)}</p>
+        <h3>{tr.h3Examples}</h3>
+        <p>{tr.seoExamples(verb.infinitive)}</p>
       </section>
 
       {/* AD #3 — Large leaderboard above footer */}

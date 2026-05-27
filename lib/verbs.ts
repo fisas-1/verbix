@@ -42,6 +42,15 @@ export async function getAllVerbSlugs(lang = "es"): Promise<{ slug: string }[]> 
   return result.rows as unknown as { slug: string }[];
 }
 
+export async function getAllVerbSlugsWithRank(lang = "es"): Promise<{ slug: string; frequency_rank: number | null }[]> {
+  const db = getDb();
+  const result = await db.execute({
+    sql: "SELECT slug, frequency_rank FROM verbs WHERE lang = ? ORDER BY frequency_rank ASC",
+    args: [lang],
+  });
+  return result.rows as unknown as { slug: string; frequency_rank: number | null }[];
+}
+
 export async function getVerbsByLetter(letter: string, lang = "es"): Promise<Verb[]> {
   const db = getDb();
   const result = await db.execute({

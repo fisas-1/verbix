@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getVerb, getAllVerbSlugs } from "@/lib/verbs";
 import { conjugateEnVerb, getEnNonPersonalForms } from "@/lib/conjugate-en";
-import { enVerbTitle, enVerbDescription, enVerbCanonical, enVerbHreflangs } from "@/lib/seo";
+import { enVerbTitle, enVerbDescription, enVerbCanonical, enVerbHreflangs, langToOgLocale, alternateOgLocales, SITE_NAME } from "@/lib/seo";
 import { t, enVerbMeta } from "@/lib/i18n";
+import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/schema";
 import ConjugationTable from "@/components/ConjugationTable";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import QuizWidget from "@/components/QuizWidget";
@@ -25,14 +26,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (lang !== "en") return {};
   const verb = await getVerb(slug, "en");
   if (!verb) return {};
+  const canonical = enVerbCanonical(slug, lang);
   return {
     title: enVerbTitle(verb, lang),
     description: enVerbDescription(verb, lang),
     alternates: {
-      canonical: enVerbCanonical(slug, lang),
+      canonical,
       languages: enVerbHreflangs(slug),
     },
-    openGraph: { title: enVerbTitle(verb, lang), description: enVerbDescription(verb, lang), type: "website" },
+    openGraph: {
+      title: enVerbTitle(verb, lang),
+      description: enVerbDescription(verb, lang),
+      type: "website",
+      url: canonical,
+      siteName: SITE_NAME,
+      locale: langToOgLocale(lang),
+      alternateLocale: alternateOgLocales(lang),
+    },
+    twitter: {
+      card: "summary",
+      title: enVerbTitle(verb, lang),
+      description: enVerbDescription(verb, lang),
+    },
   };
 }
 
@@ -52,8 +67,23 @@ export default async function EnglishVerbPageEn({ params }: PageProps) {
     ? "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300"
     : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300";
 
+  const presenteForms = tenses
+    .find((t) => t.tense === "presente")
+    ?.forms.map((f) => `${f.person}: ${f.form}`)
+    .join(", ") ?? "";
+
+  const verbSchema = generateVerbSchema(verb, lang, "en");
+  const faqSchema = generateFAQSchema(verb, lang, presenteForms, nonPersonal.participio, "en");
+  const breadcrumbSchema = generateBreadcrumbSchema(verb, lang, "en");
+  const howToSchema = generateHowToSchema(verb, lang, "en");
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(verbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+
       <BreadcrumbNav crumbs={[
         { label: tr.home, href: `/${lang}` },
         { label: meta.indexTitle, href: `/en/english-verbs` },
@@ -112,11 +142,11 @@ export default async function EnglishVerbPageEn({ params }: PageProps) {
 
       <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
         <h2>{tr.aboutVerb(verb.infinitive)}</h2>
-        <p>
-          {verb.infinitive} is a {verb.type} English verb.
-          {verb.translation_es ? ` Its Spanish equivalent is "${verb.translation_es}".` : ""}
-          {verb.translation_ca ? ` In Catalan: "${verb.translation_ca}".` : ""}
-        </p>
+        <p>{meta.seoMain(verb.infinitive, verb.type, verb.translation_es, verb.translation_en)}</p>
+        <h3>{meta.h3ConjRules}</h3>
+        <p>{meta.seoRules(verb.infinitive, verb.type)}</p>
+        <h3>{meta.h3Examples}</h3>
+        <p>{meta.seoExamples(verb.infinitive)}</p>
       </section>
 
       <div className="flex justify-center mt-10">

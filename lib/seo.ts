@@ -4,6 +4,19 @@ import { t, caVerbMeta, enVerbMeta } from "./i18n";
 export const SITE_URL = "https://conjugaweb.com";
 export const SITE_NAME = "Verbix";
 
+/** Maps UI lang code to og:locale value. */
+export function langToOgLocale(lang: string): string {
+  if (lang === "ca") return "ca_ES";
+  if (lang === "en") return "en_US";
+  return "es_ES";
+}
+
+/** Returns the two alternate locales for a given UI lang. */
+export function alternateOgLocales(lang: string): string[] {
+  const all = ["es_ES", "ca_ES", "en_US"];
+  return all.filter((l) => l !== langToOgLocale(lang));
+}
+
 export function verbTitle(verb: Verb, lang = "es"): string {
   return t(lang).verbTitleTemplate(verb.infinitive);
 }
