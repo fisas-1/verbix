@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Verb } from "@/lib/verbs";
+import { verbSlugPath } from "@/lib/i18n";
 
 interface RelatedVerbsProps {
   verbs: Verb[];
@@ -16,7 +17,7 @@ export default function RelatedVerbs({ verbs, lang = "es", title = "Verbos relac
         {verbs.map((verb) => (
           <Link
             key={verb.slug}
-            href={`/${lang}/verbo/${verb.slug}`}
+            href={verbSlugPath(lang, verb.slug)}
             className="group flex flex-col p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-colors"
           >
             <span className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">

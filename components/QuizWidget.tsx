@@ -2,10 +2,12 @@
 
 import { useState, useMemo } from "react";
 import type { TenseConjugation } from "@/lib/conjugate";
+import { t } from "@/lib/i18n";
 
 interface QuizWidgetProps {
   tenses: TenseConjugation[];
   infinitive: string;
+  lang?: string;
 }
 
 interface Question {
@@ -14,7 +16,11 @@ interface Question {
   options: string[];
 }
 
-function generateQuestions(tenses: TenseConjugation[], infinitive: string): Question[] {
+function generateQuestions(
+  tenses: TenseConjugation[],
+  infinitive: string,
+  quizPrompt: (v: string, tense: string, person: string) => string
+): Question[] {
   const pool: { tense: string; person: string; form: string }[] = [];
   for (const t of tenses) {
     for (const f of t.forms) {
@@ -34,15 +40,19 @@ function generateQuestions(tenses: TenseConjugation[], infinitive: string): Ques
       .slice(0, 3);
     const options = [form, ...distractors].sort(() => Math.random() - 0.5);
     return {
-      prompt: `¿Cómo se conjuga "${infinitive}" en ${tense} — ${person}?`,
+      prompt: quizPrompt(infinitive, tense, person),
       correct: form,
       options,
     };
   });
 }
 
-export default function QuizWidget({ tenses, infinitive }: QuizWidgetProps) {
-  const questions = useMemo(() => generateQuestions(tenses, infinitive), [tenses, infinitive]);
+export default function QuizWidget({ tenses, infinitive, lang = "es" }: QuizWidgetProps) {
+  const tr = t(lang);
+  const questions = useMemo(
+    () => generateQuestions(tenses, infinitive, tr.quizPrompt),
+    [tenses, infinitive, tr.quizPrompt]
+  );
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [score, setScore] = useState(0);
@@ -79,7 +89,7 @@ export default function QuizWidget({ tenses, infinitive }: QuizWidgetProps) {
   return (
     <section>
       <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
-        Ponte a prueba
+        {tr.quizTitle}
       </h2>
 
       {finished ? (
@@ -89,26 +99,26 @@ export default function QuizWidget({ tenses, infinitive }: QuizWidgetProps) {
           </p>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             {score === questions.length
-              ? "¡Perfecto! Dominas este verbo."
+              ? tr.quizPerfect
               : score >= 3
-              ? "¡Muy bien! Sigue practicando."
-              : "Repasa las conjugaciones e inténtalo de nuevo."}
+              ? tr.quizGood
+              : tr.quizRetry}
           </p>
           <button
             onClick={restart}
             className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
           >
-            Intentar de nuevo
+            {tr.quizTryAgain}
           </button>
         </div>
       ) : (
         <div className="rounded-xl border border-gray-200 dark:border-gray-700 p-5">
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Pregunta {current + 1}/{questions.length}
+              {tr.quizQuestion(current + 1, questions.length)}
             </span>
             <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
-              {score} correctas
+              {tr.quizCorrect(score)}
             </span>
           </div>
 
@@ -143,7 +153,7 @@ export default function QuizWidget({ tenses, infinitive }: QuizWidgetProps) {
                 onClick={next}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
               >
-                {current + 1 >= questions.length ? "Ver resultados" : "Siguiente"}
+                {current + 1 >= questions.length ? tr.quizSeeResults : tr.quizNext}
               </button>
             </div>
           )}

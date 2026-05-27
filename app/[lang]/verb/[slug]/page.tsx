@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getVerb, getAllVerbSlugs, getRelatedVerbs, getVerbExamples } from "@/lib/verbs";
 import { conjugateVerb, getNonPersonalForms } from "@/lib/conjugate";
-import { verbTitle, verbDescription, verbCanonical, verbHreflangs } from "@/lib/seo";
+import { verbTitle, verbDescription, verbCanonical, verbHreflangs, SITE_URL } from "@/lib/seo";
 import { t } from "@/lib/i18n";
 import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import ConjugationTable from "@/components/ConjugationTable";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import RelatedVerbs from "@/components/RelatedVerbs";
 import ExampleSentences from "@/components/ExampleSentences";
-import TenseExplainer from "@/components/TenseExplainer";
 import QuizWidget from "@/components/QuizWidget";
 import AdUnit from "@/components/AdUnit";
+
+const SUPPORTED_LANGS = ["ca", "en"];
 
 interface PageProps {
   params: Promise<{ lang: string; slug: string }>;
@@ -19,19 +20,23 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const slugs = await getAllVerbSlugs("es");
-  return slugs.map((s) => ({ lang: "es", slug: s.slug }));
+  return slugs.flatMap((s) =>
+    SUPPORTED_LANGS.map((lang) => ({ lang, slug: s.slug }))
+  );
 }
 
 export const revalidate = 86400;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang, slug } = await params;
-  const verb = await getVerb(slug, lang);
+  if (!SUPPORTED_LANGS.includes(lang)) return {};
+  const verb = await getVerb(slug, "es");
   if (!verb) return {};
   const hreflangs = verbHreflangs(slug);
   return {
     title: verbTitle(verb, lang),
     description: verbDescription(verb, lang),
+    keywords: t(lang).verbKeywords(verb.infinitive),
     alternates: {
       canonical: verbCanonical(slug, lang),
       languages: hreflangs,
@@ -40,13 +45,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: verbTitle(verb, lang),
       description: verbDescription(verb, lang),
       type: "website",
+      url: verbCanonical(slug, lang),
     },
   };
 }
 
 export default async function VerbPage({ params }: PageProps) {
   const { lang, slug } = await params;
-  const verb = await getVerb(slug, lang);
+  if (!SUPPORTED_LANGS.includes(lang)) notFound();
+
+  const verb = await getVerb(slug, "es");
   if (!verb) notFound();
 
   const tr = t(lang);
@@ -65,10 +73,16 @@ export default async function VerbPage({ params }: PageProps) {
   const faqSchema = generateFAQSchema(verb, presenteForms);
   const breadcrumbSchema = generateBreadcrumbSchema(verb);
 
-  const typeLabel = verb.type === "irregular" ? tr.typeIrregular : verb.type === "reflexive" ? tr.typeReflexive : tr.typeRegular;
-  const typeColor = verb.type === "irregular"
-    ? "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300"
-    : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300";
+  const typeLabel =
+    verb.type === "irregular"
+      ? tr.typeIrregular
+      : verb.type === "reflexive"
+      ? tr.typeReflexive
+      : tr.typeRegular;
+  const typeColor =
+    verb.type === "irregular"
+      ? "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300"
+      : "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300";
 
   const presentTense = tenses.find((t) => t.tense === "presente");
   const yo = presentTense?.forms.find((f) => f.person === "yo")?.form ?? "";
@@ -84,16 +98,16 @@ export default async function VerbPage({ params }: PageProps) {
 
       <BreadcrumbNav
         crumbs={[
-          { label: "Inicio", href: `/${lang}` },
-          { label: "Verbos en español", href: `/${lang}/verbos` },
-          { label: `Conjugar ${verb.infinitive}` },
+          { label: lang === "ca" ? "Inici" : "Home", href: `/${lang}` },
+          { label: lang === "ca" ? "Verbs en espanyol" : "Spanish verbs", href: `/${lang}/verbos` },
+          { label: `${tr.conjugate} ${verb.infinitive}` },
         ]}
       />
 
       {/* H1 + verb info */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-3">
-          Conjugar {verb.infinitive}
+          {tr.conjugate} {verb.infinitive} {tr.inSpanish}
         </h1>
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${typeColor}`}>
@@ -147,17 +161,12 @@ export default async function VerbPage({ params }: PageProps) {
       {/* Main conjugation table */}
       <ConjugationTable tenses={tenses} infinitive={verb.infinitive} lang={lang} />
 
-      {/* Tense explainer (ES only — prose is in Spanish) */}
-      <div className="mt-8">
-        <TenseExplainer tense="presente" />
-      </div>
-
       {/* Example sentences */}
       <div className="mt-8">
         <ExampleSentences examples={examples} infinitive={verb.infinitive} lang={lang} />
       </div>
 
-      {/* AD #2 — Rectangle in-content (highest CPM) */}
+      {/* AD #2 — Rectangle in-content */}
       <div className="flex justify-center my-8">
         <AdUnit slot="0987654321" format="rectangle" className="ad-rectangle" />
       </div>
@@ -170,12 +179,12 @@ export default async function VerbPage({ params }: PageProps) {
         <RelatedVerbs verbs={related} lang={lang} title={tr.relatedVerbsTitle(verb.conjugation_group)} />
       </div>
 
-      {/* AD #4 visible — Rectangle before SEO text (slot-rectangle-2) */}
+      {/* AD #4 — Rectangle before SEO text */}
       <div className="flex justify-center my-8">
         <AdUnit slot="slot-rectangle-2" format="rectangle" className="ad-rectangle" />
       </div>
 
-      {/* SEO text content */}
+      {/* SEO text */}
       <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
         <h2>{tr.aboutVerb(verb.infinitive)}</h2>
         <p>{tr.seoVerbType(verb.infinitive, verb.type, verb.conjugation_group, verb.translation_en)}</p>
@@ -188,12 +197,18 @@ export default async function VerbPage({ params }: PageProps) {
         <p>{tr.seoPresent(verb.infinitive, yo, tu, el)}</p>
       </section>
 
+      {/* Hreflang links for SEO — also point to the ES /verbo/ URL */}
+      <link rel="alternate" hrefLang="es" href={`${SITE_URL}/es/verbo/${slug}`} />
+      <link rel="alternate" hrefLang="ca" href={`${SITE_URL}/ca/verb/${slug}`} />
+      <link rel="alternate" hrefLang="en" href={`${SITE_URL}/en/verb/${slug}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/es/verbo/${slug}`} />
+
       {/* AD #3 — Large leaderboard above footer */}
       <div className="flex justify-center mt-10">
         <AdUnit slot="1122334455" format="large-leaderboard" className="ad-large-leaderboard" />
       </div>
 
-      {/* Anchor mobile sticky (no compta com a visible) */}
+      {/* Anchor mobile sticky */}
       <AdUnit slot="5544332211" format="anchor" />
 
       {/* Bottom padding for anchor ad on mobile */}
