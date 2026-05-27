@@ -11,6 +11,7 @@ export interface Verb {
   stem_change: string | null;
   translation_en: string | null;
   translation_ca: string | null;
+  translation_es: string | null;
   frequency_rank: number | null;
 }
 
@@ -115,4 +116,13 @@ export async function getTotalVerbCount(lang = "es"): Promise<number> {
     args: [lang],
   });
   return (result.rows[0] as unknown as { count: number }).count;
+}
+
+export async function getTopVerbsByLang(lang: string, limit = 20): Promise<Verb[]> {
+  const db = getDb();
+  const result = await db.execute({
+    sql: "SELECT * FROM verbs WHERE lang = ? ORDER BY frequency_rank ASC LIMIT ?",
+    args: [lang, limit],
+  });
+  return result.rows as unknown as Verb[];
 }

@@ -1,0 +1,281 @@
+{
+  "ser": {
+    "present": {"jo": "sóc", "tu": "ets", "ell/ella": "és", "nosaltres": "som", "vosaltres": "sou", "ells/elles": "són"},
+    "imperfect": {"jo": "era", "tu": "eres", "ell/ella": "era", "nosaltres": "érem", "vosaltres": "éreu", "ells/elles": "eren"},
+    "future": {"jo": "seré", "tu": "seràs", "ell/ella": "serà", "nosaltres": "serem", "vosaltres": "sereu", "ells/elles": "seran"},
+    "conditional": {"jo": "seria", "tu": "series", "ell/ella": "seria", "nosaltres": "seríem", "vosaltres": "seríeu", "ells/elles": "serien"},
+    "subj_present": {"jo": "sigui", "tu": "siguis", "ell/ella": "sigui", "nosaltres": "siguem", "vosaltres": "sigueu", "ells/elles": "siguin"},
+    "subj_imperfect": {"jo": "fos", "tu": "fossis", "ell/ella": "fos", "nosaltres": "fóssim", "vosaltres": "fóssiu", "ells/elles": "fossin"},
+    "imperative": {"tu": "sigues", "ell/ella": "sigui", "nosaltres": "siguem", "vosaltres": "sigueu", "ells/elles": "siguin"},
+    "participle": "estat",
+    "gerund": "sent"
+  },
+  "estar": {
+    "present": {"jo": "estic", "tu": "estàs", "ell/ella": "està", "nosaltres": "estem", "vosaltres": "esteu", "ells/elles": "estan"},
+    "imperfect": {"jo": "estava", "tu": "estaves", "ell/ella": "estava", "nosaltres": "estàvem", "vosaltres": "estàveu", "ells/elles": "estaven"},
+    "future": {"jo": "estaré", "tu": "estaràs", "ell/ella": "estarà", "nosaltres": "estarem", "vosaltres": "estareu", "ells/elles": "estaran"},
+    "conditional": {"jo": "estaria", "tu": "estaries", "ell/ella": "estaria", "nosaltres": "estaríem", "vosaltres": "estaríeu", "ells/elles": "estarien"},
+    "subj_present": {"jo": "estigui", "tu": "estiguis", "ell/ella": "estigui", "nosaltres": "estiguem", "vosaltres": "estigueu", "ells/elles": "estiguin"},
+    "subj_imperfect": {"jo": "estigués", "tu": "estiguessis", "ell/ella": "estigués", "nosaltres": "estiguéssim", "vosaltres": "estiguéssiu", "ells/elles": "estiguessin"},
+    "imperative": {"tu": "estigues", "ell/ella": "estigui", "nosaltres": "estiguem", "vosaltres": "estigueu", "ells/elles": "estiguin"},
+    "participle": "estat",
+    "gerund": "estant"
+  },
+  "haver": {
+    "present": {"jo": "he", "tu": "has", "ell/ella": "ha", "nosaltres": "hem", "vosaltres": "heu", "ells/elles": "han"},
+    "imperfect": {"jo": "havia", "tu": "havies", "ell/ella": "havia", "nosaltres": "havíem", "vosaltres": "havíeu", "ells/elles": "havien"},
+    "future": {"jo": "hauré", "tu": "hauràs", "ell/ella": "haurà", "nosaltres": "haurem", "vosaltres": "haureu", "ells/elles": "hauran"},
+    "conditional": {"jo": "hauria", "tu": "hauries", "ell/ella": "hauria", "nosaltres": "hauríem", "vosaltres": "hauríeu", "ells/elles": "haurien"},
+    "subj_present": {"jo": "hagi", "tu": "hagis", "ell/ella": "hagi", "nosaltres": "hàgim", "vosaltres": "hàgiu", "ells/elles": "hagin"},
+    "subj_imperfect": {"jo": "hagués", "tu": "haguessis", "ell/ella": "hagués", "nosaltres": "haguéssim", "vosaltres": "haguéssiu", "ells/elles": "haguessin"},
+    "imperative": {"tu": "hagués", "ell/ella": "hagi", "nosaltres": "hàgim", "vosaltres": "hàgiu", "ells/elles": "hagin"},
+    "participle": "hagut",
+    "gerund": "havent"
+  },
+  "tenir": {
+    "present": {"jo": "tinc", "tu": "tens", "ell/ella": "té", "nosaltres": "tenim", "vosaltres": "teniu", "ells/elles": "tenen"},
+    "future": {"jo": "tindré", "tu": "tindràs", "ell/ella": "tindrà", "nosaltres": "tindrem", "vosaltres": "tindreu", "ells/elles": "tindran"},
+    "conditional": {"jo": "tindria", "tu": "tindries", "ell/ella": "tindria", "nosaltres": "tindríem", "vosaltres": "tindríeu", "ells/elles": "tindrien"},
+    "subj_present": {"jo": "tingui", "tu": "tinguis", "ell/ella": "tingui", "nosaltres": "tinguem", "vosaltres": "tingueu", "ells/elles": "tinguin"},
+    "subj_imperfect": {"jo": "tingués", "tu": "tinguessis", "ell/ella": "tingués", "nosaltres": "tinguéssim", "vosaltres": "tinguéssiu", "ells/elles": "tinguessin"},
+    "imperative": {"tu": "tingues", "ell/ella": "tingui", "nosaltres": "tinguem", "vosaltres": "tingueu", "ells/elles": "tinguin"},
+    "participle": "tingut",
+    "gerund": "tenint"
+  },
+  "fer": {
+    "present": {"jo": "faig", "tu": "fas", "ell/ella": "fa", "nosaltres": "fem", "vosaltres": "feu", "ells/elles": "fan"},
+    "imperfect": {"jo": "feia", "tu": "feies", "ell/ella": "feia", "nosaltres": "fèiem", "vosaltres": "fèieu", "ells/elles": "feien"},
+    "future": {"jo": "faré", "tu": "faràs", "ell/ella": "farà", "nosaltres": "farem", "vosaltres": "fareu", "ells/elles": "faran"},
+    "conditional": {"jo": "faria", "tu": "faries", "ell/ella": "faria", "nosaltres": "faríem", "vosaltres": "faríeu", "ells/elles": "farien"},
+    "subj_present": {"jo": "faci", "tu": "facis", "ell/ella": "faci", "nosaltres": "facem", "vosaltres": "faceu", "ells/elles": "facin"},
+    "subj_imperfect": {"jo": "fes", "tu": "fessis", "ell/ella": "fes", "nosaltres": "féssim", "vosaltres": "féssiu", "ells/elles": "fessin"},
+    "imperative": {"tu": "fes", "ell/ella": "faci", "nosaltres": "facem", "vosaltres": "faceu", "ells/elles": "facin"},
+    "participle": "fet",
+    "gerund": "fent"
+  },
+  "poder": {
+    "present": {"jo": "puc", "tu": "pots", "ell/ella": "pot", "nosaltres": "podem", "vosaltres": "podeu", "ells/elles": "poden"},
+    "future": {"jo": "podré", "tu": "podràs", "ell/ella": "podrà", "nosaltres": "podrem", "vosaltres": "podreu", "ells/elles": "podran"},
+    "conditional": {"jo": "podria", "tu": "podries", "ell/ella": "podria", "nosaltres": "podríem", "vosaltres": "podríeu", "ells/elles": "podrien"},
+    "subj_present": {"jo": "pugui", "tu": "puguis", "ell/ella": "pugui", "nosaltres": "puguem", "vosaltres": "pugueu", "ells/elles": "puguin"},
+    "subj_imperfect": {"jo": "pogués", "tu": "poguessis", "ell/ella": "pogués", "nosaltres": "poguéssim", "vosaltres": "poguéssiu", "ells/elles": "poguessin"},
+    "imperative": {"tu": "pugues", "ell/ella": "pugui", "nosaltres": "puguem", "vosaltres": "pugueu", "ells/elles": "puguin"},
+    "participle": "pogut",
+    "gerund": "podent"
+  },
+  "voler": {
+    "present": {"jo": "vull", "tu": "vols", "ell/ella": "vol", "nosaltres": "volem", "vosaltres": "voleu", "ells/elles": "volen"},
+    "future": {"jo": "voldré", "tu": "voldràs", "ell/ella": "voldrà", "nosaltres": "voldrem", "vosaltres": "voldreu", "ells/elles": "voldran"},
+    "conditional": {"jo": "voldria", "tu": "voldries", "ell/ella": "voldria", "nosaltres": "voldríem", "vosaltres": "voldríeu", "ells/elles": "voldrien"},
+    "subj_present": {"jo": "vulgui", "tu": "vulguis", "ell/ella": "vulgui", "nosaltres": "vulguem", "vosaltres": "vulgueu", "ells/elles": "vulguin"},
+    "subj_imperfect": {"jo": "volgués", "tu": "voguessis", "ell/ella": "volgués", "nosaltres": "volguéssim", "vosaltres": "volguéssiu", "ells/elles": "volguessin"},
+    "imperative": {"tu": "vulgues", "ell/ella": "vulgui", "nosaltres": "vulguem", "vosaltres": "vulgueu", "ells/elles": "vulguin"},
+    "participle": "volgut",
+    "gerund": "volent"
+  },
+  "saber": {
+    "present": {"jo": "sé", "tu": "saps", "ell/ella": "sap", "nosaltres": "sabem", "vosaltres": "sabeu", "ells/elles": "saben"},
+    "future": {"jo": "sabré", "tu": "sabràs", "ell/ella": "sabrà", "nosaltres": "sabrem", "vosaltres": "sabreu", "ells/elles": "sabran"},
+    "conditional": {"jo": "sabria", "tu": "sabries", "ell/ella": "sabria", "nosaltres": "sabríem", "vosaltres": "sabríeu", "ells/elles": "sabrien"},
+    "subj_present": {"jo": "sàpiga", "tu": "sàpigues", "ell/ella": "sàpiga", "nosaltres": "sapiguem", "vosaltres": "sapigueu", "ells/elles": "sàpiguen"},
+    "subj_imperfect": {"jo": "sabés", "tu": "sabessis", "ell/ella": "sabés", "nosaltres": "sabéssim", "vosaltres": "sabéssiu", "ells/elles": "sabessin"},
+    "imperative": {"tu": "sàpigues", "ell/ella": "sàpiga", "nosaltres": "sapiguem", "vosaltres": "sapigueu", "ells/elles": "sàpiguen"},
+    "participle": "sabut",
+    "gerund": "sabent"
+  },
+  "anar": {
+    "present": {"jo": "vaig", "tu": "vas", "ell/ella": "va", "nosaltres": "anem", "vosaltres": "aneu", "ells/elles": "van"},
+    "imperfect": {"jo": "anava", "tu": "anaves", "ell/ella": "anava", "nosaltres": "anàvem", "vosaltres": "anàveu", "ells/elles": "anaven"},
+    "future": {"jo": "aniré", "tu": "aniràs", "ell/ella": "anirà", "nosaltres": "anirem", "vosaltres": "anireu", "ells/elles": "aniran"},
+    "conditional": {"jo": "aniria", "tu": "aniries", "ell/ella": "aniria", "nosaltres": "aniríem", "vosaltres": "aniríeu", "ells/elles": "anirien"},
+    "subj_present": {"jo": "vagi", "tu": "vagis", "ell/ella": "vagi", "nosaltres": "anem", "vosaltres": "aneu", "ells/elles": "vagin"},
+    "subj_imperfect": {"jo": "anés", "tu": "anessis", "ell/ella": "anés", "nosaltres": "anéssim", "vosaltres": "anéssiu", "ells/elles": "anessin"},
+    "imperative": {"tu": "vés", "ell/ella": "vagi", "nosaltres": "anem", "vosaltres": "aneu", "ells/elles": "vagin"},
+    "participle": "anat",
+    "gerund": "anant"
+  },
+  "venir": {
+    "present": {"jo": "vinc", "tu": "véns", "ell/ella": "ve", "nosaltres": "venim", "vosaltres": "veniu", "ells/elles": "vénen"},
+    "future": {"jo": "vindré", "tu": "vindràs", "ell/ella": "vindrà", "nosaltres": "vindrem", "vosaltres": "vindreu", "ells/elles": "vindran"},
+    "conditional": {"jo": "vindria", "tu": "vindries", "ell/ella": "vindria", "nosaltres": "vindríem", "vosaltres": "vindríeu", "ells/elles": "vindrien"},
+    "subj_present": {"jo": "vingui", "tu": "vinguis", "ell/ella": "vingui", "nosaltres": "vinguem", "vosaltres": "vingueu", "ells/elles": "vinguin"},
+    "subj_imperfect": {"jo": "vingués", "tu": "vinguessis", "ell/ella": "vingués", "nosaltres": "vinguéssim", "vosaltres": "vinguéssiu", "ells/elles": "vinguessin"},
+    "imperative": {"tu": "vine", "ell/ella": "vingui", "nosaltres": "vinguem", "vosaltres": "vingueu", "ells/elles": "vinguin"},
+    "participle": "vingut",
+    "gerund": "venint"
+  },
+  "dir": {
+    "present": {"jo": "dic", "tu": "dius", "ell/ella": "diu", "nosaltres": "diem", "vosaltres": "dieu", "ells/elles": "diuen"},
+    "imperfect": {"jo": "deia", "tu": "deies", "ell/ella": "deia", "nosaltres": "dèiem", "vosaltres": "dèieu", "ells/elles": "deien"},
+    "future": {"jo": "diré", "tu": "diràs", "ell/ella": "dirà", "nosaltres": "direm", "vosaltres": "direu", "ells/elles": "diran"},
+    "conditional": {"jo": "diria", "tu": "diries", "ell/ella": "diria", "nosaltres": "diríem", "vosaltres": "diríeu", "ells/elles": "dirien"},
+    "subj_present": {"jo": "digui", "tu": "diguis", "ell/ella": "digui", "nosaltres": "diguem", "vosaltres": "digueu", "ells/elles": "diguin"},
+    "subj_imperfect": {"jo": "digués", "tu": "diguessis", "ell/ella": "digués", "nosaltres": "diguéssim", "vosaltres": "diguéssiu", "ells/elles": "diguessin"},
+    "imperative": {"tu": "digues", "ell/ella": "digui", "nosaltres": "diguem", "vosaltres": "digueu", "ells/elles": "diguin"},
+    "participle": "dit",
+    "gerund": "dient"
+  },
+  "veure": {
+    "present": {"jo": "veig", "tu": "veus", "ell/ella": "veu", "nosaltres": "veiem", "vosaltres": "veieu", "ells/elles": "veuen"},
+    "imperfect": {"jo": "veia", "tu": "veies", "ell/ella": "veia", "nosaltres": "vèiem", "vosaltres": "vèieu", "ells/elles": "veien"},
+    "future": {"jo": "veuré", "tu": "veuràs", "ell/ella": "veurà", "nosaltres": "veurem", "vosaltres": "veureu", "ells/elles": "veuran"},
+    "conditional": {"jo": "veuria", "tu": "veuries", "ell/ella": "veuria", "nosaltres": "veuríem", "vosaltres": "veuríeu", "ells/elles": "veurien"},
+    "subj_present": {"jo": "vegi", "tu": "vegis", "ell/ella": "vegi", "nosaltres": "vegem", "vosaltres": "vegeu", "ells/elles": "vegin"},
+    "subj_imperfect": {"jo": "vegés", "tu": "vegessis", "ell/ella": "vegés", "nosaltres": "vegéssim", "vosaltres": "vegéssiu", "ells/elles": "vegessin"},
+    "imperative": {"tu": "vés", "ell/ella": "vegi", "nosaltres": "vegem", "vosaltres": "vegeu", "ells/elles": "vegin"},
+    "participle": "vist",
+    "gerund": "veient"
+  },
+  "sortir": {
+    "present": {"jo": "surto", "tu": "surts", "ell/ella": "surt", "nosaltres": "sortim", "vosaltres": "sortiu", "ells/elles": "surten"},
+    "subj_present": {"jo": "surti", "tu": "surtis", "ell/ella": "surti", "nosaltres": "sortim", "vosaltres": "sortiu", "ells/elles": "surtin"},
+    "imperative": {"tu": "surt", "ell/ella": "surti", "nosaltres": "sortim", "vosaltres": "sortiu", "ells/elles": "surtin"},
+    "participle": "sortit",
+    "gerund": "sortint"
+  },
+  "seguir": {
+    "present": {"jo": "segueixo", "tu": "segueixes", "ell/ella": "segueix", "nosaltres": "seguim", "vosaltres": "seguiu", "ells/elles": "segueixen"},
+    "subj_present": {"jo": "segueixi", "tu": "segueixis", "ell/ella": "segueixi", "nosaltres": "seguim", "vosaltres": "seguiu", "ells/elles": "seguixin"},
+    "imperative": {"tu": "segueix", "ell/ella": "segueixi", "nosaltres": "seguim", "vosaltres": "seguiu", "ells/elles": "seguixin"},
+    "participle": "seguit",
+    "gerund": "seguint"
+  },
+  "creure": {
+    "present": {"jo": "crec", "tu": "creus", "ell/ella": "creu", "nosaltres": "creiem", "vosaltres": "creieu", "ells/elles": "creuen"},
+    "imperfect": {"jo": "creia", "tu": "creies", "ell/ella": "creia", "nosaltres": "crèiem", "vosaltres": "crèieu", "ells/elles": "creien"},
+    "future": {"jo": "creuré", "tu": "creuràs", "ell/ella": "creurà", "nosaltres": "creurem", "vosaltres": "creureu", "ells/elles": "creuran"},
+    "conditional": {"jo": "creuria", "tu": "creuries", "ell/ella": "creuria", "nosaltres": "creuríem", "vosaltres": "creuríeu", "ells/elles": "creurien"},
+    "subj_present": {"jo": "cregui", "tu": "creguis", "ell/ella": "cregui", "nosaltres": "creguem", "vosaltres": "cregueu", "ells/elles": "creguin"},
+    "subj_imperfect": {"jo": "cregués", "tu": "creguessis", "ell/ella": "cregués", "nosaltres": "creguéssim", "vosaltres": "creguéssiu", "ells/elles": "creguessin"},
+    "imperative": {"tu": "creu", "ell/ella": "cregui", "nosaltres": "creguem", "vosaltres": "cregueu", "ells/elles": "creguin"},
+    "participle": "cregut",
+    "gerund": "creient"
+  },
+  "perdre": {
+    "present": {"jo": "perdo", "tu": "perds", "ell/ella": "perd", "nosaltres": "perdem", "vosaltres": "perdeu", "ells/elles": "perden"},
+    "future": {"jo": "perdré", "tu": "perdràs", "ell/ella": "perdrà", "nosaltres": "perdrem", "vosaltres": "perdreu", "ells/elles": "perdran"},
+    "conditional": {"jo": "perdria", "tu": "perdries", "ell/ella": "perdria", "nosaltres": "perdríem", "vosaltres": "perdríeu", "ells/elles": "perdrien"},
+    "subj_present": {"jo": "perdi", "tu": "perdis", "ell/ella": "perdi", "nosaltres": "perdem", "vosaltres": "perdeu", "ells/elles": "perdin"},
+    "subj_imperfect": {"jo": "perdés", "tu": "perdessis", "ell/ella": "perdés", "nosaltres": "perdéssim", "vosaltres": "perdéssiu", "ells/elles": "perdessin"},
+    "imperative": {"tu": "perd", "ell/ella": "perdi", "nosaltres": "perdem", "vosaltres": "perdeu", "ells/elles": "perdin"},
+    "participle": "perdut",
+    "gerund": "perdent"
+  },
+  "obrir": {
+    "present": {"jo": "obro", "tu": "obres", "ell/ella": "obre", "nosaltres": "obrim", "vosaltres": "obriu", "ells/elles": "obren"},
+    "subj_present": {"jo": "obri", "tu": "obris", "ell/ella": "obri", "nosaltres": "obrim", "vosaltres": "obriu", "ells/elles": "obrin"},
+    "imperative": {"tu": "obre", "ell/ella": "obri", "nosaltres": "obrim", "vosaltres": "obriu", "ells/elles": "obrin"},
+    "participle": "obert",
+    "gerund": "obrint"
+  },
+  "viure": {
+    "present": {"jo": "visc", "tu": "vius", "ell/ella": "viu", "nosaltres": "vivim", "vosaltres": "viviu", "ells/elles": "viuen"},
+    "imperfect": {"jo": "vivia", "tu": "vivies", "ell/ella": "vivia", "nosaltres": "vivíem", "vosaltres": "vivíeu", "ells/elles": "vivien"},
+    "future": {"jo": "viuré", "tu": "viuràs", "ell/ella": "viurà", "nosaltres": "viurem", "vosaltres": "viureu", "ells/elles": "viuran"},
+    "conditional": {"jo": "viuria", "tu": "viuries", "ell/ella": "viuria", "nosaltres": "viuríem", "vosaltres": "viuríeu", "ells/elles": "viurien"},
+    "subj_present": {"jo": "visqui", "tu": "visquis", "ell/ella": "visqui", "nosaltres": "visquem", "vosaltres": "visqueu", "ells/elles": "visquin"},
+    "subj_imperfect": {"jo": "visqués", "tu": "visquessis", "ell/ella": "visqués", "nosaltres": "visquéssim", "vosaltres": "visquéssiu", "ells/elles": "visquessin"},
+    "imperative": {"tu": "viu", "ell/ella": "visqui", "nosaltres": "visquem", "vosaltres": "visqueu", "ells/elles": "visquin"},
+    "participle": "viscut",
+    "gerund": "vivint"
+  },
+  "menjar": {
+    "present": {"jo": "menjo", "tu": "menges", "ell/ella": "menja", "nosaltres": "mengem", "vosaltres": "mengeu", "ells/elles": "mengen"},
+    "subj_present": {"jo": "mengi", "tu": "mengis", "ell/ella": "mengi", "nosaltres": "mengem", "vosaltres": "mengeu", "ells/elles": "mengin"},
+    "imperative": {"tu": "menja", "ell/ella": "mengi", "nosaltres": "mengem", "vosaltres": "mengeu", "ells/elles": "mengin"},
+    "participle": "menjat",
+    "gerund": "menjant"
+  },
+  "beure": {
+    "present": {"jo": "bec", "tu": "beus", "ell/ella": "beu", "nosaltres": "bevem", "vosaltres": "beveu", "ells/elles": "beuen"},
+    "imperfect": {"jo": "bevia", "tu": "bevies", "ell/ella": "bevia", "nosaltres": "bevíem", "vosaltres": "bevíeu", "ells/elles": "bevien"},
+    "future": {"jo": "beuré", "tu": "beuràs", "ell/ella": "beurà", "nosaltres": "beurem", "vosaltres": "beureu", "ells/elles": "beuran"},
+    "conditional": {"jo": "beuria", "tu": "beuries", "ell/ella": "beuria", "nosaltres": "beuríem", "vosaltres": "beuríeu", "ells/elles": "beurien"},
+    "subj_present": {"jo": "begui", "tu": "beguis", "ell/ella": "begui", "nosaltres": "beguem", "vosaltres": "begueu", "ells/elles": "beguin"},
+    "subj_imperfect": {"jo": "begués", "tu": "beguessis", "ell/ella": "begués", "nosaltres": "beguéssim", "vosaltres": "beguéssiu", "ells/elles": "beguessin"},
+    "imperative": {"tu": "beu", "ell/ella": "begui", "nosaltres": "beguem", "vosaltres": "begueu", "ells/elles": "beguin"},
+    "participle": "begut",
+    "gerund": "bevent"
+  },
+  "córrer": {
+    "present": {"jo": "corro", "tu": "corres", "ell/ella": "corre", "nosaltres": "correm", "vosaltres": "correu", "ells/elles": "corren"},
+    "subj_present": {"jo": "corri", "tu": "corris", "ell/ella": "corri", "nosaltres": "correguem", "vosaltres": "corregueu", "ells/elles": "corrin"},
+    "imperative": {"tu": "corre", "ell/ella": "corri", "nosaltres": "correguem", "vosaltres": "correu", "ells/elles": "corrin"},
+    "participle": "corregut",
+    "gerund": "corrent"
+  },
+  "llegir": {
+    "present": {"jo": "llegeixo", "tu": "llegeixes", "ell/ella": "llegeix", "nosaltres": "llegim", "vosaltres": "llegiu", "ells/elles": "llegeixen"},
+    "subj_present": {"jo": "llegeixi", "tu": "llegeixis", "ell/ella": "llegeixi", "nosaltres": "llegim", "vosaltres": "llegiu", "ells/elles": "llegeixin"},
+    "imperative": {"tu": "llegeix", "ell/ella": "llegeixi", "nosaltres": "llegim", "vosaltres": "llegiu", "ells/elles": "llegeixin"},
+    "participle": "llegit",
+    "gerund": "llegint"
+  },
+  "escriure": {
+    "present": {"jo": "escric", "tu": "escrius", "ell/ella": "escriu", "nosaltres": "escrivim", "vosaltres": "escriviu", "ells/elles": "escriuen"},
+    "imperfect": {"jo": "escrivia", "tu": "escrivies", "ell/ella": "escrivia", "nosaltres": "escrivíem", "vosaltres": "escrivíeu", "ells/elles": "escrivien"},
+    "future": {"jo": "escriuré", "tu": "escriuràs", "ell/ella": "escriurà", "nosaltres": "escriurem", "vosaltres": "escriureu", "ells/elles": "escriuran"},
+    "conditional": {"jo": "escriuria", "tu": "escriuries", "ell/ella": "escriuria", "nosaltres": "escriuríem", "vosaltres": "escriuríeu", "ells/elles": "escriurien"},
+    "subj_present": {"jo": "escrigui", "tu": "escriguis", "ell/ella": "escrigui", "nosaltres": "escriguem", "vosaltres": "escrigueu", "ells/elles": "escriguin"},
+    "subj_imperfect": {"jo": "escrigués", "tu": "escriguessis", "ell/ella": "escrigués", "nosaltres": "escriguéssim", "vosaltres": "escriguéssiu", "ells/elles": "escriguessin"},
+    "imperative": {"tu": "escriu", "ell/ella": "escrigui", "nosaltres": "escriguem", "vosaltres": "escriviu", "ells/elles": "escriguin"},
+    "participle": "escrit",
+    "gerund": "escrivint"
+  },
+  "aprendre": {
+    "present": {"jo": "aprenc", "tu": "aprens", "ell/ella": "aprèn", "nosaltres": "aprenem", "vosaltres": "apreneu", "ells/elles": "aprenen"},
+    "future": {"jo": "aprendré", "tu": "aprendràs", "ell/ella": "aprendrà", "nosaltres": "aprendrem", "vosaltres": "aprendreu", "ells/elles": "aprendran"},
+    "conditional": {"jo": "aprendria", "tu": "aprendries", "ell/ella": "aprendria", "nosaltres": "aprendríem", "vosaltres": "aprendríeu", "ells/elles": "aprendrien"},
+    "subj_present": {"jo": "aprengui", "tu": "aprenguis", "ell/ella": "aprengui", "nosaltres": "aprenguem", "vosaltres": "aprengueu", "ells/elles": "aprenguin"},
+    "subj_imperfect": {"jo": "aprengués", "tu": "aprenguessis", "ell/ella": "aprengués", "nosaltres": "aprenguéssim", "vosaltres": "aprenguéssiu", "ells/elles": "aprenguessin"},
+    "imperative": {"tu": "aprèn", "ell/ella": "aprengui", "nosaltres": "aprenguem", "vosaltres": "apreneu", "ells/elles": "aprenguin"},
+    "participle": "après",
+    "gerund": "aprenent"
+  },
+  "vendre": {
+    "present": {"jo": "venc", "tu": "vens", "ell/ella": "ven", "nosaltres": "venem", "vosaltres": "veneu", "ells/elles": "venen"},
+    "future": {"jo": "vendré", "tu": "vendràs", "ell/ella": "vendrà", "nosaltres": "vendrem", "vosaltres": "vendreu", "ells/elles": "vendran"},
+    "conditional": {"jo": "vendria", "tu": "vendries", "ell/ella": "vendria", "nosaltres": "vendríem", "vosaltres": "vendríeu", "ells/elles": "vendrien"},
+    "subj_present": {"jo": "vengui", "tu": "venguis", "ell/ella": "vengui", "nosaltres": "venguem", "vosaltres": "vengueu", "ells/elles": "venguin"},
+    "subj_imperfect": {"jo": "vengués", "tu": "venguessis", "ell/ella": "vengués", "nosaltres": "venguéssim", "vosaltres": "venguéssiu", "ells/elles": "venguessin"},
+    "imperative": {"tu": "ven", "ell/ella": "vengui", "nosaltres": "venguem", "vosaltres": "veneu", "ells/elles": "venguin"},
+    "participle": "venut",
+    "gerund": "venent"
+  },
+  "riure": {
+    "present": {"jo": "ric", "tu": "rius", "ell/ella": "riu", "nosaltres": "riem", "vosaltres": "rieu", "ells/elles": "riuen"},
+    "imperfect": {"jo": "reia", "tu": "reies", "ell/ella": "reia", "nosaltres": "rèiem", "vosaltres": "rèieu", "ells/elles": "reien"},
+    "future": {"jo": "riuré", "tu": "riuràs", "ell/ella": "riurà", "nosaltres": "riurem", "vosaltres": "riureu", "ells/elles": "riuran"},
+    "conditional": {"jo": "riuria", "tu": "riuries", "ell/ella": "riuria", "nosaltres": "riuríem", "vosaltres": "riuríeu", "ells/elles": "riurien"},
+    "subj_present": {"jo": "rigui", "tu": "riguis", "ell/ella": "rigui", "nosaltres": "riguem", "vosaltres": "rigueu", "ells/elles": "riguin"},
+    "subj_imperfect": {"jo": "rigués", "tu": "riguessis", "ell/ella": "rigués", "nosaltres": "riguéssim", "vosaltres": "riguéssiu", "ells/elles": "riguessin"},
+    "imperative": {"tu": "riu", "ell/ella": "rigui", "nosaltres": "riguem", "vosaltres": "rieu", "ells/elles": "riguin"},
+    "participle": "rigut",
+    "gerund": "rient"
+  },
+  "néixer": {
+    "present": {"jo": "neixo", "tu": "neixes", "ell/ella": "neix", "nosaltres": "naixem", "vosaltres": "naixeu", "ells/elles": "neixen"},
+    "imperfect": {"jo": "naixia", "tu": "naixies", "ell/ella": "naixia", "nosaltres": "naixíem", "vosaltres": "naixíeu", "ells/elles": "naixien"},
+    "future": {"jo": "naixeré", "tu": "naixeràs", "ell/ella": "naixerà", "nosaltres": "naixerem", "vosaltres": "naixereu", "ells/elles": "naixeran"},
+    "conditional": {"jo": "naixeria", "tu": "naixeries", "ell/ella": "naixeria", "nosaltres": "naixeríem", "vosaltres": "naixeríeu", "ells/elles": "naixerien"},
+    "subj_present": {"jo": "neixi", "tu": "naixis", "ell/ella": "neixi", "nosaltres": "naixem", "vosaltres": "naixeu", "ells/elles": "neixin"},
+    "subj_imperfect": {"jo": "naixés", "tu": "naixessis", "ell/ella": "naixés", "nosaltres": "naixéssim", "vosaltres": "naixéssiu", "ells/elles": "naixessin"},
+    "imperative": {"tu": "neix", "ell/ella": "neixi", "nosaltres": "naixem", "vosaltres": "naixeu", "ells/elles": "neixin"},
+    "participle": "nascut",
+    "gerund": "naixent"
+  },
+  "morir": {
+    "present": {"jo": "moro", "tu": "mors", "ell/ella": "mor", "nosaltres": "morim", "vosaltres": "moriu", "ells/elles": "moren"},
+    "subj_present": {"jo": "mori", "tu": "moris", "ell/ella": "mori", "nosaltres": "morim", "vosaltres": "moriu", "ells/elles": "morin"},
+    "imperative": {"tu": "mor", "ell/ella": "mori", "nosaltres": "morim", "vosaltres": "moriu", "ells/elles": "morin"},
+    "participle": "mort",
+    "gerund": "morint"
+  },
+  "jugar": {
+    "present": {"jo": "jugo", "tu": "jugues", "ell/ella": "juga", "nosaltres": "juguem", "vosaltres": "jugueu", "ells/elles": "juguen"},
+    "subj_present": {"jo": "jugui", "tu": "juguis", "ell/ella": "jugui", "nosaltres": "juguem", "vosaltres": "jugueu", "ells/elles": "juguin"},
+    "imperative": {"tu": "juga", "ell/ella": "jugui", "nosaltres": "juguem", "vosaltres": "jugueu", "ells/elles": "juguin"},
+    "participle": "jugat",
+    "gerund": "jugant"
+  }
+}

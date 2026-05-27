@@ -18,15 +18,15 @@ export type Tense =
   | "subjuntivo_pluscuamperfecto"
   | "subjuntivo_futuro"
   | "imperativo_afirmativo"
-  | "imperativo_negativo";
+  | "imperativo_negativo"
+  | "presente_continuo"
+  | "preterito_continuo"
+  | "futuro_going_to";
 
 export type Person =
-  | "yo"
-  | "tú"
-  | "él"
-  | "nosotros"
-  | "vosotros"
-  | "ellos";
+  | "yo" | "tú" | "él" | "nosotros" | "vosotros" | "ellos"
+  | "jo" | "tu" | "ell/ella" | "nosaltres" | "vosaltres" | "ells/elles"
+  | "I" | "you" | "he/she/it" | "we" | "you (pl.)" | "they";
 
 export interface ConjugatedForm {
   person: Person;
@@ -41,9 +41,11 @@ export interface TenseConjugation {
   forms: ConjugatedForm[];
 }
 
-const PERSONS: Person[] = ["yo", "tú", "él", "nosotros", "vosotros", "ellos"];
+// Spanish-only persons used internally for conjugation tables
+type EsPerson = "yo" | "tú" | "él" | "nosotros" | "vosotros" | "ellos";
+const PERSONS: EsPerson[] = ["yo", "tú", "él", "nosotros", "vosotros", "ellos"];
 
-const AR_ENDINGS: Record<string, Record<Person, string>> = {
+const AR_ENDINGS: Record<string, Record<EsPerson, string>> = {
   presente: { yo: "o", tú: "as", él: "a", nosotros: "amos", vosotros: "áis", ellos: "an" },
   preterito_indefinido: { yo: "é", tú: "aste", él: "ó", nosotros: "amos", vosotros: "asteis", ellos: "aron" },
   preterito_imperfecto: { yo: "aba", tú: "abas", él: "aba", nosotros: "ábamos", vosotros: "abais", ellos: "aban" },
@@ -54,7 +56,7 @@ const AR_ENDINGS: Record<string, Record<Person, string>> = {
   subjuntivo_imperfecto_se: { yo: "ase", tú: "ases", él: "ase", nosotros: "ásemos", vosotros: "aseis", ellos: "asen" },
 };
 
-const ER_ENDINGS: Record<string, Record<Person, string>> = {
+const ER_ENDINGS: Record<string, Record<EsPerson, string>> = {
   presente: { yo: "o", tú: "es", él: "e", nosotros: "emos", vosotros: "éis", ellos: "en" },
   preterito_indefinido: { yo: "í", tú: "iste", él: "ió", nosotros: "imos", vosotros: "isteis", ellos: "ieron" },
   preterito_imperfecto: { yo: "ía", tú: "ías", él: "ía", nosotros: "íamos", vosotros: "íais", ellos: "ían" },
@@ -65,7 +67,7 @@ const ER_ENDINGS: Record<string, Record<Person, string>> = {
   subjuntivo_imperfecto_se: { yo: "iese", tú: "ieses", él: "iese", nosotros: "iésemos", vosotros: "ieseis", ellos: "iesen" },
 };
 
-const IR_ENDINGS: Record<string, Record<Person, string>> = {
+const IR_ENDINGS: Record<string, Record<EsPerson, string>> = {
   presente: { yo: "o", tú: "es", él: "e", nosotros: "imos", vosotros: "ís", ellos: "en" },
   preterito_indefinido: { yo: "í", tú: "iste", él: "ió", nosotros: "imos", vosotros: "isteis", ellos: "ieron" },
   preterito_imperfecto: { yo: "ía", tú: "ías", él: "ía", nosotros: "íamos", vosotros: "íais", ellos: "ían" },
@@ -98,8 +100,8 @@ function applyStemChange(
   return root;
 }
 
-function getHaber(tense: string, person: Person): string {
-  const haberForms: Record<string, Record<Person, string>> = {
+function getHaber(tense: string, person: EsPerson): string {
+  const haberForms: Record<string, Record<EsPerson, string>> = {
     presente: { yo: "he", tú: "has", él: "ha", nosotros: "hemos", vosotros: "habéis", ellos: "han" },
     preterito_imperfecto: { yo: "había", tú: "habías", él: "había", nosotros: "habíamos", vosotros: "habíais", ellos: "habían" },
     futuro_simple: { yo: "habré", tú: "habrás", él: "habrá", nosotros: "habremos", vosotros: "habréis", ellos: "habrán" },
@@ -172,14 +174,14 @@ export function conjugateVerb(
   }
 
   function subjuntivoImperfectoRaForms(): ConjugatedForm[] {
-    const irregPret = (irregularData?.preterito_indefinido as Record<Person, string>) ?? {};
+    const irregPret = (irregularData?.preterito_indefinido as Record<EsPerson, string>) ?? {};
     return PERSONS.map((person) => {
       const base3sg = irregPret["ellos"] ?? (root + (group === "ar" ? "aron" : "ieron"));
       const stem = base3sg.replace(/ron$/, "");
-      const suffixes: Record<Person, string> = {
+      const suffixes: Record<EsPerson, string> = {
         yo: "ra", tú: "ras", él: "ra", nosotros: "ramos", vosotros: "rais", ellos: "ran",
       };
-      const accent: Record<Person, boolean> = {
+      const accent: Record<EsPerson, boolean> = {
         yo: false, tú: false, él: false, nosotros: true, vosotros: false, ellos: false,
       };
       let form = stem + suffixes[person];
@@ -191,15 +193,15 @@ export function conjugateVerb(
   }
 
   function imperativoAfirmativo(): ConjugatedForm[] {
-    const irregImp = (irregularData?.imperativo_afirmativo as Record<Person, string>) ?? {};
+    const irregImp = (irregularData?.imperativo_afirmativo as Record<EsPerson, string>) ?? {};
     return PERSONS.map((person) => {
       if (person === "yo") return { person, form: "—", is_irregular: false };
       if (irregImp[person]) return { person, form: irregImp[person], is_irregular: true };
 
       const subjForms = conjugateTense("subjuntivo_presente");
-      const subjMap: Record<Person, string> = Object.fromEntries(
+      const subjMap: Record<EsPerson, string> = Object.fromEntries(
         subjForms.map((f) => [f.person, f.form])
-      ) as Record<Person, string>;
+      ) as Record<EsPerson, string>;
 
       if (person === "tú") {
         // regular: 3rd person singular present indicative

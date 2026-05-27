@@ -140,6 +140,9 @@ const es: LangStrings = {
     subjuntivo_pluscuamperfecto: "Pluscuamperfecto de Subjuntivo",
     imperativo_afirmativo: "Imperativo Afirmativo",
     imperativo_negativo: "Imperativo Negativo",
+    presente_continuo: "Presente Continuo",
+    preterito_continuo: "Pasado Continuo",
+    futuro_going_to: "Futuro (going to)",
   },
   relatedVerbsTitle: (g) => `Otros verbos en -${g}`,
   aboutVerb: (v) => `Sobre el verbo ${v}`,
@@ -241,6 +244,9 @@ const ca: LangStrings = {
     subjuntivo_pluscuamperfecto: "Plusquamperfet de subjuntiu",
     imperativo_afirmativo: "Imperatiu afirmatiu",
     imperativo_negativo: "Imperatiu negatiu",
+    presente_continuo: "Present continu",
+    preterito_continuo: "Passat continu",
+    futuro_going_to: "Futur (going to)",
   },
   relatedVerbsTitle: (g) => `Altres verbs en -${g}`,
   aboutVerb: (v) => `Sobre el verb ${v}`,
@@ -342,6 +348,9 @@ const en: LangStrings = {
     subjuntivo_pluscuamperfecto: "Past Perfect Subjunctive",
     imperativo_afirmativo: "Affirmative Imperative",
     imperativo_negativo: "Negative Imperative",
+    presente_continuo: "Present Continuous",
+    preterito_continuo: "Past Continuous",
+    futuro_going_to: "Future (going to)",
   },
   relatedVerbsTitle: (g) => `Other -${g} verbs`,
   aboutVerb: (v) => `About the verb ${v}`,
@@ -403,13 +412,95 @@ export function t(lang: string): LangStrings {
   return TRANSLATIONS[lang] ?? TRANSLATIONS.es;
 }
 
-/** Returns the canonical verb URL for a given language. */
+/** Returns the canonical verb URL for a given UI language (Spanish verbs). */
 export function verbSlugPath(lang: string, slug: string): string {
   if (lang === "es") return `/es/verbo/${slug}`;
   return `/${lang}/verb/${slug}`;
+}
+
+/** Returns the canonical verb URL for a Catalan verb given UI language. */
+export function caVerbSlugPath(lang: string, slug: string): string {
+  if (lang === "en") return `/en/catalan-verb/${slug}`;
+  return `/${lang}/verb-catala/${slug}`;
+}
+
+/** Returns the canonical verb URL for an English verb given UI language. */
+export function enVerbSlugPath(lang: string, slug: string): string {
+  if (lang === "es") return `/es/verb-ingles/${slug}`;
+  if (lang === "ca") return `/ca/verb-angles/${slug}`;
+  return `/en/english-verb/${slug}`;
+}
+
+/** Returns the verb path for any verb_lang + UI lang combination. */
+export function verbPathForLang(verbLang: string, uiLang: string, slug: string): string {
+  if (verbLang === "ca") return caVerbSlugPath(uiLang, slug);
+  if (verbLang === "en") return enVerbSlugPath(uiLang, slug);
+  return verbSlugPath(uiLang, slug);
 }
 
 /** The DB lang to use for querying verbs — all data stored as 'es'. */
 export function dbLang(_lang: string): string {
   return "es";
 }
+
+/** i18n strings specific to Catalan verb pages (per UI language). */
+export const caVerbMeta: Record<string, {
+  titleTpl: (v: string) => string;
+  descTpl: (v: string) => string;
+  heading: string;
+  indexTitle: string;
+  indexDesc: (n: number) => string;
+}> = {
+  es: {
+    titleTpl: (v) => `Conjugar ${v} en catalán | Todos los tiempos`,
+    descTpl: (v) => `Conjugación completa de ${v} en catalán. Presente, pasado, futuro, subjuntivo e imperativo con todos los tiempos verbales.`,
+    heading: "en catalán",
+    indexTitle: "Verbos en catalán",
+    indexDesc: (n) => `${n} verbos en catalán disponibles. Haz clic para ver la conjugación completa.`,
+  },
+  ca: {
+    titleTpl: (v) => `Conjugar ${v} en català | Tots els temps`,
+    descTpl: (v) => `Conjugació completa de ${v} en català. Present, passat, futur, subjuntiu i imperatiu amb tots els temps verbals.`,
+    heading: "en català",
+    indexTitle: "Verbs en català",
+    indexDesc: (n) => `${n} verbs en català disponibles. Fes clic per veure la conjugació completa.`,
+  },
+  en: {
+    titleTpl: (v) => `Conjugate ${v} in Catalan | All tenses`,
+    descTpl: (v) => `Complete conjugation of ${v} in Catalan. Present, past, future, subjunctive and imperative with all verb tenses.`,
+    heading: "in Catalan",
+    indexTitle: "Catalan verbs",
+    indexDesc: (n) => `${n} Catalan verbs available. Click to see the full conjugation.`,
+  },
+};
+
+/** i18n strings specific to English verb pages (per UI language). */
+export const enVerbMeta: Record<string, {
+  titleTpl: (v: string) => string;
+  descTpl: (v: string) => string;
+  heading: string;
+  indexTitle: string;
+  indexDesc: (n: number) => string;
+}> = {
+  es: {
+    titleTpl: (v) => `Conjugar ${v} en inglés | Todos los tiempos`,
+    descTpl: (v) => `Conjugación completa de ${v} en inglés. Present simple, past simple, perfect tenses, continuous forms y más.`,
+    heading: "en inglés",
+    indexTitle: "Verbos en inglés",
+    indexDesc: (n) => `${n} verbos en inglés disponibles. Haz clic para ver la conjugación completa.`,
+  },
+  ca: {
+    titleTpl: (v) => `Conjugar ${v} en anglès | Tots els temps`,
+    descTpl: (v) => `Conjugació completa de ${v} en anglès. Present simple, past simple, perfect tenses, formes contínues i més.`,
+    heading: "en anglès",
+    indexTitle: "Verbs en anglès",
+    indexDesc: (n) => `${n} verbs en anglès disponibles. Fes clic per veure la conjugació completa.`,
+  },
+  en: {
+    titleTpl: (v) => `Conjugate ${v} in English | All tenses`,
+    descTpl: (v) => `Complete conjugation of ${v} in English. Present simple, past simple, perfect tenses, continuous forms and more.`,
+    heading: "in English",
+    indexTitle: "English verbs",
+    indexDesc: (n) => `${n} English verbs available. Click to see the full conjugation.`,
+  },
+};
