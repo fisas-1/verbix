@@ -1,8 +1,8 @@
 import type { Verb } from "./verbs";
 import { t, caVerbMeta, enVerbMeta } from "./i18n";
 
-export const SITE_URL = "https://conjugaweb.com";
-export const SITE_NAME = "Verbix";
+export const SITE_URL = "https://verblop.xyz";
+export const SITE_NAME = "Verblop";
 
 /** Maps UI lang code to og:locale value. */
 export function langToOgLocale(lang: string): string {

@@ -164,7 +164,7 @@ const es: LangStrings = {
   seoConjRules: (v, type, group) =>
     `Para conjugar ${v} correctamente, identifica primero el tiempo verbal y la persona gramatical. Los verbos -${group} como ${v} ${type === "irregular" ? "presentan formas irregulares que hay que memorizar" : "siguen las terminaciones estándar del grupo -" + group}. Dominar la conjugación de ${v} te permitirá aplicar los mismos patrones a otros verbos similares.`,
   seoExamples: (v) =>
-    `Practicar la conjugación de ${v} con ejemplos reales es la mejor manera de aprenderla. Usa el quiz interactivo de Verbix para poner a prueba tus conocimientos de ${v} en todos los tiempos: presente, pretérito, futuro y subjuntivo. Conjugar ${v} correctamente te ayudará a comunicarte con más fluidez en español.`,
+    `Practicar la conjugación de ${v} con ejemplos reales es la mejor manera de aprenderla. Usa el quiz interactivo de Verblop para poner a prueba tus conocimientos de ${v} en todos los tiempos: presente, pretérito, futuro y subjuntivo. Conjugar ${v} correctamente te ayudará a comunicarte con más fluidez en español.`,
   h3Examples: "Ejemplos de uso",
   h3ConjRules: "Reglas de conjugación",
   h3Related: "Verbos relacionados",
@@ -275,7 +275,7 @@ const ca: LangStrings = {
   seoConjRules: (v, type, group) =>
     `Per conjugar ${v} correctament, identifica primer el temps verbal i la persona gramatical. Els verbs -${group} com ${v} ${type === "irregular" ? "presenten formes irregulars que cal memoritzar" : "segueixen les terminacions estàndard del grup -" + group}. Dominar la conjugació de ${v} et permetrà aplicar els mateixos patrons a altres verbs similars.`,
   seoExamples: (v) =>
-    `Practicar la conjugació de ${v} amb exemples reals és la millor manera d'aprendre-la. Usa el quiz interactiu de Verbix per posar a prova els teus coneixements de ${v} en tots els temps: present, passat, futur i subjuntiu. Conjugar ${v} correctament t'ajudarà a comunicar-te amb més fluïdesa en espanyol.`,
+    `Practicar la conjugació de ${v} amb exemples reals és la millor manera d'aprendre-la. Usa el quiz interactiu de Verblop per posar a prova els teus coneixements de ${v} en tots els temps: present, passat, futur i subjuntiu. Conjugar ${v} correctament t'ajudarà a comunicar-te amb més fluïdesa en espanyol.`,
   h3Examples: "Exemples d'ús",
   h3ConjRules: "Regles de conjugació",
   h3Related: "Verbs relacionats",
@@ -386,7 +386,7 @@ const en: LangStrings = {
   seoConjRules: (v, type, group) =>
     `To conjugate ${v} correctly, first identify the tense and the grammatical person. ${type === "irregular" ? `${v} is an irregular verb, so some forms must be memorized` : `As a regular -${group} verb, ${v} follows the standard Spanish endings`}. Mastering ${v} conjugation will help you recognize patterns in other similar verbs.`,
   seoExamples: (v) =>
-    `Practising ${v} conjugation with real examples is the best way to learn. Use Verbix's interactive quiz to test your knowledge of ${v} across all tenses: present, past, future and subjunctive. Conjugating ${v} correctly will help you communicate more naturally in Spanish.`,
+    `Practising ${v} conjugation with real examples is the best way to learn. Use Verblop's interactive quiz to test your knowledge of ${v} across all tenses: present, past, future and subjunctive. Conjugating ${v} correctly will help you communicate more naturally in Spanish.`,
   h3Examples: "Usage examples",
   h3ConjRules: "Conjugation rules",
   h3Related: "Related verbs",
@@ -505,7 +505,7 @@ export const caVerbMeta: Record<string, VerbLangMeta> = {
     seoRules: (v, type) =>
       `Al conjugar ${v} en catalán, ${type === "irregular" ? "es necesario memorizar las formas irregulares ya que no siguen los patrones estándar" : "se aplican las terminaciones regulares del catalán"}. La práctica regular con ${v} ayuda a interiorizar todas las formas verbales.`,
     seoExamples: (v) =>
-      `Para practicar la conjugación de ${v} en catalán, usa el verb en frases reales. Los ejercicios interactivos de Verbix te ayudarán a dominar ${v} y otros verbos del catalán de forma progresiva.`,
+      `Para practicar la conjugación de ${v} en catalán, usa el verb en frases reales. Los ejercicios interactivos de Verblop te ayudarán a dominar ${v} y otros verbos del catalán de forma progresiva.`,
   },
   ca: {
     titleTpl: (v) => `Conjugar ${v} en català | Tots els temps verbals`,
@@ -521,7 +521,7 @@ export const caVerbMeta: Record<string, VerbLangMeta> = {
     seoRules: (v, type) =>
       `En conjugar ${v} en català, ${type === "irregular" ? "cal memoritzar les formes irregulars ja que no segueixen els patrons estàndard" : "s'apliquen les terminacions regulars del català"}. La pràctica regular amb ${v} ajuda a interioritzar totes les formes verbals.`,
     seoExamples: (v) =>
-      `Per practicar la conjugació de ${v} en català, usa el verb en frases reals. Els exercicis interactius de Verbix t'ajudaran a dominar ${v} i altres verbs del català de forma progressiva.`,
+      `Per practicar la conjugació de ${v} en català, usa el verb en frases reals. Els exercicis interactius de Verblop t'ajudaran a dominar ${v} i altres verbs del català de forma progressiva.`,
   },
   en: {
     titleTpl: (v) => `Conjugate ${v} in Catalan | All tenses & examples`,
@@ -537,7 +537,7 @@ export const caVerbMeta: Record<string, VerbLangMeta> = {
     seoRules: (v, type) =>
       `When conjugating ${v} in Catalan, ${type === "irregular" ? "pay close attention to the irregular forms as they do not follow standard patterns" : "the regular Catalan verb endings apply"}. Regular practice with ${v} helps you internalize all the conjugation forms.`,
     seoExamples: (v) =>
-      `To practice conjugating ${v} in Catalan, use it in real sentences and interactive exercises. Verbix's quiz tool helps you master ${v} and other Catalan verbs progressively.`,
+      `To practice conjugating ${v} in Catalan, use it in real sentences and interactive exercises. Verblop's quiz tool helps you master ${v} and other Catalan verbs progressively.`,
   },
 };
 
@@ -561,7 +561,7 @@ export const enVerbMeta: Record<string, VerbLangMeta> = {
     seoRules: (v, type) =>
       `Al conjugar ${v} en inglés, ${type === "irregular" ? "las formas del pasado y el participio son irregulares y deben memorizarse" : "se aplican las reglas estándar del inglés"}. Dominar cómo conjugar ${v} te ayudará con otros verbos similares del inglés.`,
     seoExamples: (v) =>
-      `Para practicar la conjugación de ${v} en inglés, usa el verbo en frases reales del idioma. Los ejercicios interactivos de Verbix te ayudarán a memorizar las formas de ${v} en todos los tiempos verbales.`,
+      `Para practicar la conjugación de ${v} en inglés, usa el verbo en frases reales del idioma. Los ejercicios interactivos de Verblop te ayudarán a memorizar las formas de ${v} en todos los tiempos verbales.`,
   },
   ca: {
     titleTpl: (v) => `Conjugar ${v} en anglès | Tots els temps verbals`,
@@ -577,7 +577,7 @@ export const enVerbMeta: Record<string, VerbLangMeta> = {
     seoRules: (v, type) =>
       `En conjugar ${v} en anglès, ${type === "irregular" ? "les formes del passat i el participi són irregulars i s'han de memoritzar" : "s'apliquen les regles estàndard de l'anglès"}. Dominar com conjugar ${v} t'ajudarà amb altres verbs similars de l'anglès.`,
     seoExamples: (v) =>
-      `Per practicar la conjugació de ${v} en anglès, usa el verb en frases reals de l'idioma. Els exercicis interactius de Verbix t'ajudaran a memoritzar les formes de ${v} en tots els temps verbals.`,
+      `Per practicar la conjugació de ${v} en anglès, usa el verb en frases reals de l'idioma. Els exercicis interactius de Verblop t'ajudaran a memoritzar les formes de ${v} en tots els temps verbals.`,
   },
   en: {
     titleTpl: (v) => `Conjugate ${v} in English | All tenses & forms`,
@@ -593,6 +593,6 @@ export const enVerbMeta: Record<string, VerbLangMeta> = {
     seoRules: (v, type) =>
       `When conjugating ${v} in English, ${type === "irregular" ? "the past tense and past participle forms are irregular and must be memorized" : "standard English verb rules apply"}. Mastering ${v} conjugation will help you understand patterns in other English verbs.`,
     seoExamples: (v) =>
-      `Practice conjugating ${v} with real-world sentences and interactive exercises. Verbix's quiz helps you master ${v} across all English tenses: present simple, past simple, present perfect, and continuous forms.`,
+      `Practice conjugating ${v} with real-world sentences and interactive exercises. Verblop's quiz helps you master ${v} across all English tenses: present simple, past simple, present perfect, and continuous forms.`,
   },
 };
