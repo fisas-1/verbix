@@ -5,7 +5,32 @@
 import sharp from "sharp";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import { existsSync } from "fs";
+import { existsSync, writeFileSync } from "fs";
+
+// Wraps a PNG buffer into a valid ICO container (PNG-in-ICO, Vista+ format).
+// sharp cannot write real .ico files — this does it manually.
+function pngToIco(pngBuf, size) {
+  const ICONDIR_SIZE = 6;
+  const ICONDIRENTRY_SIZE = 16;
+  const dataOffset = ICONDIR_SIZE + ICONDIRENTRY_SIZE;
+
+  const header = Buffer.alloc(ICONDIR_SIZE);
+  header.writeUInt16LE(0, 0);  // reserved
+  header.writeUInt16LE(1, 2);  // type: 1 = icon
+  header.writeUInt16LE(1, 4);  // image count
+
+  const entry = Buffer.alloc(ICONDIRENTRY_SIZE);
+  entry.writeUInt8(size >= 256 ? 0 : size, 0); // width (0 = 256)
+  entry.writeUInt8(size >= 256 ? 0 : size, 1); // height
+  entry.writeUInt8(0, 2);   // color count
+  entry.writeUInt8(0, 3);   // reserved
+  entry.writeUInt16LE(1, 4); // planes
+  entry.writeUInt16LE(32, 6); // bit count
+  entry.writeUInt32LE(pngBuf.length, 8);  // bytes in image
+  entry.writeUInt32LE(dataOffset, 12);    // offset to image data
+
+  return Buffer.concat([header, entry, pngBuf]);
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -40,11 +65,28 @@ const circleTransparent = await sharp(circleBuf)
   .png()
   .toBuffer();
 
-// ── 1. app/favicon.ico (PNG data — accepted by all modern browsers) ──────────
-await sharp(circleTransparent)
-  .resize(48, 48)
-  .toFile(join(ROOT, "app", "favicon.ico"));
-console.log("✅  app/favicon.ico (48×48)");
+// ── 1. app/favicon.ico (proper ICO container with embedded PNG) ───────────────
+const pngFor32 = await sharp(circleTransparent).resize(32, 32).png().toBuffer();
+const pngFor16 = await sharp(circleTransparent).resize(16, 16).png().toBuffer();
+// Multi-size ICO: 32×32 + 16×16
+const ICONDIR_SIZE = 6;
+const ENTRY_SIZE = 16;
+const countBuf = Buffer.alloc(ICONDIR_SIZE);
+countBuf.writeUInt16LE(0, 0);
+countBuf.writeUInt16LE(1, 2);
+countBuf.writeUInt16LE(2, 4); // 2 images
+const offset32 = ICONDIR_SIZE + ENTRY_SIZE * 2;
+const offset16 = offset32 + pngFor32.length;
+const e32 = Buffer.alloc(ENTRY_SIZE);
+e32.writeUInt8(32, 0); e32.writeUInt8(32, 1); e32.writeUInt8(0, 2); e32.writeUInt8(0, 3);
+e32.writeUInt16LE(1, 4); e32.writeUInt16LE(32, 6);
+e32.writeUInt32LE(pngFor32.length, 8); e32.writeUInt32LE(offset32, 12);
+const e16 = Buffer.alloc(ENTRY_SIZE);
+e16.writeUInt8(16, 0); e16.writeUInt8(16, 1); e16.writeUInt8(0, 2); e16.writeUInt8(0, 3);
+e16.writeUInt16LE(1, 4); e16.writeUInt16LE(32, 6);
+e16.writeUInt32LE(pngFor16.length, 8); e16.writeUInt32LE(offset16, 12);
+writeFileSync(join(ROOT, "app", "favicon.ico"), Buffer.concat([countBuf, e32, e16, pngFor32, pngFor16]));
+console.log("✅  app/favicon.ico (32×32 + 16×16, ICO vàlid)");
 
 // ── 2. app/icon.png (used by Next.js for <link rel="icon">) ──────────────────
 await sharp(circleTransparent)
