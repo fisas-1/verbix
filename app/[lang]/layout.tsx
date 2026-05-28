@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE_NAME } from "@/lib/seo";
 import { t } from "@/lib/i18n";
 import LanguageSelector from "@/components/LanguageSelector";
@@ -18,8 +19,16 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
           <Link
             href={`/${lang}`}
-            className="text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight"
+            className="flex items-center gap-2 text-xl font-bold text-blue-600 dark:text-blue-400 tracking-tight"
           >
+            <Image
+              src="/logo.png"
+              alt=""
+              width={36}
+              height={36}
+              className="rounded-full"
+              priority
+            />
             {SITE_NAME}
           </Link>
           <nav className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
