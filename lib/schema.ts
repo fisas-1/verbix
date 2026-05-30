@@ -289,6 +289,109 @@ export function generateHowToSchema(verb: Verb, uiLang = "es", verbLang = "es") 
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// LearningResource schema
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function generateLearningResourceSchema(verb: Verb, uiLang = "es", verbLang = "es") {
+  const inf = verb.infinitive;
+  if (uiLang === "ca") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      name: `Conjugació de ${inf}`,
+      educationalLevel: "beginner",
+      learningResourceType: "reference",
+      teaches: `Conjugació del verb ${inf} en tots els temps`,
+      inLanguage: verbLang,
+      url: `https://verblop.xyz/ca/verb/${verb.slug}`,
+    };
+  }
+  if (uiLang === "en") {
+    return {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      name: `Conjugation of ${inf}`,
+      educationalLevel: "beginner",
+      learningResourceType: "reference",
+      teaches: `How to conjugate the Spanish verb ${inf} in all tenses`,
+      inLanguage: verbLang,
+      url: `https://verblop.xyz/en/verb/${verb.slug}`,
+    };
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: `Conjugación de ${inf}`,
+    educationalLevel: "beginner",
+    learningResourceType: "reference",
+    teaches: `Conjugación del verbo ${inf} en todos los tiempos`,
+    inLanguage: verbLang,
+    url: `https://verblop.xyz/es/verbo/${verb.slug}`,
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Homepage FAQ schema (multilingual, 5 questions per language)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const HOME_FAQ_DATA: Record<string, { q: string; a: string }[]> = {
+  es: [
+    { q: "¿Cómo se conjuga el verbo hablar en presente de indicativo?", a: "Hablar en presente de indicativo: yo hablo, tú hablas, él/ella habla, nosotros hablamos, vosotros habláis, ellos/ellas hablan. Es un verbo regular -ar y sigue las terminaciones estándar del grupo." },
+    { q: "¿Cuáles son los verbos irregulares más comunes en español?", a: "Los 10 verbos irregulares más usados en español son: ser, estar, ir, tener, hacer, poder, saber, querer, venir y decir. Todos tienen formas únicas en presente y pretérito que hay que memorizar." },
+    { q: "¿Cuántos tiempos verbales tiene el español?", a: "El español tiene 15 tiempos verbales principales: 8 en indicativo (presente, pretérito indefinido, pretérito imperfecto, pretérito perfecto, pretérito pluscuamperfecto, futuro simple, futuro compuesto y condicional), 4 en subjuntivo y 2 formas de imperativo." },
+    { q: "¿Cómo se forma el pretérito indefinido en español?", a: "Para verbos regulares -ar: raíz + -é, -aste, -ó, -amos, -asteis, -aron (ej: hablé, hablaste, habló). Para verbos -er/-ir: raíz + -í, -iste, -ió, -imos, -isteis, -ieron (ej: comí, viví). Verbos frecuentes con formas irregulares: fui, tuve, hice, puse, vine, dije." },
+    { q: "¿Cuál es la diferencia entre ser y estar en español?", a: "Ser expresa características permanentes o inherentes: identidad, origen y profesión (soy español, soy médico). Estar expresa estados temporales, emociones y ubicación (estoy cansado, estoy en casa). Ambos traducen 'to be' en inglés pero no son intercambiables." },
+  ],
+  ca: [
+    { q: "Com es conjuga el verb hablar en present d'indicatiu?", a: "Hablar en present d'indicatiu: yo hablo, tú hablas, él/ella habla, nosotros hablamos, vosotros habláis, ellos/ellas hablan. És un verb regular -ar i segueix les terminacions estàndard del grup." },
+    { q: "Quins són els verbs irregulars més comuns en espanyol?", a: "Els 10 verbs irregulars més usats en espanyol són: ser, estar, ir, tener, hacer, poder, saber, querer, venir i decir. Tots tenen formes úniques en present i pretèrit que cal memoritzar." },
+    { q: "Quants temps verbals té l'espanyol?", a: "L'espanyol té 15 temps verbals principals: 8 en indicatiu (present, pretèrit indefinit, pretèrit imperfet, pretèrit perfet, pretèrit plusquamperfet, futur simple, futur compost i condicional), 4 en subjuntiu i 2 formes d'imperatiu." },
+    { q: "Com es forma el pretèrit indefinit en espanyol?", a: "Per a verbs regulars -ar: arrel + -é, -aste, -ó, -amos, -asteis, -aron (ex: hablé). Per a verbs -er/-ir: arrel + -í, -iste, -ió, -imos, -isteis, -ieron (ex: comí). Verbs freqüents amb formes irregulars: fui, tuve, hice, puse, vine, dije." },
+    { q: "Quina és la diferència entre ser i estar en espanyol?", a: "Ser s'usa per a característiques permanents o inherents: identitat, origen i professió (soy español, soy médico). Estar s'usa per a estats temporals, emocions i ubicació (estoy cansado, estoy en casa). Tots dos es tradueixen per 'to be' en anglès però no són intercanviables." },
+  ],
+  en: [
+    { q: "How do you conjugate hablar in the present tense?", a: "Hablar in the present tense: yo hablo, tú hablas, él/ella habla, nosotros hablamos, vosotros habláis, ellos/ellas hablan. It is a regular -ar verb and follows the standard -ar endings." },
+    { q: "What are the most common irregular verbs in Spanish?", a: "The 10 most common irregular verbs in Spanish are: ser, estar, ir, tener, hacer, poder, saber, querer, venir and decir. They all have unique forms in the present tense and preterite that must be memorized." },
+    { q: "How many tenses does Spanish have?", a: "Spanish has 15 main verb tenses: 8 in the indicative (present, preterite, imperfect, present perfect, pluperfect, simple future, future perfect, conditional), 4 in the subjunctive, and 2 imperative forms." },
+    { q: "How is the Spanish preterite (pretérito indefinido) formed?", a: "For regular -ar verbs: stem + -é, -aste, -ó, -amos, -asteis, -aron (e.g. hablé, hablaste, habló). For -er/-ir verbs: stem + -í, -iste, -ió, -imos, -isteis, -ieron (e.g. comí, viví). High-frequency irregular preterites: fui, tuve, hice, puse, vine, dije." },
+    { q: "What is the difference between ser and estar in Spanish?", a: "Ser is used for permanent or defining characteristics: identity, origin, and profession (soy español – I am Spanish, soy médico – I am a doctor). Estar is used for temporary states, emotions, and location (estoy cansado – I am tired, estoy en casa – I am at home). Both translate as 'to be' in English but are not interchangeable." },
+  ],
+};
+
+export function generateHomeFAQSchema(lang: string) {
+  const faqs = HOME_FAQ_DATA[lang] ?? HOME_FAQ_DATA.es;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
+export function generateHomeFAQs(lang: string): { q: string; a: string }[] {
+  return HOME_FAQ_DATA[lang] ?? HOME_FAQ_DATA.es;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Organization schema
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function generateOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    description: "Conjugador de verbos en español gratuito y completo. Más de 500 verbos con todos los tiempos verbales, formas irregulares destacadas y quiz interactivo.",
+    sameAs: [`${SITE_URL}/es`, `${SITE_URL}/ca`, `${SITE_URL}/en`],
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // WebSite schema
 // ─────────────────────────────────────────────────────────────────────────────
 

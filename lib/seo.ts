@@ -95,7 +95,7 @@ export function indexTitle(lang = "es"): string {
 }
 
 export function indexDescription(lang = "es"): string {
-  if (lang === "ca") return `Conjuga a l'instant qualsevol verb en espanyol. Tots els temps, tots els modes. Més de 12.000 verbs amb exemples i exercicis interactius.`;
-  if (lang === "en") return `Conjugate any Spanish verb instantly. All tenses, all moods. Over 12,000 verbs with examples and interactive exercises.`;
-  return `Conjuga cualquier verbo en español al instante. Todos los tiempos, todos los modos. Más de 12.000 verbos con ejemplos y ejercicios interactivos.`;
+  if (lang === "ca") return `Conjugador de verbs en espanyol gratuït. Conjuga a l'instant més de 500 verbs: present, pretèrit, futur i subjuntiu. Irregulars destacats, exemples reals i quiz interactiu.`;
+  if (lang === "en") return `Free Spanish verb conjugator. Conjugate 500+ Spanish verbs instantly: present, past, future and subjunctive. Irregular forms highlighted, real examples and interactive quiz.`;
+  return `Conjugador de verbos en español gratis. Conjuga al instante más de 500 verbos: presente, pretérito, futuro y subjuntivo. Irregulares destacados, ejemplos reales y quiz interactivo.`;
 }

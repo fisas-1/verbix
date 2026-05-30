@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getVerb, getAllVerbSlugs, getRelatedVerbs, getVerbExamples } from "@/lib/verbs";
 import { conjugateVerb, getNonPersonalForms } from "@/lib/conjugate";
 import { verbTitle, verbDescription, verbCanonical, verbHreflangs, langToOgLocale, alternateOgLocales, SITE_NAME } from "@/lib/seo";
 import { t } from "@/lib/i18n";
-import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema } from "@/lib/schema";
+import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema, generateLearningResourceSchema } from "@/lib/schema";
+import { generateVerbSeoContent } from "@/lib/seo-content";
+import { COMPARISON_PAIRS } from "@/app/[lang]/comparar/[verb1]/[verb2]/page";
 import ConjugationTable from "@/components/ConjugationTable";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import RelatedVerbs from "@/components/RelatedVerbs";
@@ -76,6 +79,23 @@ export default async function VerbPage({ params }: PageProps) {
   const faqSchema = generateFAQSchema(verb, lang, presenteForms, nonPersonal.participio, "es");
   const breadcrumbSchema = generateBreadcrumbSchema(verb, lang, "es");
   const howToSchema = generateHowToSchema(verb, lang, "es");
+  const learningResourceSchema = generateLearningResourceSchema(verb, lang, "es");
+
+  const seoContent = generateVerbSeoContent(verb, tenses, lang);
+
+  // Find comparison pairs that include this verb
+  const comparisonLinks = lang === "es"
+    ? COMPARISON_PAIRS.filter(([a, b]) => a === verb.slug || b === verb.slug).slice(0, 3)
+    : [];
+
+  // Tense theory page slugs (ES only)
+  const TENSE_THEORY_LINKS = lang === "es" ? [
+    { slug: "presente-indicativo", label: "Presente de indicativo" },
+    { slug: "preterito-indefinido", label: "Pretérito indefinido" },
+    { slug: "preterito-imperfecto", label: "Pretérito imperfecto" },
+    { slug: "futuro-simple", label: "Futuro simple" },
+    { slug: "subjuntivo-presente", label: "Subjuntivo presente" },
+  ] : [];
 
   const typeLabel = verb.type === "irregular" ? tr.typeIrregular : verb.type === "reflexive" ? tr.typeReflexive : tr.typeRegular;
   const typeColor = verb.type === "irregular"
@@ -94,6 +114,7 @@ export default async function VerbPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(learningResourceSchema) }} />
 
       <BreadcrumbNav
         crumbs={[
@@ -102,6 +123,31 @@ export default async function VerbPage({ params }: PageProps) {
           { label: `${tr.conjugate} ${verb.infinitive}` },
         ]}
       />
+
+      {/* Quick-answer for featured snippets (9.6) */}
+      <div className="quick-answer bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mb-6">
+        <p className="font-semibold text-green-900 dark:text-green-200 text-sm mb-2">
+          {lang === "ca"
+            ? `Com es conjuga ${verb.infinitive} en present?`
+            : lang === "en"
+            ? `How do you conjugate ${verb.infinitive} in the present tense?`
+            : `¿Cómo se conjuga ${verb.infinitive} en presente?`}
+        </p>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-0.5 text-sm">
+          {presentTense?.forms.map((f) => (
+            <li key={String(f.person)} className="flex gap-1.5">
+              <span className="text-gray-500 dark:text-gray-400 text-xs pt-0.5 shrink-0">
+                {lang === "en"
+                  ? (String(f.person) === "yo" ? "I" : String(f.person) === "tú" ? "you" : String(f.person) === "él" ? "he/she" : String(f.person) === "nosotros" ? "we" : String(f.person) === "vosotros" ? "you all" : "they")
+                  : lang === "ca"
+                  ? (String(f.person) === "yo" ? "jo" : String(f.person) === "tú" ? "tu" : String(f.person) === "él" ? "ell/ella" : String(f.person) === "nosotros" ? "nosaltres" : String(f.person) === "vosotros" ? "vosaltres" : "ells/elles")
+                  : f.person}
+              </span>
+              <span className={`font-medium ${f.is_irregular ? "text-amber-700 dark:text-amber-400" : "text-gray-800 dark:text-gray-200"}`}>{f.form}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* H1 + verb info */}
       <div className="mb-6">
@@ -183,38 +229,110 @@ export default async function VerbPage({ params }: PageProps) {
         <RelatedVerbs verbs={related} lang={lang} title={tr.relatedVerbsTitle(verb.conjugation_group)} />
       </div>
 
+      {/* Tense theory links (ES only) */}
+      {TENSE_THEORY_LINKS.length > 0 && (
+        <div className="mt-8 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
+            Aprende los tiempos verbales
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {TENSE_THEORY_LINKS.map(({ slug, label }) => (
+              <Link
+                key={slug}
+                href={`/es/tiempos/${slug}`}
+                className="text-xs px-2.5 py-1 rounded-full bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-green-400 hover:text-green-700 dark:hover:text-green-400 transition-colors"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Comparison links (ES only) */}
+      {comparisonLinks.length > 0 && (
+        <div className="mt-4 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700">
+          <p className="text-xs font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-wider mb-2">
+            ¿Confundes este verbo?
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {comparisonLinks.map(([a, b]) => (
+              <Link
+                key={`${a}-${b}`}
+                href={`/es/comparar/${a}/${b}`}
+                className="text-sm text-amber-800 dark:text-amber-300 hover:underline"
+              >
+                {a} vs {b} →
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Búsquedas relacionadas */}
+      {related.length > 0 && (
+        <div className="mt-6">
+          <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
+            Búsquedas relacionadas
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {related.map((rv) => (
+              <Link
+                key={rv.slug}
+                href={`/${lang}/${lang === "es" ? "verbo" : "verb"}/${rv.slug}`}
+                className="px-3 py-1.5 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-green-900/40 hover:text-green-700 dark:hover:text-green-400 transition-colors"
+              >
+                Conjugar {rv.infinitive}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* AD #4 visible — Rectangle before SEO text */}
       <div className="flex justify-center my-8">
-        <AdUnit slot="slot-rectangle-2" format="rectangle" className="ad-rectangle" />
+        <AdUnit slot="2468013579" format="rectangle" className="ad-rectangle" />
       </div>
 
-      {/* SEO text content */}
-      <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
-        <h2>{tr.aboutVerb(verb.infinitive)}</h2>
-        <p>{tr.seoVerbType(verb.infinitive, verb.type, verb.conjugation_group, verb.translation_en)}</p>
-        {verb.type === "irregular" && (
-          <p>{tr.seoIrregular(verb.infinitive, verb.stem_change)}</p>
-        )}
-        {verb.type === "regular" && (
-          <p>{tr.seoRegular(verb.infinitive, verb.conjugation_group)}</p>
-        )}
-        <p>{tr.seoPresent(verb.infinitive, yo, tu, el)}</p>
-        <h3>{tr.h3ConjRules}</h3>
-        <p>{tr.seoConjRules(verb.infinitive, verb.type, verb.conjugation_group)}</p>
-        <h3>{tr.h3Examples}</h3>
-        <p>{tr.seoExamples(verb.infinitive)}</p>
-      </section>
+      {/* SEO text content — rich content for ES, template for CA/EN */}
+      {seoContent ? (
+        <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
+          <h2>{tr.aboutVerb(verb.infinitive)}</h2>
+          <p>{seoContent.intro}</p>
+          <h3>Uso en presente</h3>
+          <p>{seoContent.presentUsage}</p>
+          <h3>Pasado y futuro</h3>
+          <p>{seoContent.pastFuture}</p>
+          <h3>{verb.type === "regular" ? "Reglas de conjugación" : "Irregularidades"}</h3>
+          <p>{seoContent.irregularities}</p>
+          <h3>Expresiones comunes</h3>
+          <p>{seoContent.expressions}</p>
+          <h3>Verbos relacionados</h3>
+          <p>{seoContent.related}</p>
+        </section>
+      ) : (
+        <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
+          <h2>{tr.aboutVerb(verb.infinitive)}</h2>
+          <p>{tr.seoVerbType(verb.infinitive, verb.type, verb.conjugation_group, verb.translation_en)}</p>
+          {verb.type === "irregular" && (
+            <p>{tr.seoIrregular(verb.infinitive, verb.stem_change)}</p>
+          )}
+          {verb.type === "regular" && (
+            <p>{tr.seoRegular(verb.infinitive, verb.conjugation_group)}</p>
+          )}
+          <p>{tr.seoPresent(verb.infinitive, yo, tu, el)}</p>
+          <h3>{tr.h3ConjRules}</h3>
+          <p>{tr.seoConjRules(verb.infinitive, verb.type, verb.conjugation_group)}</p>
+          <h3>{tr.h3Examples}</h3>
+          <p>{tr.seoExamples(verb.infinitive)}</p>
+        </section>
+      )}
 
       {/* AD #3 — Large leaderboard above footer */}
       <div className="flex justify-center mt-10">
         <AdUnit slot="1122334455" format="large-leaderboard" className="ad-large-leaderboard" />
       </div>
 
-      {/* Anchor mobile sticky */}
-      <AdUnit slot="5544332211" format="anchor" />
-
-      {/* Bottom padding for anchor ad on mobile */}
-      <div className="h-16 md:hidden" />
     </>
   );
 }

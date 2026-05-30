@@ -192,7 +192,7 @@ export default async function VerbPage({ params }: PageProps) {
 
       {/* AD #4 — Rectangle before SEO text */}
       <div className="flex justify-center my-8">
-        <AdUnit slot="slot-rectangle-2" format="rectangle" className="ad-rectangle" />
+        <AdUnit slot="2468013579" format="rectangle" className="ad-rectangle" />
       </div>
 
       {/* SEO text */}

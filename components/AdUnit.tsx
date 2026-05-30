@@ -57,7 +57,7 @@ export default function AdUnit({ slot, format, className = "" }: AdUnitProps) {
         <ins
           className="adsbygoogle"
           style={{ display: "block", width: "100%", height: 50 }}
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-client="ca-pub-4272225036233257"
           data-ad-slot={slot}
           data-ad-format="auto"
           data-full-width-responsive="true"
@@ -81,7 +81,7 @@ export default function AdUnit({ slot, format, className = "" }: AdUnitProps) {
       <ins
         className="adsbygoogle"
         style={{ display: "block", width: typeof dims.width === "number" ? dims.width : "100%", height: dims.height }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+        data-ad-client="ca-pub-4272225036233257"
         data-ad-slot={slot}
         data-ad-format="auto"
       />

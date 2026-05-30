@@ -1,10 +1,15 @@
 import type { MetadataRoute } from "next";
 import { getAllVerbSlugsWithRank } from "@/lib/verbs";
 import { SITE_URL } from "@/lib/seo";
+import { COMPARISON_PAIRS } from "@/app/[lang]/comparar/[verb1]/[verb2]/page";
 
 const ALL_LANGS = ["es", "ca", "en"];
 const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
 const GROUPS = ["ar", "er", "ir"];
+const TENSE_SLUGS = [
+  "presente-indicativo", "preterito-indefinido", "preterito-imperfecto",
+  "futuro-simple", "condicional-simple", "subjuntivo-presente", "imperativo",
+];
 const NOW = new Date();
 
 function verbPriority(rank: number | null): number {
@@ -88,10 +93,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/en/english-verbs`, lastModified: NOW, changeFrequency: "weekly" as const, priority: 0.6 },
   ];
 
+  const CA_TENSE_SLUGS = ["present-indicatiu","preterit-indefinit","preterit-imperfet","futur-simple","condicional-simple","subjuntiu-present","imperatiu"];
+  const EN_TENSE_SLUGS = ["present-indicative","preterite","imperfect","future-simple","conditional","present-subjunctive","imperative"];
+
+  // Tense theory pages (ES + CA + EN)
+  const tiemposUrls: MetadataRoute.Sitemap = [
+    ...TENSE_SLUGS.map(slug => ({ url: `${SITE_URL}/es/tiempos/${slug}`, lastModified: NOW, changeFrequency: "monthly" as const, priority: 0.8 })),
+    ...CA_TENSE_SLUGS.map(slug => ({ url: `${SITE_URL}/ca/temps/${slug}`, lastModified: NOW, changeFrequency: "monthly" as const, priority: 0.75 })),
+    ...EN_TENSE_SLUGS.map(slug => ({ url: `${SITE_URL}/en/tenses/${slug}`, lastModified: NOW, changeFrequency: "monthly" as const, priority: 0.8 })),
+  ];
+
+  // Comparison pages (ES + CA + EN)
+  const compararUrls: MetadataRoute.Sitemap = [
+    ...COMPARISON_PAIRS.map(([v1, v2]) => ({ url: `${SITE_URL}/es/comparar/${v1}/${v2}`, lastModified: NOW, changeFrequency: "monthly" as const, priority: 0.75 })),
+    ...COMPARISON_PAIRS.map(([v1, v2]) => ({ url: `${SITE_URL}/ca/comparar/${v1}/${v2}`, lastModified: NOW, changeFrequency: "monthly" as const, priority: 0.7 })),
+    ...COMPARISON_PAIRS.map(([v1, v2]) => ({ url: `${SITE_URL}/en/compare/${v1}/${v2}`, lastModified: NOW, changeFrequency: "monthly" as const, priority: 0.75 })),
+  ];
+
   return [
     ...homepageUrls,
     ...esListingUrls,
     ...multiLangIndexUrls,
+    ...tiemposUrls,
+    ...compararUrls,
     ...esVerbUrls,
     ...caVerbUrls,
     ...enVerbUrls,

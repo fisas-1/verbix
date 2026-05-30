@@ -137,7 +137,7 @@ export default async function EnVerbPageCa({ params }: PageProps) {
       <QuizWidget tenses={tenses} infinitive={verb.infinitive} lang={lang} />
 
       <div className="flex justify-center my-8">
-        <AdUnit slot="slot-rectangle-2" format="rectangle" className="ad-rectangle" />
+        <AdUnit slot="2468013579" format="rectangle" className="ad-rectangle" />
       </div>
 
       <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
@@ -152,8 +152,6 @@ export default async function EnVerbPageCa({ params }: PageProps) {
       <div className="flex justify-center mt-10">
         <AdUnit slot="1122334455" format="large-leaderboard" className="ad-large-leaderboard" />
       </div>
-      <AdUnit slot="5544332211" format="anchor" />
-      <div className="h-16 md:hidden" />
     </>
   );
 }

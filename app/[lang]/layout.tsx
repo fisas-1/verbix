@@ -4,6 +4,7 @@ import { SITE_NAME } from "@/lib/seo";
 import { t } from "@/lib/i18n";
 import LanguageSelector from "@/components/LanguageSelector";
 import CookieBanner from "@/components/CookieBanner";
+import AdUnit from "@/components/AdUnit";
 
 interface LangLayoutProps {
   children: React.ReactNode;
@@ -43,14 +44,21 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         </div>
       </header>
 
-      <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-6">
+      <main className="flex-1 max-w-3xl mx-auto w-full px-4 py-6 pb-16 md:pb-6">
         {children}
       </main>
 
       <footer className="border-t border-gray-200 dark:border-gray-800 py-8 mt-8">
         <div className="max-w-3xl mx-auto px-4 text-center text-sm text-gray-500 dark:text-gray-400">
           <p className="mb-2">
-            <strong className="text-gray-700 dark:text-gray-300">{SITE_NAME}</strong> — {tr.siteTagline}
+            <Link
+              href={`/${lang}`}
+              className="font-bold text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+            >
+              {lang === "ca" ? "Conjugador de verbs en espanyol" : lang === "en" ? "Spanish verb conjugator" : "Conjugador de verbos en español"}
+            </Link>
+            {" — "}
+            <span className="text-gray-500 dark:text-gray-400">{tr.siteTagline}</span>
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-3">
             <Link href={`/${lang}/verbos`} className="hover:text-blue-600 dark:hover:text-blue-400">{tr.allVerbs}</Link>
@@ -74,6 +82,7 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
         </div>
       </footer>
       <CookieBanner lang={lang} />
+      <AdUnit slot="5544332211" format="anchor" />
     </div>
   );
 }
