@@ -104,7 +104,7 @@ export interface LangStrings {
 // ESPAÑOL
 // ─────────────────────────────────────────────────────────────────────────────
 const es: LangStrings = {
-  siteTagline: "Conjugación de verbos en español",
+  siteTagline: "Español · Català · English",
   allVerbs: "Todos los verbos",
   irregular: "Irregulares",
   regular: "Regulares",
@@ -215,7 +215,7 @@ const es: LangStrings = {
 // CATALÀ
 // ─────────────────────────────────────────────────────────────────────────────
 const ca: LangStrings = {
-  siteTagline: "Conjugació de verbs en espanyol",
+  siteTagline: "Espanyol · Català · Anglès",
   allVerbs: "Tots els verbs",
   irregular: "Irregulars",
   regular: "Regulars",
@@ -326,7 +326,7 @@ const ca: LangStrings = {
 // ENGLISH
 // ─────────────────────────────────────────────────────────────────────────────
 const en: LangStrings = {
-  siteTagline: "Spanish verb conjugation",
+  siteTagline: "Spanish · Catalan · English",
   allVerbs: "All verbs",
   irregular: "Irregular",
   regular: "Regular",

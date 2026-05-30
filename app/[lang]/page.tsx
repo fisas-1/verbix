@@ -47,19 +47,19 @@ const POPULAR_EN = ["be", "have", "do", "say", "go", "get", "make", "know", "thi
 
 const ABOUT_CONTENT: Record<string, { h2: string; p1: string; p2: string }> = {
   es: {
-    h2: "El conjugador de verbos en español más completo",
-    p1: "Verblop es un conjugador de verbos en español gratuito que te permite consultar al instante la conjugación completa de más de 500 verbos. Cubre todos los tiempos verbales del español: presente de indicativo, pretérito indefinido, pretérito imperfecto, pretérito perfecto compuesto, pretérito pluscuamperfecto, futuro simple, condicional simple, y los modos subjuntivo e imperativo. Las formas irregulares aparecen destacadas en azul para que las identifiques de un vistazo.",
-    p2: "Nuestra base de datos incluye verbos regulares, irregulares y reflexivos de todos los grupos (-ar, -er, -ir), con cambios de raíz señalados (e→ie, o→ue, e→i) y las formas yo-irregular del presente marcadas individualmente. Cada página de verbo incluye un quiz interactivo para practicar la conjugación, ejemplos de uso en contexto y acceso directo a verbos relacionados. Sin registro, sin anuncios intrusivos, disponible también en català y English.",
+    h2: "Conjugador de verbos gratuito: español, català e inglés",
+    p1: "Verblop es un conjugador de verbos gratuito que cubre tres idiomas: español, català e inglés. Para el español incluye más de 500 verbos con todos los tiempos verbales: presente de indicativo, pretérito indefinido, pretérito imperfecto, pretérito perfecto compuesto, futuro simple, condicional, y los modos subjuntivo e imperativo. Las formas irregulares aparecen destacadas en azul para identificarlas de un vistazo.",
+    p2: "La base de datos cubre verbos regulares, irregulares y reflexivos de todos los grupos (-ar, -er, -ir), con cambios de raíz señalados (e→ie, o→ue, e→i). Además de español, también puedes conjugar verbos en català y verbos en inglés. Cada página de verbo incluye un quiz interactivo, ejemplos reales y acceso directo a verbos relacionados. Sin registro, sin anuncios intrusivos.",
   },
   ca: {
-    h2: "El conjugador de verbs en espanyol més complet",
-    p1: "Verblop és un conjugador de verbs en espanyol gratuït que et permet consultar a l'instant la conjugació completa de més de 500 verbs. Cobreix tots els temps verbals de l'espanyol: present d'indicatiu, pretèrit indefinit, pretèrit imperfet, pretèrit perfet compost, pretèrit plusquamperfet, futur simple, condicional simple, i els modes subjuntiu i imperatiu. Les formes irregulars apareixen destacades en blau per identificar-les d'una ullada.",
-    p2: "La nostra base de dades inclou verbs regulars, irregulars i reflexius de tots els grups (-ar, -er, -ir), amb canvis d'arrel senyalats (e→ie, o→ue, e→i) i les formes yo-irregulars del present marcades individualment. Cada pàgina de verb inclou un quiz interactiu per practicar la conjugació, exemples d'ús en context i accés directe a verbs relacionats. Sense registre, sense anuncis intrusius, disponible també en español i English.",
+    h2: "Conjugador de verbs gratuït: espanyol, català i anglès",
+    p1: "Verblop és un conjugador de verbs gratuït que cobreix tres idiomes: espanyol, català i anglès. Per a l'espanyol inclou més de 500 verbs amb tots els temps verbals: present d'indicatiu, pretèrit indefinit, pretèrit imperfet, pretèrit perfet, futur simple, condicional, i els modes subjuntiu i imperatiu. Les formes irregulars apareixen destacades en blau per identificar-les d'una ullada.",
+    p2: "La base de dades cobreix verbs regulars, irregulars i reflexius de tots els grups (-ar, -er, -ir), amb canvis d'arrel senyalats (e→ie, o→ue, e→i). A més d'espanyol, també pots conjugar verbs en català i verbs en anglès. Cada pàgina de verb inclou un quiz interactiu, exemples reals i accés directe a verbs relacionats. Sense registre, sense anuncis intrusius.",
   },
   en: {
-    h2: "The most complete Spanish verb conjugator",
-    p1: "Verblop is a free Spanish verb conjugator that lets you instantly look up the full conjugation of over 500 Spanish verbs. It covers all the main Spanish tenses: present indicative, preterite, imperfect, present perfect, pluperfect, simple future, conditional, and both subjunctive and imperative moods. Irregular verb forms are highlighted in blue so you can spot them at a glance.",
-    p2: "Our database includes regular, irregular, and reflexive verbs from all conjugation groups (-ar, -er, -ir), with stem changes noted (e→ie, o→ue, e→i) and irregular yo-forms in the present tense individually marked. Every verb page includes an interactive quiz to practise conjugation, real usage examples in context, and direct links to related verbs. No sign-up required, no intrusive ads — also available in español and català.",
+    h2: "Free verb conjugator: Spanish, Catalan and English",
+    p1: "Verblop is a free verb conjugator that covers three languages: Spanish, Catalan and English. For Spanish it includes 500+ verbs with all the main tenses: present indicative, preterite, imperfect, present perfect, simple future, conditional, and both subjunctive and imperative moods. Irregular forms are highlighted in blue so you can spot them at a glance.",
+    p2: "The database covers regular, irregular, and reflexive verbs from all conjugation groups (-ar, -er, -ir), with stem changes noted (e→ie, o→ue, e→i). In addition to Spanish, you can also conjugate Catalan verbs and English verbs. Every verb page includes an interactive quiz, real usage examples, and direct links to related verbs. No sign-up required, no intrusive ads.",
   },
 };
 

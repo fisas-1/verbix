@@ -3,6 +3,13 @@ import { SITE_URL } from "@/lib/seo";
 
 const LETTERS = "abcdefghijklmnopqrstuvwxyz".split("");
 const GROUPS = ["ar", "er", "ir"];
+const EN_TENSE_SLUGS = ["present-indicative","preterite","imperfect","future-simple","conditional","present-subjunctive","imperative"];
+const COMPARISON_PAIRS = [
+  ["ser","estar"],["saber","conocer"],["pedir","preguntar"],["llevar","traer"],["ir","venir"],
+  ["poder","saber"],["hablar","decir"],["hacer","poner"],["querer","amar"],["mirar","ver"],
+  ["escuchar","oir"],["comer","beber"],["trabajar","estudiar"],["comprar","vender"],["subir","bajar"],
+  ["abrir","cerrar"],["empezar","terminar"],["ganar","perder"],["tener","haber"],["ser","ir"],
+];
 
 function priority(rank: number | null): string {
   if (rank === null) return "0.6";
@@ -24,6 +31,10 @@ export async function GET() {
     `<url><loc>${SITE_URL}/en/english-verbs</loc><lastmod>${now}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>`,
     ...GROUPS.map(g => `<url><loc>${SITE_URL}/en/verbos/grupo/${g}</loc><lastmod>${now}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`),
     ...LETTERS.map(l => `<url><loc>${SITE_URL}/en/verbos/letra/${l}</loc><lastmod>${now}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`),
+    // Tense theory pages
+    ...EN_TENSE_SLUGS.map(s => `<url><loc>${SITE_URL}/en/tenses/${s}</loc><lastmod>${now}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`),
+    // Comparison pages
+    ...COMPARISON_PAIRS.map(([v1, v2]) => `<url><loc>${SITE_URL}/en/compare/${v1}/${v2}</loc><lastmod>${now}</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>`),
     // ES verbs in EN interface
     ...esSlugs.map(({ slug, frequency_rank }) =>
       `<url><loc>${SITE_URL}/en/verb/${slug}</loc><lastmod>${now}</lastmod><changefreq>monthly</changefreq><priority>${priority(frequency_rank)}</priority></url>`
