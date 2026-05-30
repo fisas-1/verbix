@@ -94,5 +94,451 @@
     "condicional_simple": { "yo": "saldría", "tú": "saldrías", "él": "saldría", "nosotros": "saldríamos", "vosotros": "saldríais", "ellos": "saldrían" },
     "gerundio": "saliendo",
     "participio": "salido"
+  },
+  "conocer": {
+    "presente": { "yo": "conozco", "tú": "conoces", "él": "conoce", "nosotros": "conocemos", "vosotros": "conocéis", "ellos": "conocen" },
+    "subjuntivo_presente": { "yo": "conozca", "tú": "conozcas", "él": "conozca", "nosotros": "conozcamos", "vosotros": "conozcáis", "ellos": "conozcan" },
+    "gerundio": "conociendo",
+    "participio": "conocido"
+  },
+  "parecer": {
+    "presente": { "yo": "parezco", "tú": "pareces", "él": "parece", "nosotros": "parecemos", "vosotros": "parecéis", "ellos": "parecen" },
+    "subjuntivo_presente": { "yo": "parezca", "tú": "parezcas", "él": "parezca", "nosotros": "parezcamos", "vosotros": "parezcáis", "ellos": "parezcan" },
+    "gerundio": "pareciendo",
+    "participio": "parecido"
+  },
+  "aparecer": {
+    "presente": { "yo": "aparezco", "tú": "apareces", "él": "aparece", "nosotros": "aparecemos", "vosotros": "aparecéis", "ellos": "aparecen" },
+    "subjuntivo_presente": { "yo": "aparezca", "tú": "aparezcas", "él": "aparezca", "nosotros": "aparezcamos", "vosotros": "aparezcáis", "ellos": "aparezcan" },
+    "gerundio": "apareciendo",
+    "participio": "aparecido"
+  },
+  "producir": {
+    "presente": { "yo": "produzco", "tú": "produces", "él": "produce", "nosotros": "producimos", "vosotros": "producís", "ellos": "producen" },
+    "preterito_indefinido": { "yo": "produje", "tú": "produjiste", "él": "produjo", "nosotros": "produjimos", "vosotros": "produjisteis", "ellos": "produjeron" },
+    "subjuntivo_presente": { "yo": "produzca", "tú": "produzcas", "él": "produzca", "nosotros": "produzcamos", "vosotros": "produzcáis", "ellos": "produzcan" },
+    "gerundio": "produciendo",
+    "participio": "producido"
+  },
+  "oír": {
+    "presente": { "yo": "oigo", "tú": "oyes", "él": "oye", "nosotros": "oímos", "vosotros": "oís", "ellos": "oyen" },
+    "preterito_indefinido": { "yo": "oí", "tú": "oíste", "él": "oyó", "nosotros": "oímos", "vosotros": "oísteis", "ellos": "oyeron" },
+    "subjuntivo_presente": { "yo": "oiga", "tú": "oigas", "él": "oiga", "nosotros": "oigamos", "vosotros": "oigáis", "ellos": "oigan" },
+    "imperativo_afirmativo": { "tú": "oye", "él": "oiga", "nosotros": "oigamos", "vosotros": "oíd", "ellos": "oigan" },
+    "gerundio": "oyendo",
+    "participio": "oído"
+  },
+  "andar": {
+    "preterito_indefinido": { "yo": "anduve", "tú": "anduviste", "él": "anduvo", "nosotros": "anduvimos", "vosotros": "anduvisteis", "ellos": "anduvieron" },
+    "gerundio": "andando",
+    "participio": "andado"
+  },
+  "leer": {
+    "preterito_indefinido": { "yo": "leí", "tú": "leíste", "él": "leyó", "nosotros": "leímos", "vosotros": "leísteis", "ellos": "leyeron" },
+    "gerundio": "leyendo",
+    "participio": "leído"
+  },
+  "caer": {
+    "presente": { "yo": "caigo", "tú": "caes", "él": "cae", "nosotros": "caemos", "vosotros": "caéis", "ellos": "caen" },
+    "preterito_indefinido": { "yo": "caí", "tú": "caíste", "él": "cayó", "nosotros": "caímos", "vosotros": "caísteis", "ellos": "cayeron" },
+    "subjuntivo_presente": { "yo": "caiga", "tú": "caigas", "él": "caiga", "nosotros": "caigamos", "vosotros": "caigáis", "ellos": "caigan" },
+    "gerundio": "cayendo",
+    "participio": "caído"
+  },
+  "escribir": {
+    "participio": "escrito",
+    "gerundio": "escribiendo"
+  },
+  "abrir": {
+    "participio": "abierto",
+    "gerundio": "abriendo"
+  },
+  "mantener": {
+    "presente": { "yo": "mantengo", "tú": "mantienes", "él": "mantiene", "nosotros": "mantenemos", "vosotros": "mantenéis", "ellos": "mantienen" },
+    "preterito_indefinido": { "yo": "mantuve", "tú": "mantuviste", "él": "mantuvo", "nosotros": "mantuvimos", "vosotros": "mantuvisteis", "ellos": "mantuvieron" },
+    "futuro_simple": { "yo": "mantendré", "tú": "mantendrás", "él": "mantendrá", "nosotros": "mantendremos", "vosotros": "mantendréis", "ellos": "mantendrán" },
+    "condicional_simple": { "yo": "mantendría", "tú": "mantendrías", "él": "mantendría", "nosotros": "mantendríamos", "vosotros": "mantendríais", "ellos": "mantendrían" },
+    "gerundio": "manteniendo",
+    "participio": "mantenido"
+  },
+  "traer": {
+    "presente": { "yo": "traigo", "tú": "traes", "él": "trae", "nosotros": "traemos", "vosotros": "traéis", "ellos": "traen" },
+    "preterito_indefinido": { "yo": "traje", "tú": "trajiste", "él": "trajo", "nosotros": "trajimos", "vosotros": "trajisteis", "ellos": "trajeron" },
+    "subjuntivo_presente": { "yo": "traiga", "tú": "traigas", "él": "traiga", "nosotros": "traigamos", "vosotros": "traigáis", "ellos": "traigan" },
+    "gerundio": "trayendo",
+    "participio": "traído"
+  },
+  "conducir": {
+    "presente": { "yo": "conduzco", "tú": "conduces", "él": "conduce", "nosotros": "conducimos", "vosotros": "conducís", "ellos": "conducen" },
+    "preterito_indefinido": { "yo": "conduje", "tú": "condujiste", "él": "condujo", "nosotros": "condujimos", "vosotros": "condujisteis", "ellos": "condujeron" },
+    "subjuntivo_presente": { "yo": "conduzca", "tú": "conduzcas", "él": "conduzca", "nosotros": "conduzcamos", "vosotros": "conduzcáis", "ellos": "conduzcan" },
+    "gerundio": "conduciendo",
+    "participio": "conducido"
+  },
+  "reducir": {
+    "presente": { "yo": "reduzco", "tú": "reduces", "él": "reduce", "nosotros": "reducimos", "vosotros": "reducís", "ellos": "reducen" },
+    "preterito_indefinido": { "yo": "reduje", "tú": "redujiste", "él": "redujo", "nosotros": "redujimos", "vosotros": "redujisteis", "ellos": "redujeron" },
+    "subjuntivo_presente": { "yo": "reduzca", "tú": "reduzcas", "él": "reduzca", "nosotros": "reduzcamos", "vosotros": "reduzcáis", "ellos": "reduzcan" },
+    "gerundio": "reduciendo",
+    "participio": "reducido"
+  },
+  "traducir": {
+    "presente": { "yo": "traduzco", "tú": "traduces", "él": "traduce", "nosotros": "traducimos", "vosotros": "traducís", "ellos": "traducen" },
+    "preterito_indefinido": { "yo": "traduje", "tú": "tradujiste", "él": "tradujo", "nosotros": "tradujimos", "vosotros": "tradujisteis", "ellos": "tradujeron" },
+    "subjuntivo_presente": { "yo": "traduzca", "tú": "traduzcas", "él": "traduzca", "nosotros": "traduzcamos", "vosotros": "traduzcáis", "ellos": "traduzcan" },
+    "gerundio": "traduciendo",
+    "participio": "traducido"
+  },
+  "introducir": {
+    "presente": { "yo": "introduzco", "tú": "introduces", "él": "introduce", "nosotros": "introducimos", "vosotros": "introducís", "ellos": "introducen" },
+    "preterito_indefinido": { "yo": "introduje", "tú": "introdujiste", "él": "introdujo", "nosotros": "introdujimos", "vosotros": "introdujisteis", "ellos": "introdujeron" },
+    "subjuntivo_presente": { "yo": "introduzca", "tú": "introduzcas", "él": "introduzca", "nosotros": "introduzcamos", "vosotros": "introduzcáis", "ellos": "introduzcan" },
+    "gerundio": "introduciendo",
+    "participio": "introducido"
+  },
+  "nacer": {
+    "presente": { "yo": "nazco", "tú": "naces", "él": "nace", "nosotros": "nacemos", "vosotros": "nacéis", "ellos": "nacen" },
+    "subjuntivo_presente": { "yo": "nazca", "tú": "nazcas", "él": "nazca", "nosotros": "nazcamos", "vosotros": "nazcáis", "ellos": "nazcan" },
+    "gerundio": "naciendo",
+    "participio": "nacido"
+  },
+  "crecer": {
+    "presente": { "yo": "crezco", "tú": "creces", "él": "crece", "nosotros": "crecemos", "vosotros": "crecéis", "ellos": "crecen" },
+    "subjuntivo_presente": { "yo": "crezca", "tú": "crezcas", "él": "crezca", "nosotros": "crezcamos", "vosotros": "crezcáis", "ellos": "crezcan" },
+    "gerundio": "creciendo",
+    "participio": "crecido"
+  },
+  "ofrecer": {
+    "presente": { "yo": "ofrezco", "tú": "ofreces", "él": "ofrece", "nosotros": "ofrecemos", "vosotros": "ofrecéis", "ellos": "ofrecen" },
+    "subjuntivo_presente": { "yo": "ofrezca", "tú": "ofrezcas", "él": "ofrezca", "nosotros": "ofrezcamos", "vosotros": "ofrezcáis", "ellos": "ofrezcan" },
+    "gerundio": "ofreciendo",
+    "participio": "ofrecido"
+  },
+  "merecer": {
+    "presente": { "yo": "merezco", "tú": "mereces", "él": "merece", "nosotros": "merecemos", "vosotros": "merecéis", "ellos": "merecen" },
+    "subjuntivo_presente": { "yo": "merezca", "tú": "merezcas", "él": "merezca", "nosotros": "merecemos", "vosotros": "merezcáis", "ellos": "merezcan" },
+    "gerundio": "mereciendo",
+    "participio": "merecido"
+  },
+  "desaparecer": {
+    "presente": { "yo": "desaparezco", "tú": "desapareces", "él": "desaparece", "nosotros": "desaparecemos", "vosotros": "desaparecéis", "ellos": "desaparecen" },
+    "subjuntivo_presente": { "yo": "desaparezca", "tú": "desaparezcas", "él": "desaparezca", "nosotros": "desaparezcamos", "vosotros": "desaparezcáis", "ellos": "desaparezcan" },
+    "gerundio": "desapareciendo",
+    "participio": "desaparecido"
+  },
+  "pertenecer": {
+    "presente": { "yo": "pertenezco", "tú": "perteneces", "él": "pertenece", "nosotros": "pertenecemos", "vosotros": "pertenecéis", "ellos": "pertenecen" },
+    "subjuntivo_presente": { "yo": "pertenezca", "tú": "pertenezcas", "él": "pertenezca", "nosotros": "pertenezcamos", "vosotros": "pertenezcáis", "ellos": "pertenezcan" },
+    "gerundio": "perteneciendo",
+    "participio": "pertenecido"
+  },
+  "reconocer": {
+    "presente": { "yo": "reconozco", "tú": "reconoces", "él": "reconoce", "nosotros": "reconocemos", "vosotros": "reconocéis", "ellos": "reconocen" },
+    "subjuntivo_presente": { "yo": "reconozca", "tú": "reconozcas", "él": "reconozca", "nosotros": "reconozcamos", "vosotros": "reconozcáis", "ellos": "reconozcan" },
+    "gerundio": "reconociendo",
+    "participio": "reconocido"
+  },
+  "establecer": {
+    "presente": { "yo": "establezco", "tú": "estableces", "él": "establece", "nosotros": "establecemos", "vosotros": "establecéis", "ellos": "establecen" },
+    "subjuntivo_presente": { "yo": "establezca", "tú": "establezcas", "él": "establezca", "nosotros": "establezcamos", "vosotros": "establezcáis", "ellos": "establezcan" },
+    "gerundio": "estableciendo",
+    "participio": "establecido"
+  },
+  "envejecer": {
+    "presente": { "yo": "envejezco", "tú": "envejeces", "él": "envejece", "nosotros": "envejecemos", "vosotros": "envejecéis", "ellos": "envejecen" },
+    "subjuntivo_presente": { "yo": "envejezca", "tú": "envejezcas", "él": "envejezca", "nosotros": "envejezcamos", "vosotros": "envejezcáis", "ellos": "envejezcan" },
+    "gerundio": "envejeciendo",
+    "participio": "envejecido"
+  },
+  "agradecer": {
+    "presente": { "yo": "agradezco", "tú": "agradeces", "él": "agradece", "nosotros": "agradecemos", "vosotros": "agradecéis", "ellos": "agradecen" },
+    "subjuntivo_presente": { "yo": "agradezca", "tú": "agradezcas", "él": "agradezca", "nosotros": "agradezcamos", "vosotros": "agradezcáis", "ellos": "agradezcan" },
+    "gerundio": "agradeciendo",
+    "participio": "agradecido"
+  },
+  "obedecer": {
+    "presente": { "yo": "obedezco", "tú": "obedeces", "él": "obedece", "nosotros": "obedecemos", "vosotros": "obedecéis", "ellos": "obedecen" },
+    "subjuntivo_presente": { "yo": "obedezca", "tú": "obedezcas", "él": "obedezca", "nosotros": "obedezcamos", "vosotros": "obedezcáis", "ellos": "obedezcan" },
+    "gerundio": "obedeciendo",
+    "participio": "obedecido"
+  },
+  "florecer": {
+    "presente": { "yo": "florezco", "tú": "floreces", "él": "florece", "nosotros": "florecemos", "vosotros": "florecéis", "ellos": "florecen" },
+    "gerundio": "floreciendo",
+    "participio": "florecido"
+  },
+  "fortalecer": {
+    "presente": { "yo": "fortalezco", "tú": "fortaleces", "él": "fortalece", "nosotros": "fortalecemos", "vosotros": "fortalecéis", "ellos": "fortalecen" },
+    "gerundio": "fortaleciendo",
+    "participio": "fortalecido"
+  },
+  "enriquecer": {
+    "presente": { "yo": "enriquezco", "tú": "enriqueces", "él": "enriquece", "nosotros": "enriquecemos", "vosotros": "enriquecéis", "ellos": "enriquecen" },
+    "gerundio": "enriqueciendo",
+    "participio": "enriquecido"
+  },
+  "construir": {
+    "presente": { "yo": "construyo", "tú": "construyes", "él": "construye", "nosotros": "construimos", "vosotros": "construís", "ellos": "construyen" },
+    "preterito_indefinido": { "yo": "construí", "tú": "construiste", "él": "construyó", "nosotros": "construimos", "vosotros": "construisteis", "ellos": "construyeron" },
+    "subjuntivo_presente": { "yo": "construya", "tú": "construyas", "él": "construya", "nosotros": "construyamos", "vosotros": "construyáis", "ellos": "construyan" },
+    "gerundio": "construyendo",
+    "participio": "construido"
+  },
+  "destruir": {
+    "presente": { "yo": "destruyo", "tú": "destruyes", "él": "destruye", "nosotros": "destruimos", "vosotros": "destruís", "ellos": "destruyen" },
+    "preterito_indefinido": { "yo": "destruí", "tú": "destruiste", "él": "destruyó", "nosotros": "destruimos", "vosotros": "destruisteis", "ellos": "destruyeron" },
+    "subjuntivo_presente": { "yo": "destruya", "tú": "destruyas", "él": "destruya", "nosotros": "destruyamos", "vosotros": "destruyáis", "ellos": "destruyan" },
+    "gerundio": "destruyendo",
+    "participio": "destruido"
+  },
+  "incluir": {
+    "presente": { "yo": "incluyo", "tú": "incluyes", "él": "incluye", "nosotros": "incluimos", "vosotros": "incluís", "ellos": "incluyen" },
+    "preterito_indefinido": { "yo": "incluí", "tú": "incluiste", "él": "incluyó", "nosotros": "incluimos", "vosotros": "incluisteis", "ellos": "incluyeron" },
+    "subjuntivo_presente": { "yo": "incluya", "tú": "incluyas", "él": "incluya", "nosotros": "incluyamos", "vosotros": "incluyáis", "ellos": "incluyan" },
+    "gerundio": "incluyendo",
+    "participio": "incluido"
+  },
+  "excluir": {
+    "presente": { "yo": "excluyo", "tú": "excluyes", "él": "excluye", "nosotros": "excluimos", "vosotros": "excluís", "ellos": "excluyen" },
+    "preterito_indefinido": { "yo": "excluí", "tú": "excluiste", "él": "excluyó", "nosotros": "excluimos", "vosotros": "excluisteis", "ellos": "excluyeron" },
+    "gerundio": "excluyendo",
+    "participio": "excluido"
+  },
+  "concluir": {
+    "presente": { "yo": "concluyo", "tú": "concluyes", "él": "concluye", "nosotros": "concluimos", "vosotros": "concluís", "ellos": "concluyen" },
+    "preterito_indefinido": { "yo": "concluí", "tú": "concluiste", "él": "concluyó", "nosotros": "concluimos", "vosotros": "concluisteis", "ellos": "concluyeron" },
+    "gerundio": "concluyendo",
+    "participio": "concluido"
+  },
+  "huir": {
+    "presente": { "yo": "huyo", "tú": "huyes", "él": "huye", "nosotros": "huimos", "vosotros": "huís", "ellos": "huyen" },
+    "preterito_indefinido": { "yo": "huí", "tú": "huiste", "él": "huyó", "nosotros": "huimos", "vosotros": "huisteis", "ellos": "huyeron" },
+    "gerundio": "huyendo",
+    "participio": "huido"
+  },
+  "influir": {
+    "presente": { "yo": "influyo", "tú": "influyes", "él": "influye", "nosotros": "influimos", "vosotros": "influís", "ellos": "influyen" },
+    "preterito_indefinido": { "yo": "influí", "tú": "influiste", "él": "influyó", "nosotros": "influimos", "vosotros": "influisteis", "ellos": "influyeron" },
+    "gerundio": "influyendo",
+    "participio": "influido"
+  },
+  "distribuir": {
+    "presente": { "yo": "distribuyo", "tú": "distribuyes", "él": "distribuye", "nosotros": "distribuimos", "vosotros": "distribuís", "ellos": "distribuyen" },
+    "preterito_indefinido": { "yo": "distribuí", "tú": "distribuiste", "él": "distribuyó", "nosotros": "distribuimos", "vosotros": "distribuisteis", "ellos": "distribuyeron" },
+    "gerundio": "distribuyendo",
+    "participio": "distribuido"
+  },
+  "disminuir": {
+    "presente": { "yo": "disminuyo", "tú": "disminuyes", "él": "disminuye", "nosotros": "disminuimos", "vosotros": "disminuís", "ellos": "disminuyen" },
+    "preterito_indefinido": { "yo": "disminuí", "tú": "disminuiste", "él": "disminuyó", "nosotros": "disminuimos", "vosotros": "disminuisteis", "ellos": "disminuyeron" },
+    "gerundio": "disminuyendo",
+    "participio": "disminuido"
+  },
+  "describir": {
+    "participio": "descrito",
+    "gerundio": "describiendo"
+  },
+  "cubrir": {
+    "participio": "cubierto",
+    "gerundio": "cubriendo"
+  },
+  "descubrir": {
+    "participio": "descubierto",
+    "gerundio": "descubriendo"
+  },
+  "resolver": {
+    "participio": "resuelto",
+    "gerundio": "resolviendo"
+  },
+  "romper": {
+    "participio": "roto",
+    "gerundio": "rompiendo"
+  },
+  "valer": {
+    "presente": { "yo": "valgo", "tú": "vales", "él": "vale", "nosotros": "valemos", "vosotros": "valéis", "ellos": "valen" },
+    "futuro_simple": { "yo": "valdré", "tú": "valdrás", "él": "valdrá", "nosotros": "valdremos", "vosotros": "valdréis", "ellos": "valdrán" },
+    "condicional_simple": { "yo": "valdría", "tú": "valdrías", "él": "valdría", "nosotros": "valdríamos", "vosotros": "valdríais", "ellos": "valdrían" },
+    "subjuntivo_presente": { "yo": "valga", "tú": "valgas", "él": "valga", "nosotros": "valgamos", "vosotros": "valgáis", "ellos": "valgan" },
+    "gerundio": "valiendo",
+    "participio": "valido"
+  },
+  "haber": {
+    "presente": { "yo": "he", "tú": "has", "él": "ha", "nosotros": "hemos", "vosotros": "habéis", "ellos": "han" },
+    "preterito_indefinido": { "yo": "hube", "tú": "hubiste", "él": "hubo", "nosotros": "hubimos", "vosotros": "hubisteis", "ellos": "hubieron" },
+    "preterito_imperfecto": { "yo": "había", "tú": "habías", "él": "había", "nosotros": "habíamos", "vosotros": "habíais", "ellos": "habían" },
+    "futuro_simple": { "yo": "habré", "tú": "habrás", "él": "habrá", "nosotros": "habremos", "vosotros": "habréis", "ellos": "habrán" },
+    "condicional_simple": { "yo": "habría", "tú": "habrías", "él": "habría", "nosotros": "habríamos", "vosotros": "habríais", "ellos": "habrían" },
+    "subjuntivo_presente": { "yo": "haya", "tú": "hayas", "él": "haya", "nosotros": "hayamos", "vosotros": "hayáis", "ellos": "hayan" },
+    "gerundio": "habiendo",
+    "participio": "habido"
+  },
+  "caber": {
+    "presente": { "yo": "quepo", "tú": "cabes", "él": "cabe", "nosotros": "cabemos", "vosotros": "cabéis", "ellos": "caben" },
+    "preterito_indefinido": { "yo": "cupe", "tú": "cupiste", "él": "cupo", "nosotros": "cupimos", "vosotros": "cupisteis", "ellos": "cupieron" },
+    "futuro_simple": { "yo": "cabré", "tú": "cabrás", "él": "cabrá", "nosotros": "cabremos", "vosotros": "cabréis", "ellos": "cabrán" },
+    "condicional_simple": { "yo": "cabría", "tú": "cabrías", "él": "cabría", "nosotros": "cabríamos", "vosotros": "cabríais", "ellos": "cabrían" },
+    "subjuntivo_presente": { "yo": "quepa", "tú": "quepas", "él": "quepa", "nosotros": "quepamos", "vosotros": "quepáis", "ellos": "quepan" },
+    "gerundio": "cabiendo",
+    "participio": "cabido"
+  },
+  "reír": {
+    "presente": { "yo": "río", "tú": "ríes", "él": "ríe", "nosotros": "reímos", "vosotros": "reís", "ellos": "ríen" },
+    "preterito_indefinido": { "yo": "reí", "tú": "reíste", "él": "rió", "nosotros": "reímos", "vosotros": "reísteis", "ellos": "rieron" },
+    "subjuntivo_presente": { "yo": "ría", "tú": "rías", "él": "ría", "nosotros": "riamos", "vosotros": "riáis", "ellos": "rían" },
+    "gerundio": "riendo",
+    "participio": "reído"
+  },
+  "sonreír": {
+    "presente": { "yo": "sonrío", "tú": "sonríes", "él": "sonríe", "nosotros": "sonreímos", "vosotros": "sonreís", "ellos": "sonríen" },
+    "preterito_indefinido": { "yo": "sonreí", "tú": "sonreíste", "él": "sonrió", "nosotros": "sonreímos", "vosotros": "sonreísteis", "ellos": "sonrieron" },
+    "gerundio": "sonriendo",
+    "participio": "sonreído"
+  },
+  "freír": {
+    "presente": { "yo": "frío", "tú": "fríes", "él": "fríe", "nosotros": "freímos", "vosotros": "freís", "ellos": "fríen" },
+    "preterito_indefinido": { "yo": "freí", "tú": "freíste", "él": "frió", "nosotros": "freímos", "vosotros": "freísteis", "ellos": "frieron" },
+    "gerundio": "friendo",
+    "participio": "frito"
+  },
+  "elegir": {
+    "presente": { "yo": "elijo", "tú": "eliges", "él": "elige", "nosotros": "elegimos", "vosotros": "elegís", "ellos": "eligen" },
+    "preterito_indefinido": { "yo": "elegí", "tú": "elegiste", "él": "eligió", "nosotros": "elegimos", "vosotros": "elegisteis", "ellos": "eligieron" },
+    "subjuntivo_presente": { "yo": "elija", "tú": "elijas", "él": "elija", "nosotros": "elijamos", "vosotros": "elijáis", "ellos": "elijan" },
+    "gerundio": "eligiendo",
+    "participio": "elegido"
+  },
+  "corregir": {
+    "presente": { "yo": "corrijo", "tú": "corriges", "él": "corrige", "nosotros": "corregimos", "vosotros": "corregís", "ellos": "corrigen" },
+    "preterito_indefinido": { "yo": "corregí", "tú": "corregiste", "él": "corrigió", "nosotros": "corregimos", "vosotros": "corregisteis", "ellos": "corrigieron" },
+    "subjuntivo_presente": { "yo": "corrija", "tú": "corrijas", "él": "corrija", "nosotros": "corrijamos", "vosotros": "corrijáis", "ellos": "corrijan" },
+    "gerundio": "corrigiendo",
+    "participio": "corregido"
+  },
+  "dirigir": {
+    "presente": { "yo": "dirijo", "tú": "diriges", "él": "dirige", "nosotros": "dirigimos", "vosotros": "dirigís", "ellos": "dirigen" },
+    "preterito_indefinido": { "yo": "dirigí", "tú": "dirigiste", "él": "dirigió", "nosotros": "dirigimos", "vosotros": "dirigisteis", "ellos": "dirigieron" },
+    "subjuntivo_presente": { "yo": "dirija", "tú": "dirijas", "él": "dirija", "nosotros": "dirijamos", "vosotros": "dirijáis", "ellos": "dirijan" },
+    "gerundio": "dirigiendo",
+    "participio": "dirigido"
+  },
+  "proteger": {
+    "presente": { "yo": "protejo", "tú": "proteges", "él": "protege", "nosotros": "protegemos", "vosotros": "protegéis", "ellos": "protegen" },
+    "subjuntivo_presente": { "yo": "proteja", "tú": "protejas", "él": "proteja", "nosotros": "protejamos", "vosotros": "protejáis", "ellos": "protejan" },
+    "gerundio": "protegiendo",
+    "participio": "protegido"
+  },
+  "coger": {
+    "presente": { "yo": "cojo", "tú": "coges", "él": "coge", "nosotros": "cogemos", "vosotros": "cogéis", "ellos": "cogen" },
+    "subjuntivo_presente": { "yo": "coja", "tú": "cojas", "él": "coja", "nosotros": "cojamos", "vosotros": "cojáis", "ellos": "cojan" },
+    "gerundio": "cogiendo",
+    "participio": "cogido"
+  },
+  "convencer": {
+    "presente": { "yo": "convenzo", "tú": "convences", "él": "convence", "nosotros": "convencemos", "vosotros": "convencéis", "ellos": "convencen" },
+    "subjuntivo_presente": { "yo": "convenza", "tú": "convenzas", "él": "convenza", "nosotros": "convenzamos", "vosotros": "convenzáis", "ellos": "convenzan" },
+    "gerundio": "convenciendo",
+    "participio": "convencido"
+  },
+  "ejercer": {
+    "presente": { "yo": "ejerzo", "tú": "ejerces", "él": "ejerce", "nosotros": "ejercemos", "vosotros": "ejercéis", "ellos": "ejercen" },
+    "subjuntivo_presente": { "yo": "ejerza", "tú": "ejerzas", "él": "ejerza", "nosotros": "ejerzamos", "vosotros": "ejerzáis", "ellos": "ejerzan" },
+    "gerundio": "ejerciendo",
+    "participio": "ejercido"
+  },
+  "recoger": {
+    "presente": { "yo": "recojo", "tú": "recoges", "él": "recoge", "nosotros": "recogemos", "vosotros": "recogéis", "ellos": "recogen" },
+    "subjuntivo_presente": { "yo": "recoja", "tú": "recojas", "él": "recoja", "nosotros": "recojamos", "vosotros": "recojáis", "ellos": "recojan" },
+    "gerundio": "recogiendo",
+    "participio": "recogido"
+  },
+  "proponer": {
+    "presente": { "yo": "propongo", "tú": "propones", "él": "propone", "nosotros": "proponemos", "vosotros": "proponéis", "ellos": "proponen" },
+    "preterito_indefinido": { "yo": "propuse", "tú": "propusiste", "él": "propuso", "nosotros": "propusimos", "vosotros": "propusisteis", "ellos": "propusieron" },
+    "futuro_simple": { "yo": "propondré", "tú": "propondrás", "él": "propondrá", "nosotros": "propondremos", "vosotros": "propondréis", "ellos": "propondrán" },
+    "condicional_simple": { "yo": "propondría", "tú": "propondrías", "él": "propondría", "nosotros": "propondríamos", "vosotros": "propondríais", "ellos": "propondrían" },
+    "gerundio": "proponiendo",
+    "participio": "propuesto"
+  },
+  "suponer": {
+    "presente": { "yo": "supongo", "tú": "supones", "él": "supone", "nosotros": "suponemos", "vosotros": "suponéis", "ellos": "suponen" },
+    "preterito_indefinido": { "yo": "supuse", "tú": "supusiste", "él": "supuso", "nosotros": "supusimos", "vosotros": "supusisteis", "ellos": "supusieron" },
+    "futuro_simple": { "yo": "supondré", "tú": "supondrás", "él": "supondrá", "nosotros": "supondremos", "vosotros": "supondréis", "ellos": "supondrán" },
+    "condicional_simple": { "yo": "supondría", "tú": "supondrías", "él": "supondría", "nosotros": "supondríamos", "vosotros": "supondríais", "ellos": "supondrían" },
+    "gerundio": "suponiendo",
+    "participio": "supuesto"
+  },
+  "exponer": {
+    "presente": { "yo": "expongo", "tú": "expones", "él": "expone", "nosotros": "exponemos", "vosotros": "exponéis", "ellos": "exponen" },
+    "preterito_indefinido": { "yo": "expuse", "tú": "expusiste", "él": "expuso", "nosotros": "expusimos", "vosotros": "expusisteis", "ellos": "expusieron" },
+    "futuro_simple": { "yo": "expondré", "tú": "expondrás", "él": "expondrá", "nosotros": "expondremos", "vosotros": "expondréis", "ellos": "expondrán" },
+    "gerundio": "exponiendo",
+    "participio": "expuesto"
+  },
+  "componer": {
+    "presente": { "yo": "compongo", "tú": "compones", "él": "compone", "nosotros": "componemos", "vosotros": "componéis", "ellos": "componen" },
+    "preterito_indefinido": { "yo": "compuse", "tú": "compusiste", "él": "compuso", "nosotros": "compusimos", "vosotros": "compusisteis", "ellos": "compusieron" },
+    "futuro_simple": { "yo": "compondré", "tú": "compondrás", "él": "compondrá", "nosotros": "compondremos", "vosotros": "compondréis", "ellos": "compondrán" },
+    "gerundio": "componiendo",
+    "participio": "compuesto"
+  },
+  "obtener": {
+    "presente": { "yo": "obtengo", "tú": "obtienes", "él": "obtiene", "nosotros": "obtenemos", "vosotros": "obtenéis", "ellos": "obtienen" },
+    "preterito_indefinido": { "yo": "obtuve", "tú": "obtuviste", "él": "obtuvo", "nosotros": "obtuvimos", "vosotros": "obtuvisteis", "ellos": "obtuvieron" },
+    "futuro_simple": { "yo": "obtendré", "tú": "obtendrás", "él": "obtendrá", "nosotros": "obtendremos", "vosotros": "obtendréis", "ellos": "obtendrán" },
+    "gerundio": "obteniendo",
+    "participio": "obtenido"
+  },
+  "contener": {
+    "presente": { "yo": "contengo", "tú": "contienes", "él": "contiene", "nosotros": "contenemos", "vosotros": "contenéis", "ellos": "contienen" },
+    "preterito_indefinido": { "yo": "contuve", "tú": "contuviste", "él": "contuvo", "nosotros": "contuvimos", "vosotros": "contuvisteis", "ellos": "contuvieron" },
+    "futuro_simple": { "yo": "contendré", "tú": "contendrás", "él": "contendrá", "nosotros": "contendremos", "vosotros": "contendréis", "ellos": "contendrán" },
+    "gerundio": "conteniendo",
+    "participio": "contenido"
+  },
+  "detener": {
+    "presente": { "yo": "detengo", "tú": "detienes", "él": "detiene", "nosotros": "detenemos", "vosotros": "detenéis", "ellos": "detienen" },
+    "preterito_indefinido": { "yo": "detuve", "tú": "detuviste", "él": "detuvo", "nosotros": "detuvimos", "vosotros": "detuvisteis", "ellos": "detuvieron" },
+    "futuro_simple": { "yo": "detendré", "tú": "detendrás", "él": "detendrá", "nosotros": "detendremos", "vosotros": "detendréis", "ellos": "detendrán" },
+    "gerundio": "deteniendo",
+    "participio": "detenido"
+  },
+  "retener": {
+    "presente": { "yo": "retengo", "tú": "retienes", "él": "retiene", "nosotros": "retenemos", "vosotros": "retenéis", "ellos": "retienen" },
+    "preterito_indefinido": { "yo": "retuve", "tú": "retuviste", "él": "retuvo", "nosotros": "retuvimos", "vosotros": "retuvisteis", "ellos": "retuvieron" },
+    "futuro_simple": { "yo": "retendré", "tú": "retendrás", "él": "retendrá", "nosotros": "retendremos", "vosotros": "retendréis", "ellos": "retendrán" },
+    "gerundio": "reteniendo",
+    "participio": "retenido"
+  },
+  "sostener": {
+    "presente": { "yo": "sostengo", "tú": "sostienes", "él": "sostiene", "nosotros": "sostenemos", "vosotros": "sostenéis", "ellos": "sostienen" },
+    "preterito_indefinido": { "yo": "sostuve", "tú": "sostuviste", "él": "sostuvo", "nosotros": "sostuvimos", "vosotros": "sostuvisteis", "ellos": "sostuvieron" },
+    "futuro_simple": { "yo": "sostendré", "tú": "sostendrás", "él": "sostendrá", "nosotros": "sostendremos", "vosotros": "sostendréis", "ellos": "sostendrán" },
+    "gerundio": "sosteniendo",
+    "participio": "sostenido"
+  },
+  "intervenir": {
+    "presente": { "yo": "intervengo", "tú": "intervienes", "él": "interviene", "nosotros": "intervenimos", "vosotros": "intervenís", "ellos": "intervienen" },
+    "preterito_indefinido": { "yo": "intervine", "tú": "interviniste", "él": "intervino", "nosotros": "intervinimos", "vosotros": "intervinisteis", "ellos": "intervinieron" },
+    "futuro_simple": { "yo": "intervendré", "tú": "intervendrás", "él": "intervendrá", "nosotros": "intervendremos", "vosotros": "intervendréis", "ellos": "intervendrán" },
+    "gerundio": "interviniendo",
+    "participio": "intervenido"
+  },
+  "prevenir": {
+    "presente": { "yo": "prevengo", "tú": "previenes", "él": "previene", "nosotros": "prevenimos", "vosotros": "prevenís", "ellos": "previenen" },
+    "preterito_indefinido": { "yo": "previne", "tú": "previniste", "él": "previno", "nosotros": "previnimos", "vosotros": "previnisteis", "ellos": "previnieron" },
+    "futuro_simple": { "yo": "prevendré", "tú": "prevendrás", "él": "prevendrá", "nosotros": "prevendremos", "vosotros": "prevendréis", "ellos": "prevendrán" },
+    "gerundio": "previniendo",
+    "participio": "prevenido"
+  },
+  "deshacer": {
+    "presente": { "yo": "deshago", "tú": "deshaces", "él": "deshace", "nosotros": "deshacemos", "vosotros": "deshacéis", "ellos": "deshacen" },
+    "preterito_indefinido": { "yo": "deshice", "tú": "deshiciste", "él": "deshizo", "nosotros": "deshicimos", "vosotros": "deshicisteis", "ellos": "deshicieron" },
+    "futuro_simple": { "yo": "desharé", "tú": "desharás", "él": "deshará", "nosotros": "desharemos", "vosotros": "desharéis", "ellos": "desharán" },
+    "gerundio": "deshaciendo",
+    "participio": "deshecho"
+  },
+  "devolver": {
+    "participio": "devuelto",
+    "gerundio": "devolviendo"
   }
 }

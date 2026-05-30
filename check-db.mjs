@@ -1,0 +1,15 @@
+import { createClient } from '@libsql/client';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const db = createClient({url: 'file:' + path.join(__dirname,'data','verbs.db').replace(/\\/g,'/')});
+const r1 = await db.execute('SELECT lang, COUNT(*) as cnt FROM verbs GROUP BY lang');
+console.log('Verbs by lang:', JSON.stringify(r1.rows));
+const r2 = await db.execute("SELECT name FROM sqlite_master WHERE type='table'");
+console.log('Tables:', JSON.stringify(r2.rows));
+const r3 = await db.execute("SELECT COUNT(*) as cnt FROM examples");
+console.log('Examples:', JSON.stringify(r3.rows));
+const r4 = await db.execute("PRAGMA table_info(verbs)");
+console.log('Verbs columns:', JSON.stringify(r4.rows));
+const r5 = await db.execute("SELECT infinitive, frequency_rank, type, conjugation_group FROM verbs WHERE lang='es' ORDER BY frequency_rank LIMIT 20");
+console.log('Top ES verbs:', JSON.stringify(r5.rows));
