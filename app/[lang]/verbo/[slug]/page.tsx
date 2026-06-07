@@ -7,6 +7,7 @@ import { verbTitle, verbDescription, verbCanonical, verbHreflangs, langToOgLocal
 import { t } from "@/lib/i18n";
 import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema, generateLearningResourceSchema } from "@/lib/schema";
 import { generateVerbSeoContent } from "@/lib/seo-content";
+import { getVerbRichContent } from "@/lib/verb-rich-content";
 import { COMPARISON_PAIRS } from "@/app/[lang]/comparar/[verb1]/[verb2]/page";
 import ConjugationTable from "@/components/ConjugationTable";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
@@ -82,6 +83,7 @@ export default async function VerbPage({ params }: PageProps) {
   const learningResourceSchema = generateLearningResourceSchema(verb, lang, "es");
 
   const seoContent = generateVerbSeoContent(verb, tenses, lang);
+  const richContent = lang === "es" ? getVerbRichContent(verb.slug) : null;
 
   // Find comparison pairs that include this verb
   const comparisonLinks = lang === "es"
@@ -293,6 +295,30 @@ export default async function VerbPage({ params }: PageProps) {
       <div className="flex justify-center my-8">
         <AdUnit slot="2468013579" format="rectangle" className="ad-rectangle" />
       </div>
+
+      {/* Rich editorial content for top-20 verbs (ES only) */}
+      {richContent && (
+        <section className="mt-0 prose prose-sm dark:prose-invert max-w-none">
+          <h2>El verbo &ldquo;{verb.infinitive}&rdquo;: significado, uso e irregularidades</h2>
+          {richContent.description.split("\n\n").map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+
+          <h3>Ejemplos de uso en contexto</h3>
+          <ol>
+            {richContent.examples.map((ex, i) => (
+              <li key={i}>{ex.es}</li>
+            ))}
+          </ol>
+
+          <h3>¿Sabías que...?</h3>
+          <ul>
+            {richContent.didYouKnow.map((fact, i) => (
+              <li key={i}>{fact}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* SEO text content — rich content for ES, template for CA/EN */}
       {seoContent ? (
