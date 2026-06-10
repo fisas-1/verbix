@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getDb } from "@/lib/db";
 import type { Verb } from "@/lib/verbs";
-import { SITE_NAME } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { t, verbSlugPath, dbLang } from "@/lib/i18n";
 
 export async function generateStaticParams() {
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${tr.verbosPageTitle} | ${SITE_NAME}`,
     description: tr.verbosPageDesc(count),
-    alternates: { canonical: `/${lang}/verbos` },
+    alternates: { canonical: `${SITE_URL}/${lang}/verbos` },
   };
 }
 

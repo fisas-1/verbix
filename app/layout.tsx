@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   description: "Conjuga cualquier verbo en español al instante. Todos los tiempos, todos los modos. Más de 12.000 verbos con ejemplos y ejercicios.",
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico", sizes: "32x32 16x16" },
+      { url: "/icon.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.ico" },
     ],
     shortcut: "/favicon.ico",
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],

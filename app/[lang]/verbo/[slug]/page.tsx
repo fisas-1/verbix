@@ -6,7 +6,7 @@ import { conjugateVerb, getNonPersonalForms } from "@/lib/conjugate";
 import { verbTitle, verbDescription, verbCanonical, verbHreflangs, langToOgLocale, alternateOgLocales, SITE_NAME } from "@/lib/seo";
 import { t } from "@/lib/i18n";
 import { generateVerbSchema, generateFAQSchema, generateBreadcrumbSchema, generateHowToSchema, generateLearningResourceSchema } from "@/lib/schema";
-import { generateVerbSeoContent } from "@/lib/seo-content";
+import { generateVerbSeoContent, RELATED as SEMANTIC_RELATED } from "@/lib/seo-content";
 import { getVerbRichContent } from "@/lib/verb-rich-content";
 import { COMPARISON_PAIRS } from "@/app/[lang]/comparar/[verb1]/[verb2]/page";
 import ConjugationTable from "@/components/ConjugationTable";
@@ -270,6 +270,30 @@ export default async function VerbPage({ params }: PageProps) {
           </div>
         </div>
       )}
+
+      {/* Semantic related verbs — ES only, for verbs with curated data */}
+      {lang === "es" && (() => {
+        const semanticVerbs = SEMANTIC_RELATED[verb.slug];
+        if (!semanticVerbs?.length) return null;
+        return (
+          <div className="mt-6 p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+            <h2 className="text-sm font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider mb-3">
+              Verbos relacionados con &ldquo;{verb.infinitive}&rdquo;
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {semanticVerbs.map((relSlug) => (
+                <Link
+                  key={relSlug}
+                  href={`/es/verbo/${relSlug}`}
+                  className="px-3 py-1.5 text-sm rounded-full bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:border-blue-400 transition-colors"
+                >
+                  {relSlug}
+                </Link>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Búsquedas relacionadas */}
       {related.length > 0 && (

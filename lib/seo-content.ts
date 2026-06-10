@@ -44,8 +44,8 @@ const EXPRESSIONS: Record<string, string[]> = {
   comer: ["comer como un cerdo (to eat like a pig)", "comer el coco (to brainwash)", "no hay mal que por bien no venga (every cloud has a silver lining)"],
 };
 
-// Related verbs per verb
-const RELATED: Record<string, string[]> = {
+// Related verbs per verb — exported for use in semantic link sections
+export const RELATED: Record<string, string[]> = {
   hablar: ["decir", "contar", "comunicar", "charlar"],
   ser: ["estar", "parecer", "resultar", "convertirse"],
   estar: ["ser", "encontrarse", "hallarse", "quedarse"],

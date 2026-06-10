@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getVerbsByGroup } from "@/lib/verbs";
-import { SITE_NAME } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 import { t, verbSlugPath, dbLang } from "@/lib/i18n";
 
 interface PageProps {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${tr.grupoPageTitle(group)} | ${SITE_NAME}`,
     description: tr.grupoPageDesc(0, group),
-    alternates: { canonical: `/${lang}/verbos/grupo/${group}` },
+    alternates: { canonical: `${SITE_URL}/${lang}/verbos/grupo/${group}` },
   };
 }
 
